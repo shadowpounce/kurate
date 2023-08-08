@@ -1,0 +1,37 @@
+.header {
+  @apply flex items-center justify-between z-[2];
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: fit-content;
+
+  padding: 40px 30px 0;
+
+  &.hidden {
+    .logo {
+      svg {
+        path {
+          translate: 0 -100%;
+        }
+      }
+    }
+  }
+
+  &.shown {
+    .logo {
+      svg {
+        path {
+          translate: 0;
+        }
+      }
+    }
+  }
+
+  .logo {
+    @apply w-[85px] h-[24px] overflow-hidden;
+  }
+}

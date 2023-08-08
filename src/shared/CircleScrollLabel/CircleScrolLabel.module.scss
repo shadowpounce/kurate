@@ -1,0 +1,19 @@
+.circleScrollLabel {
+  @apply w-[190px] h-[190px] relative z-[1];
+
+  .circleText {
+    @apply absolute w-full h-full;
+
+    animation: spin 30s infinite linear;
+  }
+
+  .arrow {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-[13.5px] h-[32px];
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}

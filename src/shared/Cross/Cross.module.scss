@@ -1,0 +1,43 @@
+.cross {
+  @apply w-[32px] h-[32px] relative;
+
+  &.animated {
+    svg {
+      opacity: 0;
+      animation: init 2s forwards ease 0.5s;
+    }
+  }
+
+  &:hover {
+    svg {
+      &:nth-child(1) {
+        translate: -100% 100% !important;
+      }
+
+      &:nth-child(2) {
+        translate: 100% -100% !important;
+      }
+    }
+  }
+
+  > svg {
+    @apply absolute w-[16px] h-[16px] pointer-events-none;
+
+    transition: translate 0.5s ease;
+
+    &:nth-child(1) {
+      @apply bottom-0 left-0 translate-x-[-100%] translate-y-full opacity-0;
+    }
+
+    &:nth-child(2) {
+      @apply top-0 right-0 translate-x-full translate-y-[-100%] opacity-0;
+    }
+  }
+}
+
+@keyframes init {
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}

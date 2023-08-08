@@ -1,0 +1,35 @@
+@mixin fontCreate($name, $weight, $url, $ttf: true, $style: normal) {
+  @font-face {
+    font-family: $name;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    @if $ttf {
+      src: url('#{$url}.woff2') format('woff2'),
+        url('#{$url}.woff') format('woff'),
+        url('#{$url}.ttf') format('truetype'),
+        url('#{$url}.eot') format('embedded-opentype');
+    } @else {
+      src: url('#{$url}.woff2') format('woff2'),
+        url('#{$url}.woff') format('woff'),
+        url('#{$url}.otf') format('opentype'),
+        url('#{$url}.eot') format('embedded-opentype');
+    }
+  }
+}
+
+@include fontCreate(
+  $helveticaNowDisplay,
+  400,
+  '/fonts/HelveticaNowDisplay-Regular'
+);
+
+@include fontCreate(
+  $helveticaNowDisplay,
+  500,
+  '/fonts/HelveticaNowDisplay-Medium'
+);
+
+@include fontCreate($helveticaNeueCryt, 400, '/fonts/HelveticaNeueCyr-Roman');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;1,200&display=swap');

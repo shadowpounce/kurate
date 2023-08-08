@@ -1,0 +1,36 @@
+.backgroundGrid {
+  @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full pointer-events-none;
+
+  .cursorFollower {
+    @apply absolute w-[200%] h-[200%] z-[2];
+
+    div {
+      @apply w-full h-full absolute top-1/2 left-1/2 translate-x-[-100%] translate-y-[-100%];
+
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.001) 0%,
+        rgba(0, 0, 0, 1) 50%
+      );
+    }
+  }
+
+  .grid {
+    @apply w-full h-full absolute;
+
+    background: linear-gradient(
+        180deg,
+        transparent 0px,
+        rgba(255, 255, 255, 0.5) 1px,
+        transparent 0px
+      ),
+      linear-gradient(
+        90deg,
+        transparent 0px,
+        rgba(255, 255, 255, 0.5) 1px,
+        transparent 0px
+      );
+    background-size: 10% 20%, 10% 20%;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,120 @@
+.about {
+  div[class*='container'] {
+    @apply flex items-center flex-col justify-center gap-[90px];
+  }
+
+  .line {
+    @apply absolute left-1/2 translate-x-[-50%] translate-y-[-55%];
+
+    svg {
+      path {
+        transition-delay: 2s;
+      }
+    }
+  }
+
+  &Text {
+    @apply flex items-center flex-col justify-center;
+
+    h3 {
+      @apply normal-case text-center relative w-fit translate-y-[25%] opacity-0;
+
+      line-height: 112.8%;
+
+      transition-duration: 1s;
+
+      &:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+
+      &:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      &:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      &.shine {
+        span {
+          animation: shine 2.5s forwards ease;
+          animation-iteration-count: 2;
+        }
+      }
+
+      span {
+        @apply lowercase relative;
+
+        &[class='section-span'] {
+          @apply absolute top-0 left-0 translate-x-[-200%] capitalize;
+
+          > div {
+            @apply opacity-0 translate-y-full;
+            transition-duration: 1s;
+          }
+        }
+
+        &.rect {
+          @apply w-[150px] h-[70px] rounded-[170px] overflow-hidden mx-[20px];
+
+          img {
+            @apply w-full h-full object-cover object-center;
+          }
+        }
+
+        .underline {
+          @apply opacity-0 w-0;
+
+          transition-duration: 1.5s;
+          transition-delay: 0.5s;
+
+          div {
+            @apply absolute left-0 w-[85%] bottom-0  h-[2px];
+            background-color: rgba(250, 250, 250, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  &Group {
+    @apply flex items-start gap-[65px] ml-auto w-fit;
+
+    p {
+      @apply opacity-[0.6] max-w-[300px] normal-case;
+      line-height: 150%;
+
+      > div {
+        @apply opacity-0 translate-y-full;
+
+        transition-duration: 1s;
+
+        &:nth-child(1) {
+          transition-delay: 0.25s;
+        }
+
+        &:nth-child(2) {
+          transition-delay: 0.5s;
+        }
+
+        &:nth-child(3) {
+          transition-delay: 0.75s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes shine {
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
