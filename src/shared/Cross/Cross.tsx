@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
 import styles from './Cross.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 import clsx from 'clsx'
@@ -10,13 +10,19 @@ interface IProps {
 export const Cross: FC<IProps> = ({ activeId }) => {
   const { activeScreen } = useContext(MainContext)
 
+  const ref = useRef<HTMLDivElement>(null)
+
+  const [animated, setAnimated] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (ref.current && !animated && activeScreen === activeId) {
+      ref.current.classList.add(styles.animated)
+      setAnimated(true)
+    }
+  }, [animated, activeScreen])
+
   return (
-    <div
-      className={clsx(
-        styles.cross,
-        activeId === activeScreen && styles.animated
-      )}
-    >
+    <div ref={ref} className={styles.cross}>
       <svg
         width="18"
         height="19"

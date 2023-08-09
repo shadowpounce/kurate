@@ -8,9 +8,9 @@ const App = () => {
     <WithRoutes>
       {pages.map((page) => (
         <Route
+          key={page.path}
           path={page.path}
           element={<Layout>{page.element}</Layout>}
-          key={page.path}
         ></Route>
       ))}
     </WithRoutes>

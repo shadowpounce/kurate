@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import styles from './BackgroundGrid.module.scss'
 import MouseFollower from 'mouse-follower'
+import { MainContext } from '../../app/providers/MainContext'
 
 export const BackgroundGrid = () => {
+  const { pageLoaded } = useContext(MainContext)
   const [init, setInit] = useState<boolean>(false)
   const cursorRef = useRef<HTMLDivElement>(null)
 
@@ -16,6 +18,14 @@ export const BackgroundGrid = () => {
       setInit(true)
     }
   }, [init])
+
+  useEffect(() => {
+    if (pageLoaded && cursorRef.current) {
+      cursorRef.current.style.transform = `translate(${
+        window.innerWidth / 2
+      }px,${window.innerHeight / 2}px)`
+    }
+  }, [pageLoaded])
 
   return (
     <div className={styles.backgroundGrid}>

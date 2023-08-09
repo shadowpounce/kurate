@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import styles from './Cursor.module.scss'
 import MouseFollower from 'mouse-follower'
+import { MainContext } from '../../app/providers/MainContext'
 
 export const Cursor = () => {
   const [init, setInit] = useState<boolean>(false)

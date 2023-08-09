@@ -25,6 +25,22 @@ section {
   }
 }
 
+div {
+  &.animated {
+    .reveal {
+      transform: translate(0) !important;
+      translate: 0 !important;
+      rotate: 0deg !important;
+      scale: 1 !important;
+      opacity: 1 !important;
+    }
+
+    .reveal-width {
+      width: 100% !important;
+    }
+  }
+}
+
 h1,
 h2,
 h3,
@@ -48,6 +64,11 @@ h3 {
 
 .section-span {
   @apply text-[20px] opacity-[0.3];
+
+  > div[class='reveal'] {
+    @apply opacity-0 translate-y-full;
+    transition-duration: 1s;
+  }
 
   line-height: 150%;
 }
