@@ -142,7 +142,7 @@ export const About = () => {
           </div>
           <div className={styles.aboutGroup}>
             <Cross activeId={2} />
-            <p>
+            <p className="brand-text">
               <div className="reveal">
                 Empowering artists, captivating global{' '}
               </div>

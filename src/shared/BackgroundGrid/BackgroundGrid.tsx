@@ -2,9 +2,10 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import styles from './BackgroundGrid.module.scss'
 import MouseFollower from 'mouse-follower'
 import { MainContext } from '../../app/providers/MainContext'
+import clsx from 'clsx'
 
 export const BackgroundGrid = () => {
-  const { pageLoaded } = useContext(MainContext)
+  const { pageLoaded, activeScreen } = useContext(MainContext)
   const [init, setInit] = useState<boolean>(false)
   const cursorRef = useRef<HTMLDivElement>(null)
 
@@ -29,10 +30,23 @@ export const BackgroundGrid = () => {
 
   return (
     <div className={styles.backgroundGrid}>
-      <div ref={cursorRef} className={styles.cursorFollower}>
+      <div
+        ref={cursorRef}
+        className={clsx(
+          styles.cursorFollower,
+          activeScreen === 3 && styles.hidden,
+          activeScreen === 4 && styles.hidden
+        )}
+      >
         <div></div>
       </div>
-      <div className={styles.grid}></div>
+      <div
+        className={clsx(
+          styles.grid,
+          activeScreen === 3 && styles.hidden,
+          activeScreen === 4 && styles.hidden
+        )}
+      ></div>
     </div>
   )
 }

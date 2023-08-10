@@ -1,0 +1,48 @@
+.records {
+  div[class='container'] {
+    @apply flex gap-[110px] pt-[75px] pb-[30px];
+  }
+
+  .textCol {
+    @apply h-full flex-[0.30] flex flex-col justify-between;
+
+    h2 {
+      @apply relative;
+
+      span {
+        @apply normal-case;
+      }
+
+      .transparent {
+        span {
+          @apply opacity-0;
+
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          -webkit-text-stroke: 1px $white;
+
+          transition-duration: 0.5s;
+        }
+      }
+
+      .filled {
+        @apply absolute left-0 top-0 w-full h-full;
+
+        span {
+          @apply opacity-0;
+
+          transition-duration: 1s;
+        }
+      }
+    }
+
+    .group {
+      @apply flex flex-col gap-[50px] w-full;
+    }
+  }
+
+  .recordsList {
+    @apply flex-[0.70];
+  }
+}

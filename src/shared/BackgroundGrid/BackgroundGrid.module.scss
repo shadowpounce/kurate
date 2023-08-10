@@ -2,7 +2,11 @@
   @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full pointer-events-none;
 
   .cursorFollower {
-    @apply absolute w-[200%] h-[200%] z-[2];
+    @apply absolute w-[200%] h-[200%] z-[2] transition-opacity duration-[1s];
+
+    &.hidden {
+      opacity: 0;
+    }
 
     div {
       @apply w-full h-full absolute top-1/2 left-1/2 translate-x-[-100%] translate-y-[-100%];
@@ -16,7 +20,7 @@
   }
 
   .grid {
-    @apply w-full h-full absolute;
+    @apply w-full h-full absolute transition-opacity duration-[1s];
 
     background: linear-gradient(
         180deg,
@@ -32,5 +36,9 @@
       );
     background-size: 10% 20%, 10% 20%;
     background-color: transparent;
+
+    &.hidden {
+      opacity: 0;
+    }
   }
 }

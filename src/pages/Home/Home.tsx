@@ -8,17 +8,31 @@ import { Disc } from '../../entities/Disc/Disc'
 
 export const Home = () => {
   const { setActiveScreen, setDirection } = useContext(MainContext)
+  const [discDeployed, setDiscDeployed] = useState<boolean>(false)
 
   return (
-    <HomeContext.Provider value={{}}>
+    <HomeContext.Provider
+      value={{
+        discDeployed,
+        setDiscDeployed,
+      }}
+    >
       <WithFullpage
         fullpageOptions={{
           credits: {
             enabled: false,
           },
+          scrollingSpeed: 1000,
           onLeave: (origin, destination, direction, trigger) => {
             setActiveScreen(destination.index)
             setDirection(direction)
+
+            if (destination.index === 3 && !discDeployed) {
+              window.fullpage_api.setScrollingSpeed(2000)
+              setDiscDeployed(true)
+            } else {
+              window.fullpage_api.setScrollingSpeed(1000)
+            }
           },
         }}
       >

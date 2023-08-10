@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, FC } from 'react'
 import styles from './Button.module.scss'
+import clsx from 'clsx'
 
 interface IProps extends ButtonHTMLAttributes<string> {
   withArrow?: boolean
@@ -8,7 +9,7 @@ interface IProps extends ButtonHTMLAttributes<string> {
 export const Button: FC<IProps> = ({ children, withArrow = true }) => {
   return (
     <button className={styles.button}>
-      <div className={styles.text}>
+      <div className={clsx(styles.text, 'reveal')}>
         {children}
         {withArrow && (
           <div className={styles.arrow}>
@@ -17,7 +18,7 @@ export const Button: FC<IProps> = ({ children, withArrow = true }) => {
           </div>
         )}
       </div>
-      <div className={styles.underline}></div>
+      <div className={clsx(styles.underline, 'reveal reveal-width')}></div>
     </button>
   )
 }

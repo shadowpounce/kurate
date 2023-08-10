@@ -86,6 +86,8 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
             align-items: flex-end;
             overflow: hidden;
 
+            gap: 3px;
+
             > div {
               margin: 0 $spectrograph-gap-width 0 0;
               flex: 0 0 $spectrograph-bar-width;
@@ -136,29 +138,6 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
 
   &Group {
     @apply flex items-start gap-[65px] ml-auto w-fit;
-
-    p {
-      @apply opacity-[0.6] max-w-[300px] normal-case;
-      line-height: 150%;
-
-      > div {
-        @apply opacity-0 translate-y-full;
-
-        transition-duration: 1s;
-
-        &:nth-child(1) {
-          transition-delay: 0.25s;
-        }
-
-        &:nth-child(2) {
-          transition-delay: 0.5s;
-        }
-
-        &:nth-child(3) {
-          transition-delay: 0.75s;
-        }
-      }
-    }
   }
 }
 

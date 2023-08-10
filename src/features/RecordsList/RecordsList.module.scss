@@ -1,0 +1,87 @@
+.recordsList {
+  @apply flex flex-col gap-[60px];
+
+  .top {
+    @apply w-full flex items-end justify-between;
+
+    h2 {
+      span {
+        @apply normal-case opacity-0 translate-y-full;
+
+        transition-duration: 1s;
+      }
+    }
+
+    .arrow {
+      @apply w-[120px] h-[120px] flex items-center justify-center relative;
+
+      .icon {
+        @apply w-[36px] h-[36px] opacity-0 translate-x-1/2 translate-y-[-50%];
+
+        transition-duration: 1s;
+        transition-delay: 1s;
+      }
+
+      .line {
+        @apply w-full h-full absolute top-0 left-0;
+
+        path {
+          transition-duration: 3s;
+          transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1) !important;
+        }
+      }
+    }
+  }
+
+  .records {
+    &Top {
+      @apply pb-[18.5px] flex items-center  font-medium;
+
+      span {
+        @apply text-[14px] opacity-[0.4];
+      }
+
+      .dropdown {
+        .head {
+          @apply flex items-center gap-[6px];
+
+          .filterIcon {
+            @apply w-[14px] h-[14px];
+
+            svg {
+              @apply w-full h-full;
+            }
+          }
+        }
+      }
+
+      > div {
+        @apply flex-1;
+
+        &:nth-child(1) {
+          @apply flex-[0.3];
+        }
+      }
+    }
+
+    .list {
+      @apply w-full flex flex-col relative;
+
+      > div {
+        &:nth-child(1) {
+          @apply absolute left-1/2 bottom-0 translate-x-[-50%] z-[3];
+        }
+      }
+
+      .shadow {
+        @apply pointer-events-none absolute left-0 right-0 bottom-0 h-[105px] z-[2];
+
+        background: linear-gradient(
+          180deg,
+          rgba(14, 15, 15, 0) 0%,
+          #0e0f0f 72.57%
+        );
+      }
+    }
+  }
+}

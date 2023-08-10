@@ -1,0 +1,19 @@
+.artists-slider {
+  @apply w-full h-full;
+
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  &__slide {
+    @apply flex-[1] min-w-[33%];
+
+    &:nth-child(even) {
+      #artists-slider-card-content {
+        @apply flex-col-reverse;
+      }
+    }
+
+    border: 0.8px solid rgba(255, 255, 255, 0.3);
+  }
+}

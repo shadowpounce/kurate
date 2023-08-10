@@ -1,7 +1,6 @@
-import { useContext, useEffect, useRef, useState } from 'react'
-import styles from './Cursor.module.scss'
+import { useEffect, useRef, useState } from 'react'
+import './Cursor.scss'
 import MouseFollower from 'mouse-follower'
-import { MainContext } from '../../app/providers/MainContext'
 
 export const Cursor = () => {
   const [init, setInit] = useState<boolean>(false)
@@ -12,6 +11,9 @@ export const Cursor = () => {
       const cursor = new MouseFollower({
         el: cursorRef.current,
         speed: 0.1,
+        stateDetection: {
+          '-swiper': '.swiper-slide',
+        },
       })
 
       setInit(true)
@@ -19,7 +21,7 @@ export const Cursor = () => {
   }, [init])
 
   return (
-    <div ref={cursorRef} className={styles.cursor}>
+    <div ref={cursorRef} className="cursor">
       <div></div>
     </div>
   )
