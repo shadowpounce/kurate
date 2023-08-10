@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules'
+import { FreeMode, Scrollbar, Mousewheel } from 'swiper'
 import './ArtistsSlider.scss'
 import { artistsData } from '../../data'
 import { ArtistsSliderCard } from '../../entities/ArtistsSliderCard/ArtistsSliderCard'
