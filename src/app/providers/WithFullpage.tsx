@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import ReactFullpage from '@fullpage/react-fullpage'
 import { IFullpageOptions } from '../../interfaces/IFullpageOptions.interface'
 import { MainContext } from './MainContext'
+import Footer from '../../widgets/Footer/Footer'
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
@@ -18,7 +19,9 @@ export const WithFullpage: React.FC<IProps> = ({
   const { activeScreen, pageLoaded, setPageLoaded } = useContext(MainContext)
 
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll('section'))
+    const sections = Array.from(
+      document.querySelectorAll<HTMLDataElement>('.section')
+    )
 
     sections.map((section, idx) => (section.dataset.screen = `${idx}`))
   }, [])
@@ -29,9 +32,7 @@ export const WithFullpage: React.FC<IProps> = ({
 
   useEffect(() => {
     if (pageLoaded) {
-      const section = document.querySelector(
-        `section[data-screen="${activeScreen}"]`
-      )
+      const section = document.querySelector(`*[data-screen="${activeScreen}"]`)
 
       if (section && !section.classList.contains('animated')) {
         section.classList.add('animated')
@@ -48,7 +49,14 @@ export const WithFullpage: React.FC<IProps> = ({
       licenseKey={'YOUR_KEY_HERE'}
       scrollingSpeed={1000} /* Options here */
       render={({ state, fullpageApi }) => {
-        return <ReactFullpage.Wrapper>{children}</ReactFullpage.Wrapper>
+        return (
+          <ReactFullpage.Wrapper>
+            <>
+              {children}
+              <Footer />
+            </>
+          </ReactFullpage.Wrapper>
+        )
       }}
     />
   )

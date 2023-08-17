@@ -32,7 +32,6 @@ export const Layout: FC<IProps> = ({ children }) => {
       <Cursor />
       <Header />
       {children}
-      <Footer />
       <BackgroundGrid />
     </MainContext.Provider>
   )

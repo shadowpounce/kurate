@@ -35,7 +35,9 @@ export const BackgroundGrid = () => {
         className={clsx(
           styles.cursorFollower,
           activeScreen === 3 && styles.hidden,
-          activeScreen === 4 && styles.hidden
+          activeScreen === 4 && styles.hidden,
+          activeScreen === 5 && styles.hidden,
+          activeScreen === 6 && styles.hidden
         )}
       >
         <div></div>
@@ -44,7 +46,9 @@ export const BackgroundGrid = () => {
         className={clsx(
           styles.grid,
           activeScreen === 3 && styles.hidden,
-          activeScreen === 4 && styles.hidden
+          activeScreen === 4 && styles.hidden,
+          activeScreen === 5 && styles.hidden,
+          activeScreen === 6 && styles.hidden
         )}
       ></div>
     </div>

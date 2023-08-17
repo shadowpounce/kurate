@@ -1,5 +1,10 @@
-import React from 'react'
+import styles from './TextTicker.module.scss'
 
 export const TextTicker = () => {
-  return <div>TextTicker</div>
+  return (
+    <div className={styles.textTicker}>
+      <span>Submit your demos —</span>
+      <span>Submit your demos —</span>
+    </div>
+  )
 }

@@ -1,0 +1,19 @@
+.textTicker {
+  @apply flex flex-nowrap text-[200px] translate-y-[-2%];
+
+  line-height: 100%;
+
+  span {
+    flex: 0 0 auto;
+    animation: 30s linear 0s infinite ticker;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}

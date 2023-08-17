@@ -7,6 +7,29 @@ body {
   cursor: none;
 }
 
+footer {
+  &.animated {
+    .reveal {
+      transform: translate(0) !important;
+      translate: 0 !important;
+      rotate: 0deg !important;
+      scale: 1 !important;
+      opacity: 1 !important;
+    }
+
+    .reveal-anim {
+      &.animated {
+        animation-fill-mode: forwards;
+        animation-name: revealAnim;
+      }
+    }
+
+    .reveal-width {
+      width: 100% !important;
+    }
+  }
+}
+
 section {
   @apply h-screen;
 
@@ -17,6 +40,13 @@ section {
       rotate: 0deg !important;
       scale: 1 !important;
       opacity: 1 !important;
+    }
+
+    .reveal-anim {
+      &.animated {
+        animation-fill-mode: forwards;
+        animation-name: revealAnim;
+      }
     }
 
     .reveal-width {
@@ -61,6 +91,10 @@ h2 {
 
 h3 {
   font-size: 72px !important;
+}
+
+h4 {
+  font-size: 60px !important;
 }
 
 .section-span {
@@ -124,6 +158,11 @@ h3 {
   pointer-events: none;
 }
 
+.reveal-anim {
+  .animated {
+  }
+}
+
 .reveal {
   transition-duration: 0.3s;
   transition-property: opacity, scale, translate, rotate, transform;
@@ -135,4 +174,14 @@ h3 {
 
 .fp-watermark {
   display: none;
+}
+
+@keyframes revealAnim {
+  to {
+    transform: translate(0);
+    translate: 0;
+    rotate: 0deg;
+    scale: 1;
+    opacity: 1;
+  }
 }

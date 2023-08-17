@@ -1,0 +1,69 @@
+.input {
+  @apply w-full h-full relative overflow-hidden rounded-[1000px] py-[55px] px-[75px];
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(217, 217, 217, 0.02);
+  backdrop-filter: blur(15px);
+
+  .content {
+    @apply relative w-full h-full text-[85px];
+    letter-spacing: -1.7px;
+
+    .placeholder {
+      @apply absolute left-0 top-1/2 translate-y-[-50%] opacity-[0.1] pointer-events-none whitespace-nowrap;
+
+      > div {
+        &.hidden {
+          opacity: 0;
+          translate: 0 25%;
+        }
+
+        @apply w-full h-full overflow-hidden;
+        transition: 0.5s ease;
+        transition-property: opacity, translate;
+
+        span {
+          opacity: 0;
+          translate: 0 50%;
+
+          &.toDown {
+            transform: translate(0);
+            translate: 0;
+            rotate: 0deg;
+            scale: 1;
+            opacity: 1;
+
+            animation-name: toDown;
+            animation-duration: 0.25s;
+            animation-fill-mode: forwards;
+          }
+        }
+      }
+    }
+
+    .topLabel {
+      @apply absolute left-0 top-0 text-[12px] opacity-[0.4] uppercase pointer-events-none overflow-hidden;
+      line-height: 140%;
+      letter-spacing: 0.6px;
+
+      span {
+        opacity: 0;
+        translate: 0 50%;
+      }
+    }
+
+    input {
+      @apply text-[40px] w-full h-full rounded-none outline-none absolute left-0 right-0 top-0 bottom-0;
+
+      line-height: 100%;
+      letter-spacing: -0.8px;
+    }
+  }
+}
+
+@keyframes toDown {
+  to {
+    opacity: 0;
+    translate: 0 50%;
+  }
+}

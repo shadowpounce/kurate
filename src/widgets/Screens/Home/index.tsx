@@ -3,6 +3,7 @@ import { About } from './About/About'
 import { Artists } from './Artists/Artists'
 import { Hero } from './Hero/Hero'
 import { PreAbout } from './PreAbout/PreAbout'
+import { SendDemos } from './SendDemos/SendDemos'
 
 export const HomeScreens = [
   <Hero />,
@@ -10,4 +11,5 @@ export const HomeScreens = [
   <About />,
   <Artists />,
   <Records />,
+  <SendDemos />,
 ]

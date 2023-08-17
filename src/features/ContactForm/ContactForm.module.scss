@@ -1,0 +1,224 @@
+.contactForm {
+  @apply relative h-full w-full p-[60px];
+
+  border-radius: 30px;
+  background: rgba(72, 72, 72, 0.06);
+  backdrop-filter: blur(9.5px);
+
+  .waves {
+    @apply absolute left-0 top-0 w-full h-full z-[0] pointer-events-none;
+  }
+
+  .infoPanel {
+    @apply rounded-[16px] p-[10px] h-fit max-w-[250px] w-full pt-[14px] absolute right-[15px] bottom-[15px] flex flex-col gap-[10px];
+
+    transition: 0.7s ease;
+    transition-property: opacity, height, scale;
+
+    opacity: 0;
+    scale: 0.9;
+
+    background-image: url('/images/png/info-panel-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.visible {
+      opacity: 1;
+      scale: 1;
+    }
+
+    span {
+      @apply text-[10px];
+      font-family: 'Poppins', sans-serif;
+      line-height: 140%;
+      letter-spacing: -0.2px;
+    }
+
+    .head {
+      @apply px-[20px] flex items-center justify-between w-full;
+
+      p {
+        @apply text-[20px];
+      }
+    }
+
+    .body {
+      @apply flex flex-col gap-[8px] w-full;
+
+      .step {
+        @apply w-full rounded-[16px] p-[20px] flex flex-col gap-[15px] relative;
+        line-height: 100%;
+
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        .edit {
+          @apply absolute right-[20px] top-1/2 translate-y-[-50%] text-[12px] font-medium underline opacity-[0.4];
+          font-family: $plusJakarta;
+        }
+
+        span {
+          @apply opacity-[0.4];
+        }
+
+        p {
+          @apply text-[14px] normal-case;
+        }
+      }
+    }
+  }
+
+  .content {
+    @apply w-full h-full  flex flex-col items-center justify-center relative z-[1];
+
+    &.sent {
+      .confirmContent {
+        > * {
+          transition: 0.35s ease !important;
+          transition-property: opacity, translate !important;
+
+          opacity: 0 !important;
+          translate: 0 -25% !important;
+        }
+      }
+    }
+
+    &.confirm {
+      .wrap {
+        > * {
+          @apply opacity-[0];
+
+          translate: 0 25%;
+
+          transition: 0.35s ease;
+          transition-property: opacity, translate;
+        }
+      }
+
+      .actionButton {
+        @apply opacity-[0];
+
+        translate: 0 25%;
+
+        transition: 0.35s ease;
+        transition-property: opacity, translate;
+      }
+    }
+
+    .leftBlock {
+      @apply absolute left-0 bottom-0 max-w-[20%] w-full flex gap-[45px] flex-col;
+    }
+
+    .group {
+      @apply relative w-full flex items-center justify-center;
+
+      .wrap {
+        @apply flex flex-col items-center justify-center gap-[40px] max-w-[45%] w-full relative;
+
+        .statusContent {
+          @apply absolute top-0 left-0 w-full h-full flex-col flex justify-between items-center;
+
+          small {
+            @apply text-[12px] opacity-[0.6] uppercase;
+
+            span {
+              opacity: 0;
+              animation-duration: 0.75s !important;
+            }
+          }
+
+          h4 {
+            @apply normal-case text-center;
+            line-height: 110%;
+
+            .rect {
+              @apply w-[114px] h-full rounded-[168px] object-cover object-center mx-[16px] opacity-0 duration-300 delay-[150ms] translate-y-1/2;
+            }
+
+            > div {
+              @apply overflow-hidden flex items-center justify-center;
+
+              span {
+                @apply opacity-[0];
+
+                translate: 0 25%;
+              }
+            }
+          }
+
+          p {
+            @apply opacity-[0.8] normal-case;
+
+            span {
+              opacity: 0;
+            }
+          }
+        }
+
+        .sentContent {
+          opacity: 1 !important;
+
+          @apply justify-center gap-[50px];
+        }
+
+        .confirmContent {
+          opacity: 1 !important;
+
+          .line {
+            @apply w-[68px] h-[60px];
+
+            svg {
+              path {
+                transition-timing-function: linear !important;
+                transition-duration: 4s !important;
+                transition-delay: 0.25s !important;
+              }
+            }
+          }
+
+          > div:last-child {
+            opacity: 0;
+            translate: 0 50%;
+
+            animation-duration: 1s !important;
+            animation-delay: 0.75s !important;
+          }
+        }
+      }
+
+      .title {
+        @apply text-[26px] text-center text-center normal-case;
+        line-height: 122%;
+
+        span {
+          @apply opacity-0;
+        }
+      }
+
+      .input {
+        @apply h-[200px] w-full;
+      }
+
+      .pagination {
+        @apply flex items-center gap-[4px] max-w-[90px] w-full h-[2.5px];
+
+        div {
+          &.active {
+            @apply flex-[2];
+            background-color: #fff;
+          }
+
+          @apply flex-[1] rounded-[1.25px] h-full;
+          background-color: #ffffff33;
+
+          transition: 0.7s ease;
+          transition-property: background-color, flex;
+        }
+      }
+    }
+
+    .actionButton {
+      @apply mt-auto translate-y-[-50%];
+    }
+  }
+}

@@ -4,17 +4,77 @@ import clsx from 'clsx'
 
 interface IProps extends ButtonHTMLAttributes<string> {
   withArrow?: boolean
+  buttonType?: string
+  handleClick?: () => void
 }
 
-export const Button: FC<IProps> = ({ children, withArrow = true }) => {
+export const Button: FC<IProps> = ({
+  children,
+  withArrow = true,
+  buttonType = 'primary',
+  disabled = false,
+  handleClick,
+}) => {
   return (
-    <button className={styles.button}>
+    <button
+      onClick={() => {
+        handleClick && handleClick()
+      }}
+      disabled={disabled}
+      className={clsx(styles.button, styles[buttonType])}
+    >
       <div className={clsx(styles.text, 'reveal')}>
-        {children}
+        <p>{children}</p>
         {withArrow && (
           <div className={styles.arrow}>
-            <img src="/images/icons/arrow-right.svg" alt="btn-arrow" />
-            <img src="/images/icons/arrow-right.svg" alt="btn-arrow" />
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 19 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.9346 5.24365L15.4871 9.79615L10.9346 14.3487"
+                stroke="#FAFAFA"
+                strokeWidth="1.125"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2.7373 9.79614H15.3598"
+                stroke="#FAFAFA"
+                strokeWidth="1.125"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 19 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.9346 5.24365L15.4871 9.79615L10.9346 14.3487"
+                stroke="#FAFAFA"
+                strokeWidth="1.125"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2.7373 9.79614H15.3598"
+                stroke="#FAFAFA"
+                strokeWidth="1.125"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
         )}
       </div>
