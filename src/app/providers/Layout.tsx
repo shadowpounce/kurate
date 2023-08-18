@@ -6,6 +6,8 @@ import Footer from '../../widgets/Footer/Footer'
 import { BackgroundGrid } from '../../shared/BackgroundGrid/BackgroundGrid'
 import { Cursor } from '../../shared/Cursor/Cursor'
 import { MainContext } from './MainContext'
+import { Preloader } from '../../widgets/Preloader/Preloader'
+import { Menu } from '../../widgets/Menu/Menu'
 
 MouseFollower.registerGSAP(gsap)
 
@@ -17,6 +19,7 @@ export const Layout: FC<IProps> = ({ children }) => {
   const [pageLoaded, setPageLoaded] = useState<boolean>(false)
   const [activeScreen, setActiveScreen] = useState<number>(0)
   const [direction, setDirection] = useState<string>('')
+  const [menuActive, setMenuActive] = useState<boolean>(false)
 
   return (
     <MainContext.Provider
@@ -27,9 +30,13 @@ export const Layout: FC<IProps> = ({ children }) => {
         setDirection,
         pageLoaded,
         setPageLoaded,
+        menuActive,
+        setMenuActive,
       }}
     >
+      <Preloader />
       <Cursor />
+      <Menu />
       <Header />
       {children}
       <BackgroundGrid />

@@ -5,7 +5,7 @@ import { TextTicker } from '../../../../shared/TextTicker/TextTicker'
 
 export const SendDemos = () => {
   return (
-    <section className={clsx('section', styles.sendDemos)}>
+    <section id="contact" className={clsx('section', styles.sendDemos)}>
       <div className={styles.ticker}>
         <TextTicker />
       </div>

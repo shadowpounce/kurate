@@ -77,3 +77,22 @@ export const recordsData = [
     genre: 'Ambient',
   },
 ]
+
+export const homeNavLinks = [
+  {
+    title: 'About',
+    href: '#about',
+  },
+  {
+    title: 'Artists',
+    href: '#artists',
+  },
+  {
+    title: 'Releases',
+    href: '#releases',
+  },
+  {
+    title: 'Contact',
+    href: '#contact',
+  },
+]

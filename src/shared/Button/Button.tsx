@@ -6,6 +6,7 @@ interface IProps extends ButtonHTMLAttributes<string> {
   withArrow?: boolean
   buttonType?: string
   handleClick?: () => void
+  withAnim?: boolean
 }
 
 export const Button: FC<IProps> = ({
@@ -14,6 +15,7 @@ export const Button: FC<IProps> = ({
   buttonType = 'primary',
   disabled = false,
   handleClick,
+  withAnim = true,
 }) => {
   return (
     <button
@@ -21,7 +23,11 @@ export const Button: FC<IProps> = ({
         handleClick && handleClick()
       }}
       disabled={disabled}
-      className={clsx(styles.button, styles[buttonType])}
+      className={clsx(
+        styles.button,
+        styles[buttonType],
+        withAnim && styles.withAnim
+      )}
     >
       <div className={clsx(styles.text, 'reveal')}>
         <p>{children}</p>

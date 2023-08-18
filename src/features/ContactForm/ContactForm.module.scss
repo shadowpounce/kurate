@@ -133,6 +133,9 @@
 
             .rect {
               @apply w-[114px] h-full rounded-[168px] object-cover object-center mx-[16px] opacity-0 duration-300 delay-[150ms] translate-y-1/2;
+
+              animation-duration: 1s !important;
+              animation-delay: 0.25s !important;
             }
 
             > div {
@@ -170,7 +173,7 @@
             svg {
               path {
                 transition-timing-function: linear !important;
-                transition-duration: 4s !important;
+                transition-duration: 6s !important;
                 transition-delay: 0.25s !important;
               }
             }

@@ -7,12 +7,13 @@ import styles from './Header.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 
 const Header = () => {
-  const { activeScreen } = useContext(MainContext)
+  const { activeScreen, pageLoaded } = useContext(MainContext)
 
   return (
     <header
       className={clsx(
         styles.header,
+        pageLoaded && `animated`,
         activeScreen <= 0 ? styles.hidden : styles.shown
       )}
     >

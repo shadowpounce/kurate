@@ -21,12 +21,12 @@ export const BackgroundGrid = () => {
   }, [init])
 
   useEffect(() => {
-    if (pageLoaded && cursorRef.current) {
+    if (cursorRef.current) {
       cursorRef.current.style.transform = `translate(${
         window.innerWidth / 2
       }px,${window.innerHeight / 2}px)`
     }
-  }, [pageLoaded])
+  }, [])
 
   return (
     <div className={styles.backgroundGrid}>

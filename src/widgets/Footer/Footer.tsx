@@ -10,7 +10,12 @@ const Footer = () => {
       <div className={styles.wrapper}>
         <div className={styles.wrap}>
           <div className={styles.col}>
-            <div className={styles.logo}>
+            <div
+              onClick={() => {
+                window.fullpage_api.moveTo(1)
+              }}
+              className={styles.logo}
+            >
               <Logo cover={true} />
             </div>
             <div className="reveal">

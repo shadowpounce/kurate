@@ -23,11 +23,15 @@ export const WithFullpage: React.FC<IProps> = ({
       document.querySelectorAll<HTMLDataElement>('.section')
     )
 
-    sections.map((section, idx) => (section.dataset.screen = `${idx}`))
-  }, [])
+    const revealContainers = Array.from(
+      document.querySelectorAll<HTMLDataElement>('.reveal-container')
+    )
 
-  useEffect(() => {
-    setTimeout(() => setPageLoaded(true), 500)
+    sections.map((section, idx) => (section.dataset.screen = `${idx}`))
+
+    revealContainers.map(
+      (section, idx) => (section.dataset.revealContainer = `${idx}`)
+    )
   }, [])
 
   useEffect(() => {
@@ -37,6 +41,14 @@ export const WithFullpage: React.FC<IProps> = ({
       if (section && !section.classList.contains('animated')) {
         section.classList.add('animated')
       }
+    }
+
+    const revealContainer = document.querySelector(
+      `*[data-reveal-container="0"]`
+    )
+
+    if (revealContainer && !revealContainer.classList.contains('animated')) {
+      revealContainer.classList.add('animated')
     }
   }, [activeScreen, pageLoaded])
 

@@ -1,5 +1,10 @@
+import { FC } from 'react'
 import { Button } from '../../shared/Button/Button'
 
-export const SendButton = () => {
-  return <Button>Send your demos</Button>
+interface IProps {
+  withAnim?: boolean
+}
+
+export const SendButton: FC<IProps> = ({ withAnim = true }) => {
+  return <Button withAnim={withAnim}>Send your demos</Button>
 }

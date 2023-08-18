@@ -1,3 +1,130 @@
 .preloader {
-    
+  @apply px-[50px] py-[40px] fixed w-full h-full top-0 left-0 right-0 bottom-0 z-[2];
+
+  background-color: $black;
+
+  transition: 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-property: translate;
+  transition-delay: 0.5s;
+
+  &.closing {
+    translate: 0 100%;
+  }
+
+  .content {
+    @apply w-full h-full uppercase relative;
+
+    .logo {
+      @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[320px] h-[85px];
+
+      > div {
+        @apply opacity-[0] duration-[750ms] w-full h-full;
+
+        > div {
+          @apply w-full h-full absolute left-0 right-0 bottom-0 top-0;
+
+          &.shadow {
+            @apply z-[3];
+          }
+
+          &.filled {
+            @apply z-[2];
+            transform-origin: center;
+
+            &::before {
+              content: '';
+              @apply absolute w-full h-[110%] top-1/2 translate-y-[-50%];
+              background-color: $black;
+
+              animation: logoAnim 4s forwards linear;
+            }
+          }
+
+          img {
+            @apply w-full h-full object-cover object-center;
+          }
+        }
+      }
+    }
+
+    .text {
+      line-height: 140%;
+      letter-spacing: 0.8px;
+
+      @apply absolute;
+
+      &.left,
+      &.right {
+        p {
+          span {
+            opacity: 0;
+          }
+        }
+      }
+
+      &.left {
+        @apply opacity-[0.5] left-0 top-1/2 translate-y-[-50%];
+      }
+
+      &.right {
+        @apply text-white right-0 top-1/2 translate-y-[-50%];
+      }
+
+      &.bottom {
+        @apply flex flex-col items-center gap-[30px] text-[12px] font-medium left-1/2 translate-x-[-50%] bottom-0;
+
+        line-height: 125%;
+
+        .cross {
+          pointer-events: none;
+        }
+
+        > div {
+          &:nth-child(2) {
+            @apply flex flex-col text-center;
+          }
+
+          p {
+            opacity: 0;
+            translate: 0 25%;
+            animation: crossAnim 1s forwards ease 1s;
+          }
+
+          span {
+            p {
+              opacity: 0;
+              translate: 0 25%;
+              animation: crossAnim 1s forwards ease 1s;
+            }
+          }
+        }
+
+        svg {
+          animation: crossAnim 1s forwards ease 1.25s !important;
+        }
+
+        p {
+          @apply uppercase;
+        }
+
+        span {
+          @apply text-[12px] opacity-[0.6];
+        }
+      }
+    }
+  }
+}
+
+@keyframes logoAnim {
+  to {
+    translate: 110% 0;
+  }
+}
+
+@keyframes crossAnim {
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    translate: 0;
+  }
 }

@@ -7,6 +7,52 @@ body {
   cursor: none;
 }
 
+#preloader {
+  &.animated {
+    .reveal {
+      transform: translate(0) !important;
+      translate: 0 !important;
+      rotate: 0deg !important;
+      scale: 1 !important;
+      opacity: 1 !important;
+    }
+
+    .reveal-anim {
+      &.animated {
+        animation-fill-mode: forwards;
+        animation-name: revealAnim;
+      }
+    }
+
+    .reveal-width {
+      width: 100% !important;
+    }
+  }
+}
+
+header {
+  &.animated {
+    .reveal {
+      transform: translate(0) !important;
+      translate: 0 !important;
+      rotate: 0deg !important;
+      scale: 1 !important;
+      opacity: 1 !important;
+    }
+
+    .reveal-anim {
+      &.animated {
+        animation-fill-mode: forwards;
+        animation-name: revealAnim;
+      }
+    }
+
+    .reveal-width {
+      width: 100% !important;
+    }
+  }
+}
+
 footer {
   &.animated {
     .reveal {

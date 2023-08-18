@@ -1,4 +1,6 @@
 .records {
+  @apply overflow-hidden;
+
   div[class='container'] {
     @apply flex gap-[110px] pt-[75px] pb-[30px];
   }

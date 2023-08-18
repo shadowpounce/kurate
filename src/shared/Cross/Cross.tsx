@@ -2,12 +2,14 @@ import { FC, useContext, useEffect, useRef, useState } from 'react'
 import styles from './Cross.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 import clsx from 'clsx'
+import { preloader } from '../../widgets/Preloader/function'
 
 interface IProps {
-  activeId: number
+  activeId?: number
+  preloaderAnim?: boolean
 }
 
-export const Cross: FC<IProps> = ({ activeId }) => {
+export const Cross: FC<IProps> = ({ activeId, preloaderAnim }) => {
   const { activeScreen } = useContext(MainContext)
 
   const ref = useRef<HTMLDivElement>(null)
@@ -15,11 +17,20 @@ export const Cross: FC<IProps> = ({ activeId }) => {
   const [animated, setAnimated] = useState<boolean>(false)
 
   useEffect(() => {
-    if (ref.current && !animated && activeScreen === activeId) {
+    if (activeId) {
+      if (ref.current && !animated && activeScreen === activeId) {
+        ref.current.classList.add(styles.animated)
+        setAnimated(true)
+      }
+    }
+  }, [animated, activeScreen, activeId])
+
+  useEffect(() => {
+    if (preloaderAnim && ref.current) {
       ref.current.classList.add(styles.animated)
       setAnimated(true)
     }
-  }, [animated, activeScreen])
+  }, [preloaderAnim])
 
   return (
     <div ref={ref} className={styles.cross}>

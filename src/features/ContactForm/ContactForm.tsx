@@ -250,7 +250,7 @@ export const ContactForm = () => {
                     {useSplit(
                       'Thank you',
                       {
-                        duration: 0.3,
+                        duration: 0.5,
                         delay: 0.025,
                         startDelay: 0,
                         ease: 'ease',
@@ -258,14 +258,14 @@ export const ContactForm = () => {
                       true
                     )}
                     <img
-                      className={clsx(styles.rect, 'reveal')}
+                      className={clsx(styles.rect, 'reveal-anim animated')}
                       src="/images/SendForm/rect.png"
                       alt=""
                     />
                     {useSplit(
                       'for your',
                       {
-                        duration: 0.3,
+                        duration: 0.5,
                         delay: 0.025,
                         startDelay: 0.2,
                         ease: 'ease',
