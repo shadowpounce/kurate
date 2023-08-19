@@ -210,7 +210,7 @@ export const RecordsList = () => {
           {!activeGenre
             ? recordsData.map((record, idx) => (
                 <Record
-                  idx={idx + 1}
+                  idx={idx}
                   title={record.title}
                   cover={record.cover}
                   artists={record.artists}
@@ -231,7 +231,7 @@ export const RecordsList = () => {
                 })
                 .map((record, idx) => (
                   <Record
-                    idx={idx + 1}
+                    idx={idx}
                     title={record.title}
                     cover={record.cover}
                     artists={record.artists}
@@ -239,28 +239,6 @@ export const RecordsList = () => {
                   />
                 ))}
         </div>
-        {/* <Swiper
-          className={styles.list}
-          direction={'vertical'}
-          pagination={{
-            clickable: true,
-          }}
-          mousewheel={true}
-          freeMode={true}
-          modules={[Mousewheel, FreeMode]}
-        >
-          {recordsData.map((record, idx) => (
-            <SwiperSlide>
-              <Record
-                idx={idx + 1}
-                title={record.title}
-                cover={record.cover}
-                artists={record.artists}
-                genre={record.genre}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
 
         {!showedMore && (
           <div

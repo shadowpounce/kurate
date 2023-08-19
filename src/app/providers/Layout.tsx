@@ -20,6 +20,13 @@ export const Layout: FC<IProps> = ({ children }) => {
   const [activeScreen, setActiveScreen] = useState<number>(0)
   const [direction, setDirection] = useState<string>('')
   const [menuActive, setMenuActive] = useState<boolean>(false)
+  const [currentTrack, setCurrentTrack] = useState<string>('')
+  const [trackIndex, setTrackIndex] = useState<number>(0)
+  const [audioPlay, setAudioPlay] = useState<boolean>(false)
+  const [shuffleMode, setShuffleMode] = useState<boolean>(false)
+  const [repeatMode, setRepeatMode] = useState<boolean>(false)
+  const [currentTime, setCurrentTime] = useState<number>()
+  const [currentDuration, setCurrentDuration] = useState<number>()
 
   return (
     <MainContext.Provider
@@ -32,6 +39,20 @@ export const Layout: FC<IProps> = ({ children }) => {
         setPageLoaded,
         menuActive,
         setMenuActive,
+        currentTrack,
+        setCurrentTrack,
+        trackIndex,
+        setTrackIndex,
+        audioPlay,
+        setAudioPlay,
+        shuffleMode,
+        setShuffleMode,
+        repeatMode,
+        setRepeatMode,
+        currentTime,
+        setCurrentTime,
+        currentDuration,
+        setCurrentDuration,
       }}
     >
       <Preloader />

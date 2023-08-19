@@ -19,6 +19,12 @@
   &Card {
     @apply absolute select-none;
 
+    &:hover {
+      img {
+        scale: 1.15;
+      }
+    }
+
     -webkit-user-drag: none;
 
     .content {
@@ -32,8 +38,14 @@
         }
       }
 
-      img {
-        @apply object-cover object-center;
+      .img {
+        @apply overflow-hidden;
+
+        img {
+          @apply object-cover object-center w-full h-full;
+
+          transition: scale 0.75s ease;
+        }
       }
     }
 
@@ -41,7 +53,7 @@
       @apply top-0 left-0 translate-x-[50%];
 
       .line {
-        @apply w-[85px] h-[75px] absolute right-0 bottom-0;
+        @apply w-[85px] h-[75px] absolute right-0 bottom-0 z-[2];
       }
 
       .content {
@@ -58,7 +70,7 @@
         }
       }
 
-      img {
+      .img {
         @apply w-[175px] h-[225px];
       }
     }
@@ -75,7 +87,7 @@
           }
         }
 
-        img {
+        .img {
           @apply w-[245px] h-[175px];
         }
       }

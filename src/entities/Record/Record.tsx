@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useContext, useEffect } from 'react'
 import styles from './Record.module.scss'
 import clsx from 'clsx'
+import { MainContext } from '../../app/providers/MainContext'
 
 interface IProps {
   idx?: number
@@ -11,6 +12,9 @@ interface IProps {
 }
 
 export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
+  const { setTrackIndex, trackIndex, audioPlay, setAudioPlay } =
+    useContext(MainContext)
+
   return (
     <div
       style={{
@@ -19,8 +23,34 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
       className={clsx(styles.record, 'reveal')}
     >
       <div className={styles.action}>
-        <div className={styles.icon}>
+        <div
+          onClick={() => {
+            if (trackIndex !== idx) {
+              if (audioPlay) {
+                setAudioPlay(false)
+                setTrackIndex(idx)
+                setAudioPlay(true)
+              } else {
+                setAudioPlay(true)
+                setTrackIndex(idx)
+              }
+            }
+
+            if (trackIndex === idx) {
+              if (audioPlay) {
+                setAudioPlay(false)
+              } else {
+                setAudioPlay(true)
+              }
+            }
+          }}
+          className={clsx(
+            styles.icon,
+            idx === trackIndex && audioPlay && styles.active
+          )}
+        >
           <svg
+            className={styles.play}
             width="31"
             height="31"
             viewBox="0 0 31 31"
@@ -40,6 +70,24 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
                 fill="white"
               />
             </g>
+          </svg>
+          <svg
+            className={styles.pause}
+            width="31"
+            height="31"
+            viewBox="0 0 31 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="15.051" cy="15.5618" r="15.051" fill="white" />
+            <path
+              d="M14.3916 19.0303V12.0942C14.3916 11.4358 14.1135 11.1724 13.4111 11.1724H11.6406C10.9382 11.1724 10.6602 11.4358 10.6602 12.0942V19.0303C10.6602 19.6887 10.9382 19.9521 11.6406 19.9521H13.4111C14.1135 19.9521 14.3916 19.6887 14.3916 19.0303Z"
+              fill="#292D32"
+            />
+            <path
+              d="M19.4404 19.0303V12.0942C19.4404 11.4358 19.1624 11.1724 18.46 11.1724H16.6894C15.9919 11.1724 15.709 11.4358 15.709 12.0942V19.0303C15.709 19.6887 15.987 19.9521 16.6894 19.9521H18.46C19.1624 19.9521 19.4404 19.6887 19.4404 19.0303Z"
+              fill="#292D32"
+            />
           </svg>
         </div>
       </div>

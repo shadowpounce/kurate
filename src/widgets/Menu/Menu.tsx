@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { MainContext } from '../../app/providers/MainContext'
 import { pages } from '../../pages'
 import { SendButton } from '../../entities/SendButton/SendButton'
+import { MusicPlayer } from '../../features/MusicPlayer/MusicPlayer'
 
 export const Menu = () => {
   const { menuActive, setMenuActive, pageLoaded, activeScreen } =
@@ -64,47 +65,45 @@ export const Menu = () => {
             </div>
           </div>
         </div>
-        <div
-          className={clsx(
-            styles.panel,
-            styles.nav,
-            menuActive && styles.menuOpened
-          )}
-        >
-          <nav>
-            <li
-              onClick={() => toggleMenu()}
-              className={clsx(styles.navItem, styles.menuButton)}
-            >
-              <div className={styles.burger}>
-                <img src="/images/icons/burger.svg" alt="" />
-              </div>
-              <span>{menuActive ? 'Menu' : 'Home'}</span>
-            </li>
-            {homeNavLinks.map((link) => (
+        <div className={clsx(styles.panels, menuActive && styles.menuOpened)}>
+          <div className={clsx(styles.panel, styles.nav)}>
+            <nav>
               <li
-                onClick={(ev) => {
-                  ev.preventDefault()
-
-                  toScreen(link.href)
-                }}
-                className={styles.navItem}
+                onClick={() => toggleMenu()}
+                className={clsx(styles.navItem, styles.menuButton)}
               >
-                <a href={link.href}>{link.title}</a>
+                <div className={styles.burger}>
+                  <img src="/images/icons/burger.svg" alt="" />
+                </div>
+                <span>{menuActive ? 'Menu' : 'Home'}</span>
               </li>
-            ))}
-            <li className={clsx(styles.navItem, styles.playerSwitch)}>
-              <div className={styles.line}></div>
-            </li>
-          </nav>
-          <div
-            onClick={() => toggleMenu()}
-            className={clsx(styles.closeButton, menuActive && styles.shown)}
-          >
-            <img src="/images/icons/menu-close.svg" alt="" />
+              {homeNavLinks.map((link) => (
+                <li
+                  onClick={(ev) => {
+                    ev.preventDefault()
+
+                    toScreen(link.href)
+                  }}
+                  className={styles.navItem}
+                >
+                  <a href={link.href}>{link.title}</a>
+                </li>
+              ))}
+              <li className={clsx(styles.navItem, styles.playerSwitch)}>
+                <div className={styles.line}></div>
+              </li>
+            </nav>
+            <div
+              onClick={() => toggleMenu()}
+              className={clsx(styles.closeButton, menuActive && styles.shown)}
+            >
+              <img src="/images/icons/menu-close.svg" alt="" />
+            </div>
+          </div>
+          <div className={styles.panel}>
+            <MusicPlayer />
           </div>
         </div>
-        <div className={styles.panel}></div>
       </div>
     </menu>
   )

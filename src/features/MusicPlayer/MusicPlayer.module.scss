@@ -1,0 +1,113 @@
+.musicPlayer {
+  @apply py-[18px] pl-[16px] pr-[29px] w-full h-full relative;
+
+  .progress {
+    @apply absolute left-0 right-0 bottom-0 h-[2px] bg-white w-0;
+    transition: 0.1s linear;
+    transition-property: width;
+  }
+
+  .hidden {
+    @apply absolute opacity-0 pointer-events-none;
+  }
+
+  .wrapper {
+    @apply w-full h-full flex items-center justify-between;
+
+    .info {
+      @apply flex items-center gap-[12px];
+
+      .cover {
+        @apply flex;
+
+        .cube {
+          @apply w-[28px] h-[28px];
+
+          &:nth-child(1) {
+            background-color: black;
+          }
+        }
+      }
+
+      .text {
+        @apply font-medium;
+
+        .title {
+          @apply text-[14px];
+        }
+
+        .artist {
+          @apply text-[10px];
+          color: #7c7c7c;
+        }
+      }
+    }
+
+    .actions {
+      @apply flex items-center justify-center w-fit gap-[15px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
+
+      > div {
+        @apply w-[16px] h-[16px];
+
+        svg {
+          @apply w-full h-full pointer-events-none;
+
+          path {
+            @apply duration-300 transition-colors;
+          }
+        }
+      }
+    }
+
+    .shuffle {
+      &.active {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+
+    .repeat {
+      &.active {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+
+    .main {
+      width: 24px !important;
+      height: 24px !important;
+
+      &.active {
+        .play {
+          opacity: 0 !important;
+        }
+
+        .pause {
+          opacity: 1 !important;
+        }
+      }
+
+      svg {
+        @apply absolute left-0 right-0 bottom-0 top-0 transition-opacity duration-300;
+      }
+
+      .play {
+        @apply opacity-100;
+      }
+
+      .pause {
+        @apply opacity-0;
+      }
+    }
+
+    .close {
+      @apply w-[12px] h-[12px];
+
+      img {
+        @apply w-full h-full object-center object-cover;
+      }
+    }
+  }
+}

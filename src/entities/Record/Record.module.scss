@@ -24,10 +24,28 @@
 
   .action {
     .icon {
-      @apply w-[30px] h-[30px];
+      @apply w-[30px] h-[30px] relative;
+
+      &.active {
+        .play {
+          opacity: 0 !important;
+        }
+
+        .pause {
+          opacity: 1 !important;
+        }
+      }
+
+      .play {
+        @apply opacity-100;
+      }
+
+      .pause {
+        @apply opacity-0;
+      }
 
       svg {
-        @apply w-full h-full;
+        @apply w-full h-full absolute left-0 right-0 bottom-0 top-0 pointer-events-none transition-opacity duration-300;
       }
     }
   }

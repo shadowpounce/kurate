@@ -35,7 +35,9 @@ export const Hero = () => {
             <div className={styles.text}>
               <span className="reveal">Body text</span>
             </div>
-            <img src="/images/Hero/card1.jpg" alt="" />
+            <div className={styles.img}>
+              <img src="/images/Hero/card1.jpg" alt="" />
+            </div>
           </div>
         </div>
         <div className={clsx(styles.heroCard, styles.cardSecond)}>
@@ -43,7 +45,9 @@ export const Hero = () => {
             <div className={styles.text}>
               <span className="reveal">Body text</span>
             </div>
-            <img src="/images/Hero/card2.jpg" alt="" />
+            <div className={styles.img}>
+              <img src="/images/Hero/card2.jpg" alt="" />
+            </div>
           </div>
         </div>
 
