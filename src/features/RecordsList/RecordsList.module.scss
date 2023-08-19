@@ -1,5 +1,9 @@
 .recordsList {
-  @apply flex flex-col gap-[60px];
+  @apply flex flex-col h-full relative gap-[40px];
+
+  .showMore {
+    @apply absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-[-50%] z-[3];
+  }
 
   .top {
     @apply w-full flex items-end justify-between;
@@ -34,22 +38,150 @@
   }
 
   .records {
+    @apply overflow-hidden relative h-full;
+
+    .shadow {
+      @apply pointer-events-none absolute left-0 right-0 bottom-0 h-[25%] z-[2] pointer-events-none;
+
+      background: linear-gradient(
+        180deg,
+        rgba(14, 15, 15, 0) 0%,
+        #0e0f0f 72.57%
+      );
+    }
+
     &Top {
-      @apply pb-[18.5px] flex items-center  font-medium;
+      @apply pb-[18.5px] flex items-center  font-medium pr-[20px];
 
       span {
-        @apply text-[14px] opacity-[0.4];
+        @apply text-[14px];
+        transition: opacity 0.35s ease;
+
+        > span {
+          @apply opacity-[0.4];
+        }
       }
 
       .dropdown {
+        @apply relative z-[1];
+
+        &.active {
+          .body {
+            @apply delay-0;
+            scale: 1 1;
+
+            > * {
+              @apply opacity-100 delay-300 duration-[750ms];
+            }
+          }
+        }
+
         .head {
           @apply flex items-center gap-[6px];
+
+          .genre {
+          }
+
+          &:hover {
+            span {
+              > span {
+                @apply opacity-100;
+              }
+            }
+
+            .filterIcon {
+              svg {
+                path {
+                  stroke: #fff;
+                }
+              }
+            }
+          }
+
+          > span {
+            @apply flex items-center gap-[2.5px];
+          }
 
           .filterIcon {
             @apply w-[14px] h-[14px];
 
             svg {
               @apply w-full h-full;
+
+              path {
+                transition: 0.3s ease;
+                transition-property: stroke;
+              }
+            }
+          }
+        }
+
+        .body {
+          @apply absolute left-0 right-0 bottom-[-12px] translate-y-[100%] rounded-[16px] p-[16px] flex flex-col gap-[14.5px];
+
+          transform-origin: bottom center;
+          transition: scale 0.5s ease 0.3s;
+
+          scale: 1 0;
+
+          background-color: #121313;
+
+          > * {
+            @apply opacity-0;
+          }
+
+          .search {
+            @apply w-full rounded-[8px] px-[14px] py-[12px] flex items-center justify-between relative min-h-[42px] h-[42px] transition-opacity duration-[300ms];
+            background-color: #181a1a;
+
+            &::after {
+              @apply absolute right-[14px] top-1/2 translate-y-[-50%] w-[18px] h-[18px] bg-center bg-cover;
+              content: '';
+              background-image: url('/images/icons/search.svg');
+            }
+
+            input {
+              @apply absolute w-full h-full top-0 left-0 right-0 bottom-0 px-[14px] py-[12px] font-medium text-[12px];
+
+              &::placeholder {
+                @apply opacity-[0.4] text-inherit;
+              }
+            }
+          }
+
+          &List {
+            @apply w-full max-h-[165px] h-[165px] relative transition-opacity duration-[300ms];
+
+            &::after {
+              content: '';
+              display: block;
+
+              @apply h-1/2 absolute w-[95%] bottom-0 left-0 right-0 z-[1] pointer-events-none;
+              background-image: linear-gradient(
+                180deg,
+                rgba(18, 19, 19, 0) 0%,
+                #121313 100%
+              );
+            }
+
+            ul {
+              @apply overflow-y-scroll h-full flex flex-col;
+
+              &::-webkit-scrollbar {
+                @apply w-[3px];
+              }
+
+              &::-webkit-scrollbar-thumb {
+                @apply w-[3px] rounded-[1.5px] bg-[#595959];
+              }
+
+              li {
+                @apply p-[12px] transition-colors duration-300 rounded-[8px];
+
+                &:hover {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+              }
             }
           }
         }
@@ -65,22 +197,22 @@
     }
 
     .list {
-      @apply w-full flex flex-col relative;
+      @apply w-full flex flex-col relative h-[80%] pr-[14px];
 
-      > div {
-        &:nth-child(1) {
-          @apply absolute left-1/2 bottom-0 translate-x-[-50%] z-[3];
-        }
+      &.active {
+        @apply overflow-y-scroll;
       }
 
-      .shadow {
-        @apply pointer-events-none absolute left-0 right-0 bottom-0 h-[105px] z-[2];
+      &::-webkit-scrollbar {
+        @apply appearance-none w-[6px];
+      }
 
-        background: linear-gradient(
-          180deg,
-          rgba(14, 15, 15, 0) 0%,
-          #0e0f0f 72.57%
-        );
+      &::-webkit-scrollbar-thumb {
+        @apply w-[6px] rounded-[3px] bg-white;
+      }
+
+      div[class='swiper-slide'] {
+        height: 85px !important;
       }
     }
   }

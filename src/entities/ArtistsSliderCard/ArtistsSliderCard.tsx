@@ -20,7 +20,13 @@ export const ArtistsSliderCard: FC<IProps> = ({ id, title, text, media }) => {
         <div className={clsx(styles.text, 'reveal')}>
           <p>{text}</p>
         </div>
-        <div className={clsx(styles.media, 'reveal')}>
+        <div
+          className={clsx(
+            styles.media,
+            Array.isArray(media) && styles.gallery,
+            'reveal'
+          )}
+        >
           {Array.isArray(media) ? (
             media.map((img, idx) => (
               <img src={img} alt={`media-image-${idx}`} />

@@ -1,18 +1,45 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Mousewheel, FreeMode } from 'swiper'
 import useSplit from '../../hooks/useSplit'
 import { DrawableLine } from '../../shared/DrawableLine/DrawableLine'
 import styles from './RecordsList.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 import clsx from 'clsx'
-import { recordsData } from '../../data'
+import { genres, recordsData } from '../../data'
 import { Record } from '../../entities/Record/Record'
 import { Button } from '../../shared/Button/Button'
 
 export const RecordsList = () => {
+  const [filterActive, setFilterActive] = useState<boolean>(false)
+  const [activeGenre, setActiveGenre] = useState<string | undefined>()
+
+  const [filterString, setFilterString] = useState<string>('')
+
+  const [showedMore, setShowedMore] = useState<boolean>(false)
+
   const { activeScreen } = useContext(MainContext)
+
+  const toggleFilter = () => {
+    filterActive ? setFilterActive(false) : setFilterActive(true)
+  }
+
+  const selectGenre = (genre: string) => {
+    toggleFilter()
+    setActiveGenre(genre)
+  }
+
+  const showMore = () => {
+    setShowedMore(true)
+  }
 
   return (
     <div className={styles.recordsList}>
+      {!showedMore && (
+        <div onClick={() => showMore()} className={styles.showMore}>
+          <Button withArrow={false}>Show more</Button>
+        </div>
+      )}
       <div className={styles.top}>
         <div>
           <h2>{useSplit('Our')}</h2>
@@ -64,19 +91,29 @@ export const RecordsList = () => {
         <div className={styles.recordsTop}>
           <div className="reveal opacity-0 translate-y-full"></div>
           <div className="reveal opacity-0 translate-y-full">
-            <span>Track</span>
+            <span>
+              <span>Track</span>
+            </span>
           </div>
           <div className="reveal opacity-0 translate-y-full">
-            <span>Artist(s)</span>
+            <span>
+              <span>Artist(s)</span>
+            </span>
           </div>
           <div
             className={clsx(
               styles.dropdown,
+              filterActive && styles.active,
               'reveal opacity-0 translate-y-full'
             )}
           >
-            <div className={styles.head}>
-              <span>Genre</span>
+            <div onClick={() => toggleFilter()} className={styles.head}>
+              <span>
+                <span>Genre:</span>{' '}
+                <div className={clsx(styles.genre, 'reveal-anim animated')}>
+                  {activeGenre && useSplit(activeGenre)}
+                </div>{' '}
+              </span>
               <div className={styles.filterIcon}>
                 <svg
                   width="14"
@@ -136,29 +173,103 @@ export const RecordsList = () => {
                 </svg>
               </div>
             </div>
+            <div className={styles.body}>
+              <div className={styles.search}>
+                <input
+                  value={filterString}
+                  onChange={(ev) =>
+                    setFilterString(ev.target.value.toLowerCase())
+                  }
+                  placeholder="Search"
+                  type="text"
+                />
+              </div>
+              <div className={styles.bodyList}>
+                <ul data-scrollable="true">
+                  {filterString
+                    ? genres
+                        .filter((item) =>
+                          item.toLowerCase().includes(filterString)
+                        )
+                        .map((genre) => (
+                          <li onClick={() => selectGenre(genre)}>{genre}</li>
+                        ))
+                    : genres.map((genre) => (
+                        <li onClick={() => selectGenre(genre)}>{genre}</li>
+                      ))}
+                  <li></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className={styles.list}>
-          <div>
-            <Button withArrow={false}>Show more</Button>
-          </div>
+        <div
+          data-scrollable="true"
+          className={clsx(styles.list, showedMore && styles.active)}
+        >
+          {!activeGenre
+            ? recordsData.map((record, idx) => (
+                <Record
+                  idx={idx + 1}
+                  title={record.title}
+                  cover={record.cover}
+                  artists={record.artists}
+                  genre={record.genre}
+                />
+              ))
+            : recordsData
+                .filter((record) => {
+                  if (Array.isArray(record.genre)) {
+                    return record.genre.find(
+                      (item) => item.toLowerCase() === activeGenre.toLowerCase()
+                    )
+                  }
+
+                  return (
+                    record.genre.toLowerCase() === activeGenre.toLowerCase()
+                  )
+                })
+                .map((record, idx) => (
+                  <Record
+                    idx={idx + 1}
+                    title={record.title}
+                    cover={record.cover}
+                    artists={record.artists}
+                    genre={record.genre}
+                  />
+                ))}
+        </div>
+        {/* <Swiper
+          className={styles.list}
+          direction={'vertical'}
+          pagination={{
+            clickable: true,
+          }}
+          mousewheel={true}
+          freeMode={true}
+          modules={[Mousewheel, FreeMode]}
+        >
+          {recordsData.map((record, idx) => (
+            <SwiperSlide>
+              <Record
+                idx={idx + 1}
+                title={record.title}
+                cover={record.cover}
+                artists={record.artists}
+                genre={record.genre}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper> */}
+
+        {!showedMore && (
           <div
             className={clsx(
               styles.shadow,
               'reveal opacity-0 duration-1000 delay-[1000ms]'
             )}
           ></div>
-
-          {recordsData.map((record, idx) => (
-            <Record
-              idx={idx + 1}
-              title={record.title}
-              cover={record.cover}
-              artists={record.artists}
-              genre={record.genre}
-            />
-          ))}
-        </div>
+        )}
       </div>
     </div>
   )

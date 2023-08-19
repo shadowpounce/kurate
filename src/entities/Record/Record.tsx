@@ -58,7 +58,7 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
             : artists}
         </span>
       </div>
-      <div>
+      <div className={styles.genre}>
         <span>
           {Array.isArray(genre)
             ? genre.map((item, idx) => {

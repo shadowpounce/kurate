@@ -1,3 +1,16 @@
+export const genres = [
+  'Collaborations',
+  'Easy Listening',
+  'Original Piano',
+  'Electronic',
+  'Ambient',
+  'Collaborations',
+  'Easy Listening',
+  'Original Piano',
+  'Electronic',
+  'Ambient',
+]
+
 export const artistsData = [
   {
     title: 'Izzamusic',
@@ -40,6 +53,42 @@ export const artistsData = [
 ]
 
 export const recordsData = [
+  {
+    cover: 'images/Records/1.png',
+    title: 'Snowfall',
+    artists: ['Oneheart, Reidenshi'],
+    genre: ['Ambient', 'Easy Listening'],
+  },
+  {
+    cover: 'images/Records/2.png',
+    title: 'Orange Peel',
+    artists: 'Oneheart',
+    genre: 'Ambient',
+  },
+  {
+    cover: 'images/Records/1.png',
+    title: 'Snowfall',
+    artists: ['Oneheart, Reidenshi'],
+    genre: ['Ambient', 'Easy Listening'],
+  },
+  {
+    cover: 'images/Records/2.png',
+    title: 'Orange Peel',
+    artists: 'Oneheart',
+    genre: 'Ambient',
+  },
+  {
+    cover: 'images/Records/1.png',
+    title: 'Snowfall',
+    artists: ['Oneheart, Reidenshi'],
+    genre: ['Ambient', 'Easy Listening'],
+  },
+  {
+    cover: 'images/Records/2.png',
+    title: 'Orange Peel',
+    artists: 'Oneheart',
+    genre: 'Ambient',
+  },
   {
     cover: 'images/Records/1.png',
     title: 'Snowfall',

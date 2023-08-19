@@ -109,6 +109,22 @@ export const ContactForm = () => {
     }
   }, [name, email, link, currentStep])
 
+  const handleClick = () => {
+    if (confirmStep) {
+      setFormSent(true)
+      return
+    }
+
+    if (stepId !== FORM_STEPS.length) {
+      setStepId(stepId + 1)
+      setActiveValue('')
+    }
+
+    if (stepId === FORM_STEPS.length) {
+      setStepId(stepId + 1)
+    }
+  }
+
   const backToStep = (id: number) => {
     if (id !== 0 && id !== FORM_STEPS.length + 1) {
       setStepId(id)
@@ -119,7 +135,16 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className={styles.contactForm}>
+    <div
+      onKeyPress={(ev) => {
+        if (ev.key === 'Enter') {
+          ev.preventDefault()
+
+          handleClick()
+        }
+      }}
+      className={styles.contactForm}
+    >
       <div
         className={clsx(
           styles.infoPanel,
@@ -219,11 +244,7 @@ export const ContactForm = () => {
                 </div>
                 <div className="reveal-anim animated">
                   <Button
-                    handleClick={() => {
-                      if (confirmStep) {
-                        setFormSent(true)
-                      }
-                    }}
+                    handleClick={() => handleClick()}
                     buttonType="secondary"
                   >
                     Send your demos
@@ -343,16 +364,7 @@ export const ContactForm = () => {
         <div className={styles.actionButton}>
           <Button
             disabled={disabled}
-            handleClick={() => {
-              if (stepId !== FORM_STEPS.length) {
-                setStepId(stepId + 1)
-                setActiveValue('')
-              }
-
-              if (stepId === FORM_STEPS.length) {
-                setStepId(stepId + 1)
-              }
-            }}
+            handleClick={() => handleClick()}
             buttonType="secondary"
           >
             Next step

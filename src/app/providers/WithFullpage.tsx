@@ -12,6 +12,13 @@ interface IProps {
   fullpageOptions?: IFullpageOptions
 }
 
+interface WheelEvent<T = Element> extends MouseEvent<T, NativeWheelEvent> {
+  deltaMode: number
+  deltaX: number
+  deltaY: number
+  deltaZ: number
+}
+
 export const WithFullpage: React.FC<IProps> = ({
   children,
   fullpageOptions,
@@ -52,6 +59,35 @@ export const WithFullpage: React.FC<IProps> = ({
     }
   }, [activeScreen, pageLoaded])
 
+  useEffect(() => {
+    const scrollableElements = Array.from(
+      document.querySelectorAll('*[data-scrollable="true"]')
+    )
+
+    if (scrollableElements) {
+      scrollableElements.forEach((element) => {
+        element.addEventListener('wheel', (ev) => {
+          window.fullpage_api.setAllowScrolling(false)
+
+          if (ev.deltaY < 0) {
+            element.scrollTop = element.scrollTop - 25
+          }
+
+          if (ev.deltaY > 0) {
+            element.scrollTop = element.scrollTop + 25
+          }
+        })
+
+        element.addEventListener('mouseenter', (ev) => {
+          window.fullpage_api.setAllowScrolling(false)
+        })
+
+        element.addEventListener('mouseleave', (ev) => {
+          window.fullpage_api.setAllowScrolling(true)
+        })
+      })
+    }
+  }, [])
   return (
     <ReactFullpage
       credits={{

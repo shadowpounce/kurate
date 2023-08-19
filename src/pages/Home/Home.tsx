@@ -6,7 +6,8 @@ import { MainContext } from '../../app/providers/MainContext'
 import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
 
 export const Home = () => {
-  const { setActiveScreen, setDirection } = useContext(MainContext)
+  const { setActiveScreen, setDirection, activeScreen } =
+    useContext(MainContext)
   const [discDeployed, setDiscDeployed] = useState<boolean>(false)
 
   return (
