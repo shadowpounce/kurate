@@ -229,9 +229,9 @@ export const RecordsList = () => {
                     record.genre.toLowerCase() === activeGenre.toLowerCase()
                   )
                 })
-                .map((record, idx) => (
+                .map((record) => (
                   <Record
-                    idx={idx}
+                    idx={record.id}
                     title={record.title}
                     cover={record.cover}
                     artists={record.artists}

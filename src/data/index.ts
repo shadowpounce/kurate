@@ -54,6 +54,7 @@ export const artistsData = [
 
 export const recordsData = [
   {
+    id: 0,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -61,6 +62,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 1,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
@@ -68,6 +70,7 @@ export const recordsData = [
     genre: 'Ambient',
   },
   {
+    id: 2,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -75,6 +78,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 3,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
@@ -82,6 +86,7 @@ export const recordsData = [
     genre: 'Ambient',
   },
   {
+    id: 4,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -89,6 +94,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 5,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
@@ -96,6 +102,7 @@ export const recordsData = [
     genre: 'Ambient',
   },
   {
+    id: 6,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -103,6 +110,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 7,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
@@ -110,6 +118,7 @@ export const recordsData = [
     genre: 'Ambient',
   },
   {
+    id: 8,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -117,6 +126,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 9,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
@@ -124,6 +134,7 @@ export const recordsData = [
     genre: 'Ambient',
   },
   {
+    id: 10,
     audio: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
     cover: 'images/Records/1.png',
     title: 'Snowfall',
@@ -131,6 +142,7 @@ export const recordsData = [
     genre: ['Ambient', 'Easy Listening'],
   },
   {
+    id: 11,
     audio: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
     cover: 'images/Records/2.png',
     title: 'Orange Peel',
