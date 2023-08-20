@@ -13,18 +13,10 @@
     .panel {
       &:nth-child(1) {
         transform: rotateX(90deg) translateZ(70px) !important;
-
-        > * {
-          opacity: 0;
-        }
       }
 
       &:nth-child(2) {
         transform: rotateX(0deg) translateY(-100%) !important;
-
-        > * {
-          opacity: 1 !important;
-        }
       }
     }
   }
@@ -95,10 +87,14 @@
         }
 
         .playerSwitch {
-          @apply flex items-center justify-between;
+          @apply flex items-center justify-start pr-[8px];
 
           &:hover {
             background-color: rgba(201, 201, 201, 0.0509803922);
+          }
+
+          > div:nth-child(2) {
+            @apply transition-opacity duration-300 mx-auto;
           }
 
           .line {
@@ -151,6 +147,12 @@
           border-top-right-radius: 0;
         }
 
+        .playerSwitch {
+          > * {
+            opacity: 0 !important;
+          }
+        }
+
         .navItem {
           @apply rounded-none;
 
@@ -187,17 +189,14 @@
       .panel {
         @apply w-full min-w-full min-h-[70px] h-[70px] rounded-[12px];
 
+        backface-visibility: hidden;
+
         transform-style: preserve-3d;
 
         transition: 1s ease;
         transition-property: transform, border-radius, backdrop-filter;
 
         background: rgba(222, 222, 222, 0.03);
-        // backdrop-filter: blur(59px);
-
-        > * {
-          transition: opacity 0.3s ease !important;
-        }
 
         &:nth-child(1) {
           transform-origin: bottom center;
@@ -211,10 +210,6 @@
 
           transform-origin: top center;
           transform: rotateX(-90deg);
-
-          > * {
-            opacity: 0;
-          }
         }
       }
     }

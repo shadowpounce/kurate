@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { HomeContext } from '../../app/providers/HomeContext'
 import { HomeScreens } from '../../widgets/Screens/Home'
 import { WithFullpage } from '../../app/providers/WithFullpage'
@@ -6,8 +6,19 @@ import { MainContext } from '../../app/providers/MainContext'
 import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
 
 export const Home = () => {
-  const { setActiveScreen, setDirection, activeScreen } =
-    useContext(MainContext)
+  const { setCurrentPage } = useContext(MainContext)
+
+  useEffect(() => {
+    setCurrentPage('home')
+  }, [])
+
+  const {
+    setActiveScreen,
+    setDirection,
+    activeScreen,
+    setPlayerActive,
+    playerActive,
+  } = useContext(MainContext)
   const [discDeployed, setDiscDeployed] = useState<boolean>(false)
 
   return (
@@ -27,6 +38,12 @@ export const Home = () => {
             setActiveScreen(destination.index)
             setDirection(direction)
 
+            if (destination.index === 4) {
+              setPlayerActive(true)
+            } else {
+              playerActive && setPlayerActive(false)
+            }
+
             if (destination.index === 3 && !discDeployed) {
               window.fullpage_api.setScrollingSpeed(2000)
               setDiscDeployed(true)
@@ -37,7 +54,6 @@ export const Home = () => {
         }}
       >
         <>
-          {/* <Disc /> */}
           <ThreeDCards />
           {HomeScreens.map((screen) => screen)}
         </>

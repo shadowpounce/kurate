@@ -6,7 +6,7 @@ import { ArtistsSlider } from '../../../../features/ArtistsSlider/ArtistsSlider'
 
 export const Artists = () => {
   return (
-    <section id="artists" className={clsx('section', styles.artists)}>
+    <section data-grid="false" id="artists" className={clsx('section', styles.artists)}>
       <div className={styles.wrapper}>
         <div className="container">
           <div className={styles.textWrapper}>

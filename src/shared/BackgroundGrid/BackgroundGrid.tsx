@@ -34,10 +34,9 @@ export const BackgroundGrid = () => {
         ref={cursorRef}
         className={clsx(
           styles.cursorFollower,
-          activeScreen === 3 && styles.hidden,
-          activeScreen === 4 && styles.hidden,
-          activeScreen === 5 && styles.hidden,
-          activeScreen === 6 && styles.hidden
+          document.querySelector<HTMLDataElement>(
+            `[data-screen="${activeScreen}"`
+          )?.dataset.grid === 'false' && styles.hidden
         )}
       >
         <div></div>
@@ -45,10 +44,9 @@ export const BackgroundGrid = () => {
       <div
         className={clsx(
           styles.grid,
-          activeScreen === 3 && styles.hidden,
-          activeScreen === 4 && styles.hidden,
-          activeScreen === 5 && styles.hidden,
-          activeScreen === 6 && styles.hidden
+          document.querySelector<HTMLDataElement>(
+            `[data-screen="${activeScreen}"`
+          )?.dataset.grid === 'false' && styles.hidden
         )}
       ></div>
     </div>

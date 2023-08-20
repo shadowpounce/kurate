@@ -1,0 +1,94 @@
+.allArtists {
+  .wrapper {
+    @apply max-w-[75%] w-full mx-auto flex flex-col py-[75px] pb-[200px];
+
+    .showMore {
+      @apply mx-auto mt-[80px];
+    }
+
+    .artistsList {
+      @apply flex flex-col w-full;
+
+      .listItem {
+        @apply w-full py-[70px] flex items-center justify-between relative translate-y-[25%] opacity-0;
+
+        transition-duration: 0.5s !important;
+        transition-property: border, opacity, translate;
+
+        &::before,
+        &::after {
+          content: '';
+
+          @apply block absolute left-0 right-0 h-[0.75px] w-full z-[1] transition-colors duration-500;
+
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        &::before {
+          @apply top-0;
+        }
+
+        &::after {
+          @apply bottom-0;
+        }
+
+        &:nth-child(even) {
+          .img {
+            img {
+              @apply rotate-[-10deg];
+            }
+          }
+        }
+
+        > * {
+          @apply opacity-[0.4] transition-opacity duration-500;
+        }
+
+        .img {
+          @apply w-[290px] h-[380px] absolute left-1/2 translate-x-[-100%] top-1/2 translate-y-[-50%] pointer-events-none z-[3];
+
+          opacity: 1 !important;
+
+          filter: grayscale(100%);
+
+          img {
+            @apply w-full h-full object-cover object-center rotate-[10deg] opacity-0 transition-opacity duration-300 z-[3];
+          }
+        }
+
+        &:hover {
+          &::before,
+          &::after {
+            background-color: rgba(255, 255, 255, 1);
+          }
+
+          > * {
+            @apply opacity-[0.7];
+          }
+
+          .img {
+            img {
+              @apply opacity-100;
+            }
+          }
+        }
+
+        &:first-child {
+          &::before {
+            display: none;
+          }
+        }
+
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+
+        .theme {
+          @apply absolute left-1/2 translate-x-[50%] top-1/2 translate-y-[-50%];
+        }
+      }
+    }
+  }
+}

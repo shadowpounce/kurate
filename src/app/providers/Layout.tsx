@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 import MouseFollower from 'mouse-follower'
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import Header from '../../widgets/Header/Header'
 import Footer from '../../widgets/Footer/Footer'
 import { BackgroundGrid } from '../../shared/BackgroundGrid/BackgroundGrid'
@@ -8,6 +8,7 @@ import { Cursor } from '../../shared/Cursor/Cursor'
 import { MainContext } from './MainContext'
 import { Preloader } from '../../widgets/Preloader/Preloader'
 import { Menu } from '../../widgets/Menu/Menu'
+import { useLocation } from 'react-router-dom'
 
 MouseFollower.registerGSAP(gsap)
 
@@ -16,6 +17,7 @@ interface IProps {
 }
 
 export const Layout: FC<IProps> = ({ children }) => {
+  const [currentPage, setCurrentPage] = useState<string>('')
   const [pageLoaded, setPageLoaded] = useState<boolean>(false)
   const [activeScreen, setActiveScreen] = useState<number>(0)
   const [direction, setDirection] = useState<string>('')
@@ -27,6 +29,7 @@ export const Layout: FC<IProps> = ({ children }) => {
   const [repeatMode, setRepeatMode] = useState<boolean>(false)
   const [currentTime, setCurrentTime] = useState<number>()
   const [currentDuration, setCurrentDuration] = useState<number>()
+  const [playerActive, setPlayerActive] = useState<boolean>(false)
 
   return (
     <MainContext.Provider
@@ -53,6 +56,10 @@ export const Layout: FC<IProps> = ({ children }) => {
         setCurrentTime,
         currentDuration,
         setCurrentDuration,
+        playerActive,
+        setPlayerActive,
+        currentPage,
+        setCurrentPage,
       }}
     >
       <Preloader />

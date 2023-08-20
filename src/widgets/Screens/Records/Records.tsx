@@ -7,7 +7,7 @@ import { RecordsList } from '../../../features/RecordsList/RecordsList'
 
 export const Records = () => {
   return (
-    <section id="releases" className={clsx(styles.records, 'section')}>
+    <section data-grid="false" id="releases" className={clsx(styles.records, 'section')}>
       <div className="container">
         <div className={styles.textCol}>
           <div className={styles.group}>

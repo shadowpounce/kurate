@@ -23,14 +23,14 @@
         .cube {
           @apply w-[28px] h-[28px];
 
-          &:nth-child(1) {
-            background-color: black;
+          &.titleTicker {
+            @apply relative overflow-hidden;
           }
         }
       }
 
       .text {
-        @apply font-medium;
+        @apply font-medium flex flex-col items-start justify-center;
 
         .title {
           @apply text-[14px];

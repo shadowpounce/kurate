@@ -7,6 +7,7 @@ interface IProps extends ButtonHTMLAttributes<string> {
   buttonType?: string
   handleClick?: () => void
   withAnim?: boolean
+  withUnderline?: boolean
 }
 
 export const Button: FC<IProps> = ({
@@ -16,6 +17,7 @@ export const Button: FC<IProps> = ({
   disabled = false,
   handleClick,
   withAnim = true,
+  withUnderline = true,
 }) => {
   return (
     <button
@@ -84,7 +86,9 @@ export const Button: FC<IProps> = ({
           </div>
         )}
       </div>
-      <div className={clsx(styles.underline, 'reveal reveal-width')}></div>
+      {withUnderline && (
+        <div className={clsx(styles.underline, 'reveal reveal-width')}></div>
+      )}
     </button>
   )
 }

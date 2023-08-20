@@ -12,7 +12,8 @@ export const Cursor = () => {
         el: cursorRef.current,
         speed: 0.1,
         stateDetection: {
-          '-swiper': '.swiper-slide',
+          '-artist-card': '.artist-slider-card',
+          '-record-cover': '.record-cover',
         },
       })
 

@@ -9,6 +9,8 @@
     @apply w-full flex items-end justify-between;
 
     h2 {
+      @apply overflow-hidden;
+
       span {
         @apply normal-case opacity-0 translate-y-full;
 

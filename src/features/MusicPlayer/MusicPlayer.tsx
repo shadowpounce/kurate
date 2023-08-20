@@ -14,8 +14,11 @@ import { recordsData } from '../../data'
 import clsx from 'clsx'
 import H5AudioPlayer from 'react-h5-audio-player'
 import { getRandomIntInclusive } from '../../utils/getRandomIntInclusive'
+import { Cubes } from '../../shared/Cubes/Cubes'
 
 export const MusicPlayer = () => {
+  const { setPlayerActive } = useContext(MainContext)
+
   const ref = useRef<H5AudioPlayer>(null)
 
   const [el, setEl] = useState<HTMLDivElement | null>()
@@ -40,6 +43,22 @@ export const MusicPlayer = () => {
     setCurrentDuration,
     setCurrentTime,
   } = useContext(MainContext)
+
+  const [covers, setCovers] = useState<string[]>()
+  const [strings, setStrings] = useState<string[]>()
+
+  useEffect(() => {
+    const backIdx = trackIndex - 1 > 0 ? trackIndex - 1 : recordsData.length - 1
+
+    const nextIdx =
+      trackIndex + 1 <= recordsData.length - 1 ? trackIndex + 1 : 0
+
+    setTimeout(() => {
+      setCovers([recordsData[backIdx].cover, recordsData[nextIdx].cover])
+
+      setStrings([recordsData[backIdx].title, recordsData[nextIdx].title])
+    }, 500)
+  }, [trackIndex])
 
   useEffect(() => {
     setCurrentTime(0)
@@ -139,12 +158,16 @@ export const MusicPlayer = () => {
       ></div>
       <div className={styles.wrapper}>
         <div className={styles.info}>
-          <div className={styles.cover}>
-            <div className={styles.cube}></div>
-            <div className={styles.cube}>
-              <img src={recordsData[trackIndex].cover} alt="" />
-            </div>
-          </div>
+          <Cubes
+            hovered={false}
+            string={recordsData[trackIndex].title}
+            cover={[
+              recordsData[trackIndex].cover,
+              recordsData[trackIndex].cover,
+              recordsData[trackIndex].cover,
+              recordsData[trackIndex].cover,
+            ]}
+          />
           <div className={styles.text}>
             <p className={styles.title}>{recordsData[trackIndex].title}</p>
             <span className={styles.artist}>
@@ -298,7 +321,7 @@ export const MusicPlayer = () => {
             </svg>
           </div>
         </div>
-        <div className={styles.close}>
+        <div onClick={() => setPlayerActive(false)} className={styles.close}>
           <img src="/images/icons/menu-close.svg" alt="" />
         </div>
       </div>

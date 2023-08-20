@@ -11,7 +11,7 @@ interface IProps {
 
 export const ArtistsSliderCard: FC<IProps> = ({ id, title, text, media }) => {
   return (
-    <div className={styles.artistsSliderCard}>
+    <div className={clsx('artist-slider-card', styles.artistsSliderCard)}>
       <div id="artists-slider-card-content" className={styles.content}>
         <div className={clsx(styles.title, 'reveal')}>
           <sup>({id})</sup>

@@ -1,12 +1,12 @@
 .cursor {
   @apply z-[3] fixed pointer-events-none;
 
-  &.-swiper {
+  &.-artist-card {
     div {
       @apply w-[126px] h-[126px] bg-white border-none;
 
       &::before {
-        content: url('/images/Cursor/swiper.svg');
+        background-image: url('/images/Cursor/swiper.svg');
 
         width: 68px;
         height: 26px;
@@ -16,6 +16,28 @@
         scale: 1;
 
         // transition-delay: 0.5s;
+      }
+    }
+  }
+
+  &.-record-cover {
+    div {
+      @apply w-[68px] h-[68px];
+
+      border: 1.5px solid #fff;
+
+      &::before {
+        // content: url('/images/Cursor/play.svg');
+
+        width: 24px;
+        height: 24px;
+
+        background-color: transparent;
+        background-image: url('/images/Cursor/play.svg');
+
+        scale: 1;
+
+        transition-duration: 0.5s !important;
       }
     }
   }
@@ -50,13 +72,15 @@
       border-radius: 50%;
       background-color: #fff;
 
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
       display: flex;
       align-items: center;
       justify-content: center;
 
-      transition: 0.5s ease;
-      transition-property: width, height, background-color, border-radius,
-        border, content, scale;
+      transition: all 0.5s ease;
     }
   }
 }

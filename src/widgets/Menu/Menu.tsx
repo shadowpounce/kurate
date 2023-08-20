@@ -1,15 +1,22 @@
 import clsx from 'clsx'
 import styles from './Menu.module.scss'
-import { homeNavLinks } from '../../data'
+import { navLinks } from '../../data'
 import { useContext } from 'react'
 import { MainContext } from '../../app/providers/MainContext'
 import { pages } from '../../pages'
 import { SendButton } from '../../entities/SendButton/SendButton'
 import { MusicPlayer } from '../../features/MusicPlayer/MusicPlayer'
+import { Cubes } from '../../shared/Cubes/Cubes'
 
 export const Menu = () => {
-  const { menuActive, setMenuActive, pageLoaded, activeScreen } =
-    useContext(MainContext)
+  const {
+    menuActive,
+    setMenuActive,
+    pageLoaded,
+    playerActive,
+    setPlayerActive,
+    currentPage,
+  } = useContext(MainContext)
 
   const toggleMenu = () => {
     menuActive ? setMenuActive(false) : setMenuActive(true)
@@ -26,7 +33,7 @@ export const Menu = () => {
       className={clsx(
         styles.menu,
         pageLoaded && styles.loaded,
-        activeScreen === 4 && styles.toPlayer
+        playerActive && styles.toPlayer
       )}
     >
       <div className={styles.content}>
@@ -75,22 +82,36 @@ export const Menu = () => {
                 <div className={styles.burger}>
                   <img src="/images/icons/burger.svg" alt="" />
                 </div>
-                <span>{menuActive ? 'Menu' : 'Home'}</span>
+                <span>
+                  {menuActive
+                    ? 'Menu'
+                    : `${
+                        currentPage.slice(0, 1).toUpperCase() +
+                        currentPage.slice(1)
+                      }`}
+                </span>
               </li>
-              {homeNavLinks.map((link) => (
-                <li
-                  onClick={(ev) => {
-                    ev.preventDefault()
+              {currentPage &&
+                navLinks[currentPage.toLowerCase()].map((link: any) => (
+                  <li
+                    onClick={(ev) => {
+                      ev.preventDefault()
 
-                    toScreen(link.href)
-                  }}
-                  className={styles.navItem}
-                >
-                  <a href={link.href}>{link.title}</a>
-                </li>
-              ))}
-              <li className={clsx(styles.navItem, styles.playerSwitch)}>
+                      toScreen(link.href)
+                    }}
+                    className={styles.navItem}
+                  >
+                    <a href={link.href}>{link.title}</a>
+                  </li>
+                ))}
+              <li
+                onClick={() => {
+                  setPlayerActive(true)
+                }}
+                className={clsx(styles.navItem, styles.playerSwitch)}
+              >
                 <div className={styles.line}></div>
+                <Cubes />
               </li>
             </nav>
             <div
