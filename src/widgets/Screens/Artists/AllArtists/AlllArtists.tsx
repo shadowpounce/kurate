@@ -8,7 +8,11 @@ export const AlllArtists = () => {
   const [showedMore, setShowedMore] = useState<boolean>(false)
 
   return (
-    <section data-grid="false" className={clsx('section', styles.allArtists)}>
+    <section
+      id="all-artists"
+      data-grid="false"
+      className={clsx('section', styles.allArtists)}
+    >
       <div className="container">
         <div className={styles.wrapper}>
           <span className="section-span">

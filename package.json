@@ -13,16 +13,21 @@
     "@fullpage/react-fullpage": "^0.1.40",
     "@sl-codeblaster/react-3d-animated-card": "^1.0.8",
     "gsap": "^3.11.5",
+    "load-bmfont": "^1.4.1",
     "mouse-follower": "^1.1.2",
+    "postprocessing": "^6.33.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.8.6",
     "react-router-dom": "^6.11.1",
-    "swiper": "9.4.1"
+    "swiper": "9.4.1",
+    "three": "^0.155.0",
+    "three-bmfont-text": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.155.0",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",

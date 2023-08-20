@@ -30,6 +30,13 @@ export const Layout: FC<IProps> = ({ children }) => {
   const [currentTime, setCurrentTime] = useState<number>()
   const [currentDuration, setCurrentDuration] = useState<number>()
   const [playerActive, setPlayerActive] = useState<boolean>(false)
+  const [hash, setHash] = useState<string>('')
+
+  const location = useLocation()
+
+  if (location.hash && hash === '') {
+    setHash(location.hash)
+  }
 
   return (
     <MainContext.Provider
@@ -60,6 +67,8 @@ export const Layout: FC<IProps> = ({ children }) => {
         setPlayerActive,
         currentPage,
         setCurrentPage,
+        hash,
+        setHash,
       }}
     >
       <Preloader />

@@ -16,7 +16,7 @@ export const WithFullpage: React.FC<IProps> = ({
   children,
   fullpageOptions,
 }) => {
-  const { activeScreen, pageLoaded, setPageLoaded } = useContext(MainContext)
+  const { activeScreen, pageLoaded, hash } = useContext(MainContext)
 
   useEffect(() => {
     const sections = Array.from(
@@ -33,6 +33,18 @@ export const WithFullpage: React.FC<IProps> = ({
       (section, idx) => (section.dataset.revealContainer = `${idx}`)
     )
   }, [])
+
+  useEffect(() => {
+    if (hash !== '') {
+      if (document.querySelector(hash)) {
+        window.fullpage_api.moveTo(
+          Number(
+            document.querySelector<HTMLDataElement>(hash)?.dataset.screen
+          ) + 1
+        )
+      }
+    }
+  }, [hash])
 
   useEffect(() => {
     if (pageLoaded) {

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import { SendButton } from '../../entities/SendButton/SendButton'
 import { Button } from '../../shared/Button/Button'
@@ -10,16 +10,32 @@ import { useLocation, useNavigate, useNavigation } from 'react-router-dom'
 const Header = () => {
   const { activeScreen, pageLoaded, currentPage } = useContext(MainContext)
 
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const header = ref.current
+
+    if (header) {
+      if (pageLoaded) {
+        if (currentPage === 'home') {
+          if (activeScreen > 0) {
+            header.classList.add(styles.shown)
+          }
+
+          if (activeScreen === 0) {
+            header.classList.remove(styles.shown)
+          }
+        }
+
+        if (currentPage !== 'home') {
+          header.classList.add(styles.shown)
+        }
+      }
+    }
+  }, [activeScreen, pageLoaded, currentPage])
+
   return (
-    <header
-      className={clsx(
-        styles.header,
-        pageLoaded && `animated`,
-        activeScreen <= 0 && currentPage === 'home' && styles.hidden,
-        pageLoaded && currentPage !== 'home' ? styles.shown : styles.hidden,
-        activeScreen >= 1 && currentPage === 'home' && styles.shown
-      )}
-    >
+    <header ref={ref} className={clsx(styles.header, pageLoaded && `animated`)}>
       <div
         onClick={() => {
           currentPage === 'home'

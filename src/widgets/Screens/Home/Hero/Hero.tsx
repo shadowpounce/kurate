@@ -2,12 +2,37 @@ import clsx from 'clsx'
 import styles from './Hero.module.scss'
 import { Logo } from '../../../../shared/Logo/Logo'
 import { DrawableLine } from '../../../../shared/DrawableLine/DrawableLine'
-import { useContext } from 'react'
+import { useContext, useState, useEffect, useRef } from 'react'
 import { MainContext } from '../../../../app/providers/MainContext'
-import { ThreeDCards } from '../../../../features/ThreeDCards/ThreeDCards'
 
 export const Hero = () => {
   const { activeScreen, pageLoaded } = useContext(MainContext)
+
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [ctx, setCtx] = useState<any>(null)
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext('2d')
+      setCtx(ctx)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (ctx) {
+      const img = new Image()
+      img.src = '/images/water-logo.png'
+      img.onload = () => {
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          canvasRef.current?.width,
+          canvasRef.current?.height
+        )
+      }
+    }
+  }, [ctx])
 
   return (
     <section className={clsx('section', styles.hero)} id="hero">

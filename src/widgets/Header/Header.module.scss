@@ -25,7 +25,7 @@
     .logo {
       svg {
         path {
-          translate: 0;
+          translate: 0 !important;
         }
       }
     }
@@ -33,5 +33,11 @@
 
   .logo {
     @apply w-[85px] h-[24px] overflow-hidden;
+
+    svg {
+      path {
+        translate: 0 -100% !important;
+      }
+    }
   }
 }
