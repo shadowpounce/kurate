@@ -1,0 +1,117 @@
+.vacancyDropdown {
+  @apply w-full h-[170px] flex flex-col py-[70px] relative overflow-hidden;
+
+  transition: height 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+
+  &.active {
+    overflow: unset;
+
+    .body {
+      @apply opacity-100 delay-300;
+    }
+
+    .more {
+      > div {
+        > div {
+          &:last-child {
+            rotate: -90deg !important;
+          }
+        }
+      }
+    }
+  }
+
+  &:not(:first-child, :last-child) {
+    border-block: 0.75px solid rgba(255, 255, 255, 0.2);
+  }
+
+  &:first-child {
+    border-bottom: 0.75px solid rgba(255, 255, 255, 0.2);
+  }
+
+  &:last-child {
+    border-top: 0.75px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .head {
+    @apply w-full flex justify-between items-center relative;
+
+    .position {
+      @apply flex-[0.45];
+
+      h6 {
+        @apply flex-1;
+      }
+    }
+
+    .addInfo {
+      @apply flex-[0.55] flex items-center justify-between;
+
+      > span {
+        &:nth-child(1) {
+          @apply flex-[1.5];
+        }
+      }
+
+      .group {
+        @apply flex-1 flex items-center justify-between;
+      }
+    }
+
+    .more {
+      > div {
+        > div {
+          &:last-child {
+            rotate: 90deg !important;
+
+            transition: rotate 0.4s ease;
+          }
+        }
+      }
+    }
+
+    span {
+      @apply text-[rgba(255,255,255,0.6)];
+    }
+  }
+
+  .body {
+    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[60px] transition-opacity duration-500;
+
+    .wrapper {
+      @apply flex w-full;
+
+      .squares {
+        @apply flex-[0.45] relative;
+
+        .arnament {
+          @apply w-[150px] h-[150px] absolute left-0 bottom-0;
+
+          svg {
+            @apply w-full h-full;
+          }
+        }
+      }
+
+      .content {
+        @apply flex-[0.55] flex flex-col gap-[45px];
+
+        .text {
+          @apply opacity-[0.8] text-[18px] max-w-[65%] w-full normal-case;
+          line-height: 140%;
+        }
+
+        ul {
+          @apply flex flex-col;
+          list-style-type: square;
+
+          li {
+            &::first-letter {
+              @apply uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.careersHero {
+  div[class='container'] {
+    @apply px-[16px];
+  }
+
+  .wrapper {
+    @apply flex flex-col items-center justify-center w-full h-full bg-no-repeat bg-cover bg-center rounded-b-[30px];
+
+    background-image: url('/images/Careers/hero-bg.png');
+
+    big {
+      overflow: hidden;
+      span {
+        opacity: 0;
+        translate: 0 100%;
+        rotate: 5deg;
+      }
+    }
+
+    .block {
+      @apply flex gap-[80px];
+    }
+  }
+}

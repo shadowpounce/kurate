@@ -18,6 +18,7 @@ export const Button: FC<IProps> = ({
   handleClick,
   withAnim = true,
   withUnderline = true,
+  className,
 }) => {
   return (
     <button
@@ -28,7 +29,8 @@ export const Button: FC<IProps> = ({
       className={clsx(
         styles.button,
         styles[buttonType],
-        withAnim && styles.withAnim
+        withAnim && styles.withAnim,
+        className && className
       )}
     >
       <div className={clsx(styles.text, 'reveal')}>

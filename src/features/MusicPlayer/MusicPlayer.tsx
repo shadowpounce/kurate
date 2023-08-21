@@ -113,11 +113,6 @@ export const MusicPlayer = () => {
     }
   }, [audioPlay])
 
-  useEffect(
-    () => console.log(`duration -${currentDuration}, time - ${currentTime}`),
-    [currentDuration, currentTime]
-  )
-
   return (
     <div className={styles.musicPlayer}>
       <div className={styles.hidden}>

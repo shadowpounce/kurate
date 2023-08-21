@@ -10,20 +10,22 @@ interface IProps {
 }
 
 export const Cross: FC<IProps> = ({ activeId, preloaderAnim }) => {
-  const { activeScreen } = useContext(MainContext)
+  const { activeScreen, pageLoaded } = useContext(MainContext)
 
   const ref = useRef<HTMLDivElement>(null)
 
   const [animated, setAnimated] = useState<boolean>(false)
 
   useEffect(() => {
-    if (activeId) {
-      if (ref.current && !animated && activeScreen === activeId) {
-        ref.current.classList.add(styles.animated)
-        setAnimated(true)
+    if (pageLoaded && !animated) {
+      if (ref.current) {
+        if (activeScreen === activeId) {
+          ref.current.classList.add(styles.animated)
+          setAnimated(true)
+        }
       }
     }
-  }, [animated, activeScreen, activeId])
+  }, [animated, activeScreen, activeId, pageLoaded])
 
   useEffect(() => {
     if (preloaderAnim && ref.current) {

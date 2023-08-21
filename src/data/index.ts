@@ -226,6 +226,121 @@ export const artistsData = [
   },
 ]
 
+export const vacanciesData = [
+  {
+    position: 'Video maker',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Mixing engineer',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Producer',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Content Maker',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Video maker',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Mixing engineer',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Producer',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+  {
+    position: 'Content Maker',
+    location: 'London',
+    type: 'Full-time',
+    text: 'Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label. Empowering artists, captivating global audiences, and redefining the future of musicas a dynamic  record label \n Empowering artists, captivating global audiences:',
+    requirments: [
+      'Empowering artists',
+      'captivating global',
+      'Redefining the future of musicas a dynamic record label',
+      'Empowering artists',
+      'Captivating global audiences',
+      'Redefining the future of musicas',
+    ],
+  },
+]
+
 export const recordsData = [
   {
     id: 0,
@@ -358,6 +473,12 @@ export const navLinks: {
     {
       title: 'Contact',
       href: '#contact',
+    },
+  ],
+  careers: [
+    {
+      title: 'Open vacancies',
+      href: '#open-vacancies',
     },
   ],
 }
