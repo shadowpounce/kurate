@@ -41,9 +41,15 @@ const Footer = () => {
           <div className={styles.col}>
             <span className="reveal">Explore</span>
             <ul>
-              <li className="reveal">Home</li>
-              <li className="reveal">Artists</li>
-              <li className="reveal">Careers</li>
+              <li className="reveal">
+                <a href="/">Home</a>
+              </li>
+              <li className="reveal">
+                <a href="/artists">Artists</a>
+              </li>
+              <li className="reveal">
+                <a href="/careers">Careers</a>
+              </li>
             </ul>
           </div>
           <div className={styles.col}>

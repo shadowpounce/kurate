@@ -14,9 +14,10 @@ MouseFollower.registerGSAP(gsap)
 
 interface IProps {
   children: ReactNode
+  withPreloader?: boolean
 }
 
-export const Layout: FC<IProps> = ({ children }) => {
+export const Layout: FC<IProps> = ({ children, withPreloader = true }) => {
   const [currentPage, setCurrentPage] = useState<string>('')
   const [pageLoaded, setPageLoaded] = useState<boolean>(false)
   const [activeScreen, setActiveScreen] = useState<number>(0)
@@ -33,6 +34,12 @@ export const Layout: FC<IProps> = ({ children }) => {
   const [hash, setHash] = useState<string>('')
 
   const location = useLocation()
+
+  useEffect(() => {
+    if (!withPreloader && !pageLoaded) {
+      setTimeout(() => setPageLoaded(true), 500)
+    }
+  }, [withPreloader])
 
   if (location.hash && hash === '') {
     setHash(location.hash)
@@ -71,7 +78,7 @@ export const Layout: FC<IProps> = ({ children }) => {
         setHash,
       }}
     >
-      <Preloader />
+      {withPreloader && <Preloader />}
       <Cursor />
       <Menu />
       <Header />

@@ -1,13 +1,26 @@
 .allArtists {
   .wrapper {
-    @apply max-w-[75%] w-full mx-auto flex flex-col py-[75px] pb-[200px];
+    @apply max-w-[75%] w-full mx-auto  py-[75px] pb-[120px] overflow-hidden h-full;
+
+    .wrap {
+      @apply flex flex-col w-full h-full relative;
+    }
+
+    &.collapsed {
+      height: fit-content !important;
+      overflow: unset !important;
+    }
 
     .showMore {
-      @apply mx-auto mt-[80px];
+      @apply mx-auto absolute left-1/2 translate-x-[-50%] bottom-0;
     }
 
     .artistsList {
-      @apply flex flex-col w-full;
+      @apply flex flex-col w-full flex-1;
+
+      &::-webkit-scrollbar {
+        appearance: none;
+      }
 
       .listItem {
         @apply w-full py-[70px] flex items-center justify-between relative translate-y-[25%] opacity-0;
@@ -52,11 +65,17 @@
           filter: grayscale(100%);
 
           img {
-            @apply w-full h-full object-cover object-center rotate-[10deg] opacity-0 transition-opacity duration-300 z-[3];
+            @apply w-full h-full object-cover object-center rotate-[10deg] opacity-0 transition-opacity duration-[500ms] z-[3];
           }
         }
 
         &:hover {
+          + li {
+            &::before {
+              background-color: rgba(255, 255, 255, 0);
+            }
+          }
+
           &::before,
           &::after {
             background-color: rgba(255, 255, 255, 1);
@@ -68,7 +87,7 @@
 
           .img {
             img {
-              @apply opacity-100;
+              @apply opacity-100 delay-[400ms];
             }
           }
         }

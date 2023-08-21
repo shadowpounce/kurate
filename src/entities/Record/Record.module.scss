@@ -1,14 +1,58 @@
 .record {
-  @apply flex w-full opacity-0 translate-y-full;
+  @apply flex w-full opacity-0 translate-y-full relative;
   transition-duration: 1s !important;
 
   border-top: 1px solid rgba(255, 255, 255, 0.11);
+
+  &.playing {
+    .equalizer {
+      @apply opacity-100;
+
+      .bar {
+        animation-play-state: running;
+      }
+    }
+  }
 
   span {
     @apply text-white opacity-[0.7] text-[14px] font-medium;
   }
 
+  .equalizer {
+    @apply absolute left-[1%] top-1/2 translate-y-[-50%] w-[20px] h-[20px] flex items-end gap-[2px] opacity-0 pointer-events-none transition-opacity duration-[400ms];
+
+    .bar {
+      @apply flex-1 h-full bg-[#fafafa] rounded-[2px];
+      animation: equalizer 1.9s steps(20, end) infinite;
+      animation-play-state: paused;
+
+      &:nth-child(1) {
+        animation-duration: 5s;
+      }
+      &:nth-child(2) {
+        animation-duration: 3s;
+      }
+      &:nth-child(3) {
+        animation-duration: 4.7s;
+      }
+      &:nth-child(4) {
+        animation-duration: 3.1s;
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    @apply absolute left-0 right-0 top-0 bottom-0 pointer-events-none z-[0] transition-colors duration-[350ms];
+
+    background-color: rgba(255, 255, 255, 0);
+  }
+
   &:hover {
+    &::before {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
     .genre {
       span::before {
         @apply w-full;
@@ -109,8 +153,89 @@
   > div {
     @apply flex-1 flex items-center h-[85px];
 
-    &:nth-child(1) {
+    &:nth-child(2) {
       @apply flex-[0.3] justify-center;
     }
+  }
+}
+
+@keyframes equalizer {
+  0% {
+    height: 60%;
+  }
+  4% {
+    height: 50%;
+  }
+  8% {
+    height: 40%;
+  }
+  12% {
+    height: 30%;
+  }
+  16% {
+    height: 20%;
+  }
+  20% {
+    height: 30%;
+  }
+  24% {
+    height: 40%;
+  }
+  28% {
+    height: 10%;
+  }
+  32% {
+    height: 40%;
+  }
+  36% {
+    height: 60%;
+  }
+  40% {
+    height: 20%;
+  }
+  44% {
+    height: 40%;
+  }
+  48% {
+    height: 70%;
+  }
+  52% {
+    height: 30%;
+  }
+  56% {
+    height: 10%;
+  }
+  60% {
+    height: 30%;
+  }
+  64% {
+    height: 50%;
+  }
+  68% {
+    height: 60%;
+  }
+  72% {
+    height: 70%;
+  }
+  76% {
+    height: 80%;
+  }
+  80% {
+    height: 70%;
+  }
+  84% {
+    height: 60%;
+  }
+  88% {
+    height: 50%;
+  }
+  92% {
+    height: 60%;
+  }
+  96% {
+    height: 70%;
+  }
+  100% {
+    height: 80%;
   }
 }

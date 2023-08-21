@@ -7,16 +7,18 @@ export const pages = [
     title: 'Home',
     path: '/',
     element: <Home />,
-    withFullpageScroll: true,
+    withPreloader: true,
   },
   {
     title: 'Careers',
     path: '/careers',
     element: <Careers />,
+    withPreloader: false,
   },
   {
     title: 'Artists',
     path: '/artists',
     element: <Artists />,
+    withPreloader: false,
   },
 ]

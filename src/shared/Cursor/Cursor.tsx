@@ -10,7 +10,7 @@ export const Cursor = () => {
     if (!init) {
       const cursor = new MouseFollower({
         el: cursorRef.current,
-        speed: 0.1,
+        speed: 0.3,
         stateDetection: {
           '-artist-card': '.artist-slider-card',
           '-record-cover': '.record-cover',

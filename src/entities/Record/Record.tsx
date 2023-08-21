@@ -20,8 +20,18 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
       style={{
         transitionDelay: `${idx && idx * 0.125 + 0.25}s`,
       }}
-      className={clsx(styles.record, 'reveal')}
+      className={clsx(
+        styles.record,
+        'reveal',
+        audioPlay && trackIndex === idx && styles.playing
+      )}
     >
+      <div className={styles.equalizer}>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+      </div>
       <div className={styles.action}>
         <div
           onClick={() => {

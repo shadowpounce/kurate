@@ -1,13 +1,39 @@
 .vacancyDropdown {
   @apply w-full h-[170px] flex flex-col py-[70px] relative overflow-hidden;
 
-  transition: height 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: height 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0.5s;
 
   &.active {
     overflow: unset;
 
+    transition-delay: 0s !important;
+
     .body {
       @apply opacity-100 delay-300;
+    }
+
+    .arnament {
+      svg {
+        rect {
+          &:nth-child(1) {
+            transition-delay: 0.25s !important;
+          }
+
+          &:nth-child(2) {
+            transition-delay: 0.35s !important;
+          }
+        }
+
+        > * {
+          translate: 0 !important;
+          rotate: 0deg !important;
+          // opacity: 1 !important;
+
+          &:nth-child(3) {
+            transition-delay: 0.5s !important;
+          }
+        }
+      }
     }
 
     .more {
@@ -76,7 +102,7 @@
   }
 
   .body {
-    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[60px] transition-opacity duration-500;
+    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[60px] transition-opacity duration-500 delay-[750ms];
 
     .wrapper {
       @apply flex w-full;
@@ -89,6 +115,33 @@
 
           svg {
             @apply w-full h-full;
+
+            > * {
+              transition: 0.75s ease;
+              // opacity: 0;
+              transition-property: translate, opacity, rotate;
+            }
+
+            path {
+              rotate: -45deg;
+              translate: -31% -12.5%;
+              transform-origin: center;
+              transition-delay: 0s;
+            }
+
+            rect {
+              &:nth-child(1) {
+                translate: 50% -25%;
+                transition-delay: 0.5s;
+              }
+
+              &:nth-child(2) {
+                translate: 2.5% 20%;
+                transition-delay: 0.25s;
+
+                transition-delay: 0.25s;
+              }
+            }
           }
         }
       }

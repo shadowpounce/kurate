@@ -10,6 +10,10 @@ import { Swiper as ISwiper } from 'swiper/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards, Autoplay } from 'swiper'
 
+const MAX_DEGREE = 1
+const MAX_OFFSET_X = 20
+const MAX_OFFSET_Y = 20
+
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-cards'
@@ -29,6 +33,9 @@ export const Selected = () => {
 
   const rootRef = useRef<HTMLDivElement>(null)
 
+  const transformed = useRef(false)
+  const cardsRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (selectedArtist) {
       setCurrentRecordTitle(selectedArtist.tracks[0].title)
@@ -36,7 +43,7 @@ export const Selected = () => {
   }, [selectedArtist])
 
   useEffect(() => {
-    artistsData && setTimeout(() => setSelectedArtist(artistsData[0]), 500)
+    artistsData && setTimeout(() => setSelectedArtist(artistsData[0]), 0)
   }, [artistsData])
 
   useEffect(() => {
@@ -53,6 +60,33 @@ export const Selected = () => {
       }, 1000)
     }
   }, [pageLoaded, started])
+
+  const mouseMove = (ev: React.MouseEvent<HTMLElement>) => {
+    const transform = (x: number, y: number, degrees: number) => {
+      if (!cardsRef.current) {
+        return
+      }
+
+      setTimeout(() => {
+        if (cardsRef.current) {
+          cardsRef.current.style.transform = `translate(${x}px, ${y}px) rotate(${degrees}deg)`
+        }
+      }, 100)
+    }
+
+    const target = ev.currentTarget as HTMLDivElement
+
+    const center = { x: target.offsetWidth / 2, y: target.offsetHeight / 2 }
+    const point = { x: ev.clientX, y: ev.clientY }
+    const xPoint = point.x - center.x
+    const yPoint = point.y - center.y
+    const x = (xPoint / center.x) * MAX_OFFSET_X
+    const y = (yPoint / center.y) * MAX_OFFSET_Y
+    const angle = ((-xPoint + yPoint * 2) / (center.x + center.y)) * MAX_DEGREE
+
+    transform(x, y, angle)
+    transformed.current = true
+  }
 
   function selectArtist(id: number) {
     if (rootRef.current) {
@@ -74,7 +108,11 @@ export const Selected = () => {
   }
 
   return (
-    <section id="selected" className={clsx('section', styles.selected)}>
+    <section
+      onMouseMove={(ev) => mouseMove(ev)}
+      id="selected"
+      className={clsx('section', styles.selected)}
+    >
       <div className="container">
         <div ref={rootRef} className={clsx(styles.wrapper)}>
           <div className={styles.top}>
@@ -101,42 +139,44 @@ export const Selected = () => {
           <div className={styles.info}>
             <div className={styles.covers}>
               <div className={clsx(styles.wrap, 'reveal')}>
-                <Swiper
-                  onSwiper={(swiper) => {
-                    setSwiper(swiper)
-                    swiper.autoplay.stop()
-                  }}
-                  onSlideChange={() => {
-                    if (swiper) {
-                      setActiveSlideId(swiper.activeIndex)
+                <div ref={cardsRef} className={styles.sliderWrapper}>
+                  <Swiper
+                    onSwiper={(swiper) => {
+                      setSwiper(swiper)
+                      swiper.autoplay.stop()
+                    }}
+                    onSlideChange={() => {
+                      if (swiper) {
+                        setActiveSlideId(swiper.activeIndex)
+                      }
+                    }}
+                    speed={1000}
+                    autoplay={
+                      pageLoaded && {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                      }
                     }
-                  }}
-                  speed={1000}
-                  autoplay={
-                    pageLoaded && {
-                      delay: 2500,
-                      disableOnInteraction: false,
-                    }
-                  }
-                  allowTouchMove={false}
-                  effect={'cards'}
-                  modules={[EffectCards, Autoplay]}
-                  className={styles.slider}
-                >
-                  {selectedArtist &&
-                    selectedArtist.tracks.map((track: any) => (
-                      <SwiperSlide
-                        onClick={() => {
-                          setTrackIndex(track.id)
-                          setAudioPlay(true)
-                          setPlayerActive(true)
-                        }}
-                        className={clsx(styles.slide, 'record-cover')}
-                      >
-                        <img src={track.cover} alt="" />
-                      </SwiperSlide>
-                    ))}
-                </Swiper>
+                    allowTouchMove={false}
+                    effect={'cards'}
+                    modules={[EffectCards, Autoplay]}
+                    className={styles.slider}
+                  >
+                    {selectedArtist &&
+                      selectedArtist.tracks.map((track: any) => (
+                        <SwiperSlide
+                          onClick={() => {
+                            setTrackIndex(track.id)
+                            setAudioPlay(true)
+                            setPlayerActive(true)
+                          }}
+                          className={clsx(styles.slide, 'record-cover')}
+                        >
+                          <img src={track.cover} alt="" />
+                        </SwiperSlide>
+                      ))}
+                  </Swiper>
+                </div>
               </div>
             </div>
             <div className={clsx(styles.block, styles.right)}>
@@ -195,7 +235,7 @@ export const Selected = () => {
                 </div>
                 <p className={clsx('reveal', styles.theme)}>
                   Theme:
-                  <span>Original Piano music</span>
+                  <span>{selectedArtist && selectedArtist.theme}</span>
                 </p>
               </div>
             </div>

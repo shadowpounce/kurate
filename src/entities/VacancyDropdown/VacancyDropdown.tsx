@@ -46,7 +46,7 @@ export const VacancyDropdown: FC<IProps> = ({
               height: `${bodyHeight + 170}px`,
             }
           : {
-              cursor: 'default',
+              cursor: 'none',
             }
       }
       className={clsx(styles.vacancyDropdown, active && styles.active)}
