@@ -129,6 +129,7 @@
 
           h4 {
             @apply normal-case text-center;
+            font-size: 3.968vw !important;
             line-height: 110%;
 
             .rect {
@@ -139,7 +140,7 @@
             }
 
             > div {
-              @apply overflow-hidden flex items-center justify-center;
+              @apply flex items-center justify-center overflow-hidden w-[110%];
 
               span {
                 @apply opacity-[0];

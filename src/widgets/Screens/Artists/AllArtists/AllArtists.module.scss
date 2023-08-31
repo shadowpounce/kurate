@@ -1,6 +1,6 @@
 .allArtists {
   .wrapper {
-    @apply max-w-[75%] w-full mx-auto  py-[75px] pb-[120px] overflow-hidden h-full;
+    @apply max-w-[75%] w-full mx-auto  py-[4.960vw] pb-[7.937vw] overflow-hidden h-full;
 
     .wrap {
       @apply flex flex-col w-full h-full relative;
@@ -16,14 +16,14 @@
     }
 
     .artistsList {
-      @apply flex flex-col w-full flex-1;
+      @apply flex flex-col w-full flex-1 overflow-hidden;
 
       &::-webkit-scrollbar {
         appearance: none;
       }
 
       .listItem {
-        @apply w-full py-[70px] flex items-center justify-between relative translate-y-[25%] opacity-0;
+        @apply w-full py-[4.630vw] flex items-center justify-between relative translate-y-[25%] opacity-0;
 
         transition-duration: 0.5s !important;
         transition-property: border, opacity, translate;
@@ -58,7 +58,7 @@
         }
 
         .img {
-          @apply w-[290px] h-[380px] absolute left-1/2 translate-x-[-100%] top-1/2 translate-y-[-50%] pointer-events-none z-[3];
+          @apply w-[19.180vw] h-[25.132vw] absolute left-1/2 translate-x-[-100%] top-1/2 translate-y-[-50%] pointer-events-none z-[3];
 
           opacity: 1 !important;
 

@@ -1,6 +1,6 @@
 .selected {
   .wrapper {
-    @apply max-w-[70%] w-full mx-auto flex flex-col items-center justify-center gap-[35px] h-full py-[75px];
+    @apply max-w-[70%] w-full mx-auto flex flex-col items-center justify-center gap-[1vw] h-full py-[4.960vw];
 
     &.selecting {
       .block {
@@ -13,7 +13,7 @@
     }
 
     .top {
-      @apply flex flex-col items-center justify-center gap-[32px];
+      @apply flex flex-col items-center justify-center gap-[1.116vw];
 
       h5 {
         span {
@@ -22,7 +22,7 @@
       }
 
       .icon {
-        @apply w-[20px] h-[17px] opacity-0 translate-y-1/2;
+        @apply w-[1.323vw] h-[1.124vw] opacity-0 translate-y-1/2;
 
         transition-duration: 0.5s !important;
         transition-delay: 0.5s !important;
@@ -34,13 +34,13 @@
     }
 
     .tabs {
-      @apply flex items-center justify-center gap-[32px] opacity-0 translate-y-1/2;
+      @apply flex items-center justify-center gap-[2.116vw] opacity-0 translate-y-1/2;
 
       transition-delay: 0.125s !important;
       transition-duration: 1s !important;
 
       .tab {
-        @apply flex-1 flex flex-col items-center justify-center gap-[19px] text-[22px] opacity-[0.5] transition-opacity duration-[700ms] whitespace-nowrap;
+        @apply flex-1 flex flex-col items-center justify-center gap-[1.257vw] text-[1.455vw] opacity-[0.5] transition-opacity duration-[700ms] whitespace-nowrap;
 
         &.active {
           @apply opacity-100;
@@ -92,7 +92,7 @@
 
         .content {
           > p {
-            @apply text-[18px];
+            @apply text-[1.190vw];
             color: rgba(255, 255, 255, 0.5);
 
             span {
@@ -105,7 +105,7 @@
           @apply right-0 top-1/2 translate-y-[-50%];
 
           .title {
-            @apply text-[44px] overflow-hidden absolute left-0 top-0 whitespace-nowrap translate-y-[-100%];
+            @apply text-[2.910vw] overflow-hidden absolute left-0 top-0 whitespace-nowrap translate-y-[-100%];
 
             span {
               @apply opacity-0 translate-y-1/2;
@@ -113,7 +113,7 @@
           }
 
           .author {
-            @apply mt-[36px] mb-[72px] opacity-0 translate-x-1/2;
+            @apply mt-[2.381vw] mb-[4.762vw] opacity-0 translate-x-1/2;
             transition-duration: 1s !important;
             transition-delay: 0.6s !important;
           }
@@ -123,7 +123,7 @@
           @apply left-0 bottom-0 translate-y-[-50%] max-w-[45%] w-full pointer-events-none;
 
           .content {
-            @apply flex flex-col items-center justify-center gap-[45px];
+            @apply flex flex-col items-center justify-center gap-[2.976vw];
           }
 
           .theme {
@@ -136,7 +136,7 @@
             @apply relative whitespace-nowrap;
 
             .circlePhoto {
-              @apply flex mr-[80px];
+              @apply flex mr-[5.291vw];
 
               > div {
                 @apply opacity-0 rotate-[-45deg] translate-x-1/2 relative;
@@ -161,7 +161,7 @@
               }
 
               .circle {
-                @apply w-[65px] h-[65px] rounded-[50%] overflow-hidden;
+                @apply w-[4.299vw] h-[4.299vw] rounded-[50%] overflow-hidden;
 
                 img {
                   @apply w-full h-full object-cover object-center;
@@ -171,6 +171,7 @@
 
             h2 {
               @apply flex items-start;
+              font-size: 4.995vw !important;
               span {
                 @apply opacity-0 translate-y-full;
               }
