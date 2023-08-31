@@ -18,7 +18,7 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
   }
 
   .line {
-    @apply absolute left-1/2 translate-x-[-50%] translate-y-[-55%];
+    @apply w-[30.897vw] h-[18.423vw] absolute left-1/2 translate-x-[-50%] translate-y-[-60%];
 
     svg {
       path {
@@ -73,7 +73,7 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
         }
 
         &.rect {
-          @apply w-[150px] h-[70px] rounded-[170px] overflow-hidden mx-[20px] relative opacity-0 translate-y-[25%];
+          @apply w-[9.921vw] h-[4.630vw] rounded-[170px] overflow-hidden mx-[1.323vw] relative opacity-0 translate-y-[25%];
 
           transition-duration: 1s;
           transition-delay: 0.5s;

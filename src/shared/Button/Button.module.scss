@@ -1,6 +1,6 @@
 .button {
   font-family: $helveticaNowDisplay !important;
-  @apply flex flex-col gap-[9.5px] text-[14px] font-semibold w-fit;
+  @apply flex flex-col gap-[0.628vw] text-[0.926vw] font-semibold w-fit;
 
   transition: 0.5s ease;
   transition-property: background-color, color;
@@ -22,7 +22,7 @@
   }
 
   &.secondary {
-    @apply px-[20px] py-[14px] min-h-[50px] bg-white
+    @apply px-[1.323vw] py-[0.926vw] min-h-[4.6296vh] bg-white
     text-black rounded-[100px];
 
     .arrow {
@@ -66,20 +66,20 @@
   }
 
   .underline {
-    @apply h-[1px] bg-white w-full;
+    @apply h-[0.0926vh] bg-white w-full;
     transition-duration: 1s;
     transition-delay: 0.5s;
   }
 
   .text {
-    @apply flex items-center justify-between gap-[14px];
+    @apply flex items-center justify-between gap-[0.926vw];
 
     transition-duration: 1s;
     transition-delay: 0.75s;
   }
 
   .arrow {
-    @apply w-[18px] h-[18px] overflow-hidden flex justify-end;
+    @apply w-[1.190vw] h-[1.190vw] overflow-hidden flex justify-end;
 
     svg {
       @apply w-full h-full min-w-full;

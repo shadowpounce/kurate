@@ -1,5 +1,5 @@
 .recordsList {
-  @apply flex flex-col h-full relative gap-[40px];
+  @apply flex flex-col h-full relative gap-[2.646vw];
 
   .showMore {
     @apply absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-[-50%] z-[3];
@@ -19,7 +19,7 @@
     }
 
     .arrow {
-      @apply w-[120px] h-[120px] flex items-center justify-center relative;
+      @apply w-[7.937vw] h-[7.937vw] flex items-center justify-center relative;
 
       transition: rotate 0.4s ease;
 
@@ -28,7 +28,7 @@
       }
 
       .icon {
-        @apply w-[36px] h-[36px] opacity-0 translate-x-1/2 translate-y-[-50%];
+        @apply w-[2.381vw] h-[2.381vw] opacity-0 translate-x-1/2 translate-y-[-50%];
 
         transition-duration: 1s;
         transition-delay: 1s;
@@ -59,10 +59,10 @@
     }
 
     &Top {
-      @apply pb-[18.5px] flex items-center  font-medium pr-[20px];
+      @apply pb-[1.224vw] flex items-center  font-medium pr-[1.323vw];
 
       span {
-        @apply text-[14px];
+        @apply text-[0.926vw];
         transition: opacity 0.35s ease;
 
         > span {
@@ -85,7 +85,7 @@
         }
 
         .head {
-          @apply flex items-center gap-[6px];
+          @apply flex items-center gap-[0.397vw];
 
           .genre {
           }
@@ -111,7 +111,7 @@
           }
 
           .filterIcon {
-            @apply w-[14px] h-[14px];
+            @apply w-[0.926vw] h-[0.926vw];
 
             svg {
               @apply w-full h-full;
@@ -125,7 +125,7 @@
         }
 
         .body {
-          @apply absolute left-0 right-0 bottom-[-12px] translate-y-[100%] rounded-[16px] p-[16px] flex flex-col gap-[14.5px];
+          @apply absolute left-0 right-0 bottom-[-1.5vh] translate-y-[100%] rounded-[16px] p-[1.058vw] flex flex-col gap-[14.5px];
 
           transform-origin: bottom center;
           transition: scale 0.5s ease 0.3s;
@@ -139,17 +139,17 @@
           }
 
           .search {
-            @apply w-full rounded-[8px] px-[14px] py-[12px] flex items-center justify-between relative min-h-[42px] h-[42px] transition-opacity duration-[300ms];
+            @apply w-full rounded-[8px] px-[0.926vw] py-[1.5vh] flex items-center justify-between relative min-h-[2.778vw] h-[2.778vw] transition-opacity duration-[300ms];
             background-color: #181a1a;
 
             &::after {
-              @apply absolute right-[14px] top-1/2 translate-y-[-50%] w-[18px] h-[18px] bg-center bg-cover;
+              @apply absolute right-[0.926vw] top-1/2 translate-y-[-50%] w-[1.190vw] h-[1.190vw] bg-center bg-cover;
               content: '';
               background-image: url('/images/icons/search.svg');
             }
 
             input {
-              @apply absolute w-full h-full top-0 left-0 right-0 bottom-0 px-[14px] py-[12px] font-medium text-[12px];
+              @apply absolute w-full h-full top-0 left-0 right-0 bottom-0 px-[0.926vw] py-[1.5vh] font-medium text-[1.5vh];
 
               &::placeholder {
                 @apply opacity-[0.4] text-inherit;
@@ -158,13 +158,13 @@
           }
 
           &List {
-            @apply w-full max-h-[165px] h-[165px] relative transition-opacity duration-[300ms];
+            @apply w-full max-h-[20vh] h-[20vh] relative transition-opacity duration-[300ms];
 
             &::after {
               content: '';
               display: block;
 
-              @apply h-1/2 absolute w-[95%] bottom-0 left-0 right-0 z-[1] pointer-events-none;
+              @apply h-1/2 absolute w-[95%] bottom-[1px] left-0 right-0 z-[1] pointer-events-none;
               background-image: linear-gradient(
                 180deg,
                 rgba(18, 19, 19, 0) 0%,
@@ -184,7 +184,11 @@
               }
 
               li {
-                @apply p-[12px] transition-colors duration-300 rounded-[8px];
+                @apply p-[1.5vh] transition-colors duration-300 rounded-[8px];
+
+                &:last-child {
+                  opacity: 0;
+                }
 
                 &:hover {
                   background-color: rgba(255, 255, 255, 0.05);
@@ -205,22 +209,18 @@
     }
 
     .list {
-      @apply w-full flex flex-col relative h-[80%] pr-[14px];
+      @apply w-full flex flex-col relative h-[80%] pr-[0.926vw];
 
       &.active {
         @apply overflow-y-scroll;
       }
 
       &::-webkit-scrollbar {
-        @apply appearance-none w-[6px];
+        @apply appearance-none w-[0.397vw];
       }
 
       &::-webkit-scrollbar-thumb {
-        @apply w-[6px] rounded-[3px] bg-white;
-      }
-
-      div[class='swiper-slide'] {
-        height: 85px !important;
+        @apply w-[0.397vw] rounded-[3px] bg-white;
       }
     }
   }

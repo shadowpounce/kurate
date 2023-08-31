@@ -9,7 +9,7 @@
   width: 100%;
   height: fit-content;
 
-  padding: 40px 30px 0;
+  padding: 2.646vw 1.984vw 0;
 
   &.hidden {
     .logo {
@@ -32,7 +32,7 @@
   }
 
   .logo {
-    @apply w-[85px] h-[24px] overflow-hidden;
+    @apply w-[5.622vw] h-[1.587vw] overflow-hidden;
 
     svg {
       path {

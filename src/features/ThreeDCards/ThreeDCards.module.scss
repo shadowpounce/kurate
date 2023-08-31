@@ -1,5 +1,9 @@
 .threeDCards {
-  @apply absolute w-1/2 h-fit left-1/2 translate-x-[-50%] translate-y-[110%] z-[3];
+  @apply absolute w-[50vw] h-[85vh] left-1/2 top-[100vh] translate-x-[-50%] translate-y-[-42.5%] z-[3];
+
+  img {
+    @apply max-w-[33vw] w-full h-full object-cover object-center;
+  }
 
   &:hover {
     .cardImage {
@@ -26,7 +30,7 @@
   }
 
   .cardsWrapper {
-    @apply w-[465px] h-[605px] mx-auto absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
+    @apply w-full h-full mx-auto absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
 
     .cardImages {
       @apply w-full h-full relative translate-y-[25%] opacity-0;
@@ -35,7 +39,7 @@
       transition-delay: 0.25s;
 
       .cardImage {
-        @apply absolute;
+        @apply absolute left-1/2 translate-x-[-50%];
 
         transition: 1s ease;
         transition-property: transform, translate;
@@ -52,10 +56,10 @@
   }
 
   .content {
-    @apply w-[465px] h-[605px] relative mx-auto pointer-events-none;
+    @apply max-w-[33vw] w-full h-full relative mx-auto pointer-events-none;
 
     .text {
-      @apply text-[22px] absolute top-0 left-0 translate-y-[-300%] z-[-1];
+      @apply text-[1.455vw] absolute top-0 left-0 translate-y-[-300%] z-[-1];
       line-height: 84%;
 
       > div {

@@ -1,5 +1,5 @@
 .cross {
-  @apply w-[32px] h-[32px] relative;
+  @apply w-[2.116vw] h-[2.116vw] relative;
 
   &.animated {
     svg {
@@ -21,7 +21,7 @@
   }
 
   > svg {
-    @apply absolute w-[16px] h-[16px] pointer-events-none;
+    @apply absolute w-[1.058vw] h-[1.058vw] pointer-events-none;
 
     transition: translate 0.5s ease;
 

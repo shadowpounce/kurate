@@ -1,5 +1,5 @@
 .contactForm {
-  @apply relative h-full w-full p-[60px];
+  @apply relative h-full w-full p-[3.968vw];
 
   border-radius: 30px;
   background: rgba(72, 72, 72, 0.06);
@@ -10,7 +10,7 @@
   }
 
   .infoPanel {
-    @apply rounded-[16px] p-[10px] h-fit max-w-[250px] w-full pt-[14px] absolute right-[15px] bottom-[15px] flex flex-col gap-[10px];
+    @apply rounded-[1.058vw] p-[0.661vw] h-fit max-w-[16.534vw] w-full pt-[0.926vw] absolute right-[0.992vw] bottom-[0.992vw] flex flex-col gap-[0.661vw];
 
     transition: 0.7s ease;
     transition-property: opacity, height, scale;
@@ -29,31 +29,31 @@
     }
 
     span {
-      @apply text-[10px];
+      @apply text-[0.661vw];
       font-family: 'Poppins', sans-serif;
       line-height: 140%;
       letter-spacing: -0.2px;
     }
 
     .head {
-      @apply px-[20px] flex items-center justify-between w-full;
+      @apply px-[1.323vw] flex items-center justify-between w-full;
 
       p {
-        @apply text-[20px];
+        @apply text-[1.323vw];
       }
     }
 
     .body {
-      @apply flex flex-col gap-[8px] w-full;
+      @apply flex flex-col gap-[0.529vw] w-full;
 
       .step {
-        @apply w-full rounded-[16px] p-[20px] flex flex-col gap-[15px] relative;
+        @apply w-full rounded-[1.058vw] p-[1.323vw] flex flex-col gap-[0.992vw] relative;
         line-height: 100%;
 
         border: 1px solid rgba(255, 255, 255, 0.15);
 
         .edit {
-          @apply absolute right-[20px] top-1/2 translate-y-[-50%] text-[12px] font-medium underline opacity-[0.4];
+          @apply absolute right-[1.323vw] top-1/2 translate-y-[-50%] text-[0.794vw] font-medium underline opacity-[0.4];
           font-family: $plusJakarta;
         }
 
@@ -62,7 +62,7 @@
         }
 
         p {
-          @apply text-[14px] normal-case;
+          @apply text-[0.926vw] normal-case;
         }
       }
     }
@@ -106,20 +106,20 @@
     }
 
     .leftBlock {
-      @apply absolute left-0 bottom-0 max-w-[20%] w-full flex gap-[45px] flex-col;
+      @apply absolute left-0 bottom-0 max-w-[20%] w-full flex gap-[2.976vw] flex-col;
     }
 
     .group {
       @apply relative w-full flex items-center justify-center;
 
       .wrap {
-        @apply flex flex-col items-center justify-center gap-[40px] max-w-[45%] w-full relative;
+        @apply flex flex-col items-center justify-center gap-[2.646vw] max-w-[45%] w-full relative;
 
         .statusContent {
           @apply absolute top-0 left-0 w-full h-full flex-col flex justify-between items-center;
 
           small {
-            @apply text-[12px] opacity-[0.6] uppercase;
+            @apply text-[0.794vw] opacity-[0.6] uppercase;
 
             span {
               opacity: 0;
@@ -132,7 +132,7 @@
             line-height: 110%;
 
             .rect {
-              @apply w-[114px] h-full rounded-[168px] object-cover object-center mx-[16px] opacity-0 duration-300 delay-[150ms] translate-y-1/2;
+              @apply w-[7.540vw] h-full rounded-[11.111vw] object-cover object-center mx-[1.058vw] opacity-0 duration-300 delay-[150ms] translate-y-1/2;
 
               animation-duration: 1s !important;
               animation-delay: 0.25s !important;
@@ -161,14 +161,14 @@
         .sentContent {
           opacity: 1 !important;
 
-          @apply justify-center gap-[50px];
+          @apply justify-center gap-[3.307vw];
         }
 
         .confirmContent {
           opacity: 1 !important;
 
           .line {
-            @apply w-[68px] h-[60px];
+            @apply w-[4.497vw] h-[3.968vw];
 
             svg {
               path {
@@ -190,7 +190,7 @@
       }
 
       .title {
-        @apply text-[26px] text-center text-center normal-case;
+        @apply text-[1.720vw] text-center text-center normal-case;
         line-height: 122%;
 
         span {
@@ -199,11 +199,11 @@
       }
 
       .input {
-        @apply h-[200px] w-full;
+        @apply h-[22vh] w-full;
       }
 
       .pagination {
-        @apply flex items-center gap-[4px] max-w-[90px] w-full h-[2.5px];
+        @apply flex items-center gap-[0.265vw] max-w-[5.952vw] w-full h-[2.5px];
 
         div {
           &.active {

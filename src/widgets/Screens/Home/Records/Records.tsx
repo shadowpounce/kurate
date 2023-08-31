@@ -1,13 +1,17 @@
 import clsx from 'clsx'
 import styles from './Records.module.scss'
-import useSplit from '../../../hooks/useSplit'
-import { SendButton } from '../../../entities/SendButton/SendButton'
-import { Cross } from '../../../shared/Cross/Cross'
-import { RecordsList } from '../../../features/RecordsList/RecordsList'
+import useSplit from '../../../../hooks/useSplit'
+import { SendButton } from '../../../../entities/SendButton/SendButton'
+import { Cross } from '../../../../shared/Cross/Cross'
+import { RecordsList } from '../../../../features/RecordsList/RecordsList'
 
 export const Records = () => {
   return (
-    <section data-grid="false" id="releases" className={clsx(styles.records, 'section')}>
+    <section
+      data-grid="false"
+      id="releases"
+      className={clsx(styles.records, 'section')}
+    >
       <div className="container">
         <div className={styles.textCol}>
           <div className={styles.group}>

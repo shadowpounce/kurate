@@ -15,11 +15,11 @@
   }
 
   span {
-    @apply text-white opacity-[0.7] text-[14px] font-medium;
+    @apply text-white opacity-[0.7] text-[0.926vw] font-medium;
   }
 
   .equalizer {
-    @apply absolute left-[1%] top-1/2 translate-y-[-50%] w-[20px] h-[20px] flex items-end gap-[2px] opacity-0 pointer-events-none transition-opacity duration-[400ms];
+    @apply absolute left-0 top-1/2 translate-y-[-50%] w-[1.323vw] h-[1.323vw] flex items-end gap-[2px] opacity-0 pointer-events-none transition-opacity duration-[400ms];
 
     .bar {
       @apply flex-1 h-full bg-[#fafafa] rounded-[2px];
@@ -68,7 +68,7 @@
 
   .action {
     .icon {
-      @apply w-[30px] h-[30px] relative;
+      @apply w-[1.984vw] h-[1.984vw] relative;
 
       &.active {
         .play {
@@ -118,10 +118,10 @@
   }
 
   .track {
-    @apply flex items-center gap-[16px];
+    @apply flex items-center gap-[1.058vw];
 
     span {
-      @apply text-[16px] text-white capitalize font-medium opacity-[1] relative;
+      @apply text-[1.058vw] text-white capitalize font-medium opacity-[1] relative;
 
       &::before {
         content: '';
@@ -142,7 +142,7 @@
     }
 
     .cover {
-      @apply w-[40px] h-[40px] rounded-[4.8px] overflow-hidden;
+      @apply w-[2.646vw] h-[2.646vw] rounded-[4.8px] overflow-hidden;
 
       img {
         @apply w-full h-full object-cover object-center;
@@ -151,7 +151,7 @@
   }
 
   > div {
-    @apply flex-1 flex items-center h-[85px];
+    @apply flex-1 flex items-center h-[9vh];
 
     &:nth-child(2) {
       @apply flex-[0.3] justify-center;

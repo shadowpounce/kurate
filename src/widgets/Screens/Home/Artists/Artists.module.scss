@@ -1,6 +1,6 @@
 .artists {
   .wrapper {
-    @apply w-full h-full flex flex-col pt-[75px] gap-[65px];
+    @apply w-full h-full flex flex-col pt-[4.960vw] gap-[6vh];
   }
 
   div[class='container'] {
@@ -34,10 +34,10 @@
       }
 
       &:nth-child(2) {
-        @apply h-full flex flex-col items-start justify-between;
+        @apply h-full flex flex-col items-start justify-center gap-[4.6296vh];
 
         .soundWaves {
-          @apply w-[32px] h-[28px] object-cover object-center opacity-0 translate-y-full;
+          @apply w-[2.116vw] h-[1.852vw] object-cover object-center opacity-0 translate-y-full;
 
           transition-duration: 1s;
           transition-delay: 0.5s;

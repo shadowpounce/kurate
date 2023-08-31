@@ -3,6 +3,7 @@ body {
 
   color: $white;
   background-color: $black;
+  font-size: 1vw;
 
   cursor: none;
 }
@@ -128,36 +129,36 @@ h6 {
 }
 
 h1 {
-  font-size: 160px !important;
+  font-size: 10.582vw !important;
 }
 
 h2 {
-  font-size: 110px !important;
+  font-size: 7.275vw !important;
 }
 
 h3 {
-  font-size: 72px !important;
+  font-size: 4.762vw !important;
 }
 
 h4 {
-  font-size: 60px !important;
+  font-size: 10.582vw !important;
 }
 
 h5 {
-  font-size: 36px !important;
+  font-size: 3.968vw !important;
 }
 
 h6 {
-  font-size: 32px !important;
+  font-size: 2.116vw !important;
 }
 
 big {
-  font-size: 200px;
+  font-size: 13.228vw;
   letter-spacing: -4px;
 }
 
 .section-span {
-  @apply text-[20px] opacity-[0.3];
+  @apply text-[1.323vw] opacity-[0.3];
 
   > div[class='reveal'] {
     @apply opacity-0 translate-y-full;
@@ -172,7 +173,7 @@ big {
 }
 
 .brand-text {
-  @apply opacity-[0.6] max-w-[300px] normal-case;
+  @apply opacity-[0.6] max-w-[25.198vw] normal-case;
   line-height: 150%;
 
   > div {
@@ -200,7 +201,7 @@ big {
 
   max-width: 100% !important;
 
-  padding: 0 30px;
+  padding: 0 1.984vw;
 }
 
 .fp-overflow {

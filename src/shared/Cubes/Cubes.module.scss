@@ -11,7 +11,7 @@
   }
 
   .cube {
-    @apply w-[28px] h-[28px] relative;
+    @apply w-[1.852vw] h-[1.852vw] relative;
     transform-style: preserve-3d;
     transition: transform 0.2s;
 
@@ -21,13 +21,13 @@
       animation: rotate 3s infinite linear;
 
       .cubeFace {
-        @apply bg-[#1B1B1B] text-[7.5px] font-semibold uppercase overflow-hidden flex-nowrap flex items-center;
+        @apply bg-[#1B1B1B] text-[0.496vw] font-semibold uppercase overflow-hidden flex-nowrap flex items-center;
         line-height: 100%;
 
         font-family: $plusJakarta;
 
         > span {
-          @apply whitespace-nowrap mr-[2px];
+          @apply whitespace-nowrap mr-[0.132vw];
 
           flex: 0 0 auto;
           animation: 5s linear 0s infinite ticker;
@@ -52,22 +52,22 @@
     }
 
     .cubeFaceFront {
-      transform: rotateY(0deg) translateZ(14px);
+      transform: rotateY(0deg) translateZ(0.926vw);
     }
     .cubeFaceBack {
-      transform: rotateY(180deg) translateZ(14px);
+      transform: rotateY(180deg) translateZ(0.926vw);
     }
     .cubeFaceTop {
-      transform: rotateX(90deg) translateZ(14px);
+      transform: rotateX(90deg) translateZ(0.926vw);
     }
     .cubeFaceRight {
-      transform: rotateY(90deg) translateZ(14px);
+      transform: rotateY(90deg) translateZ(0.926vw);
     }
     .cubeFaceBottom {
-      transform: rotateX(-90deg) translateZ(14px);
+      transform: rotateX(-90deg) translateZ(0.926vw);
     }
     .cubeFaceLeft {
-      transform: rotateY(-90deg) translateZ(14px);
+      transform: rotateY(-90deg) translateZ(0.926vw);
     }
   }
 }

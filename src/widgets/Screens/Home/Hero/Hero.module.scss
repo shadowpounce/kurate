@@ -1,6 +1,6 @@
 .hero {
   &Logo {
-    @apply w-[765px] h-[210px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
+    @apply max-w-[50%] w-full max-h-[25%] h-full absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-100%];
 
     .trademarkSymbol {
       @apply absolute right-0 top-0 opacity-0 translate-y-[200%];
@@ -28,7 +28,7 @@
     -webkit-user-drag: none;
 
     .content {
-      @apply flex gap-[12px] text-[14px] opacity-0;
+      @apply flex gap-[12px] text-[0.926vw] opacity-0;
 
       transition-duration: 1.25s;
 
@@ -53,7 +53,7 @@
       @apply top-0 left-0 translate-x-[50%];
 
       .line {
-        @apply w-[85px] h-[75px] absolute right-0 bottom-0 z-[2];
+        @apply w-[5.622vw] h-[4.960vw] absolute right-0 bottom-0 z-[2];
       }
 
       .content {
@@ -71,12 +71,12 @@
       }
 
       .img {
-        @apply w-[175px] h-[225px];
+        @apply w-[11.574vw] h-[14.881vw];
       }
     }
 
     &.cardSecond {
-      @apply right-0 top-0 translate-y-[50%];
+      @apply right-0 top-0 translate-y-[100%];
 
       .content {
         @apply flex-col-reverse items-start translate-y-[50%];
@@ -88,7 +88,7 @@
         }
 
         .img {
-          @apply w-[245px] h-[175px];
+          @apply w-[16.204vw] h-[20vh];
         }
       }
     }

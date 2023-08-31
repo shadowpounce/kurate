@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Mousewheel, FreeMode } from 'swiper'
+
 import useSplit from '../../hooks/useSplit'
 import { DrawableLine } from '../../shared/DrawableLine/DrawableLine'
 import styles from './RecordsList.module.scss'

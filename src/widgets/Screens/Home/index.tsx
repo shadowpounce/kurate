@@ -1,4 +1,4 @@
-import { Records } from '../Records/Records'
+import { Records } from './Records/Records'
 import { About } from './About/About'
 import { Artists } from './Artists/Artists'
 import { Hero } from './Hero/Hero'

@@ -1,5 +1,5 @@
 .preloader {
-  @apply px-[50px] py-[40px] fixed w-full h-full top-0 left-0 right-0 bottom-0 z-[2];
+  @apply px-[3.307vw] py-[2.646vw] fixed w-full h-full top-0 left-0 right-0 bottom-0 z-[2];
 
   background-color: $black;
 
@@ -15,7 +15,7 @@
     @apply w-full h-full uppercase relative;
 
     .logo {
-      @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[320px] h-[85px];
+      @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[21.164vw] h-[5.622vw];
 
       > div {
         @apply opacity-[0] duration-[750ms] w-full h-full;
@@ -71,7 +71,7 @@
       }
 
       &.bottom {
-        @apply flex flex-col items-center gap-[30px] text-[12px] font-medium left-1/2 translate-x-[-50%] bottom-0;
+        @apply flex flex-col items-center gap-[1.984vw] text-[0.794vw] font-medium left-1/2 translate-x-[-50%] bottom-0;
 
         line-height: 125%;
 
@@ -108,7 +108,7 @@
         }
 
         span {
-          @apply text-[12px] opacity-[0.6];
+          @apply text-[0.794vw] opacity-[0.6];
         }
       }
     }

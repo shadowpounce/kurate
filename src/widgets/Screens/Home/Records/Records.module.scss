@@ -2,7 +2,7 @@
   @apply overflow-hidden;
 
   div[class='container'] {
-    @apply flex gap-[110px] pt-[75px] pb-[30px];
+    @apply flex gap-[7.275vw] pt-[4.960vw] pb-[1.984vw];
   }
 
   .textCol {
@@ -40,7 +40,7 @@
     }
 
     .group {
-      @apply flex flex-col gap-[50px] w-full;
+      @apply flex flex-col gap-[3.307vw] w-full;
     }
   }
 

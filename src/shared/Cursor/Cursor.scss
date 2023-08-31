@@ -3,13 +3,13 @@
 
   &.-artist-card {
     div {
-      @apply w-[126px] h-[126px] bg-white border-none;
+      @apply w-[8.333vw] h-[8.333vw] bg-white border-none;
 
       &::before {
         background-image: url('/images/Cursor/swiper.svg');
 
-        width: 68px;
-        height: 26px;
+        width: 4.497vw;
+        height: 1.72vw;
 
         background-color: transparent;
 
@@ -22,7 +22,7 @@
 
   &.-record-cover {
     div {
-      @apply w-[68px] h-[68px];
+      @apply w-[4.497vw] h-[4.497vw];
 
       border: 1.5px solid #fff;
 
@@ -43,11 +43,11 @@
   }
 
   div {
-    width: 45px;
-    height: 45px;
+    width: 2.976vw;
+    height: 2.976vw;
 
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 0.132vw solid #fff;
 
     translate: -50% -50%;
 

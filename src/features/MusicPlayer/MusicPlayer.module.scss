@@ -1,5 +1,5 @@
 .musicPlayer {
-  @apply py-[18px] pl-[16px] pr-[29px] w-full h-full relative;
+  @apply py-[1.190vw] pl-[1.058vw] pr-[1.918vw] w-full h-full relative;
 
   .progress {
     @apply absolute left-0 right-0 bottom-0 h-[2px] bg-white w-0;
@@ -15,13 +15,13 @@
     @apply w-full h-full flex items-center justify-between;
 
     .info {
-      @apply flex items-center gap-[12px];
+      @apply flex items-center gap-[0.794vw];
 
       .cover {
         @apply flex;
 
         .cube {
-          @apply w-[28px] h-[28px];
+          @apply w-[1.852vw] h-[1.852vw];
 
           &.titleTicker {
             @apply relative overflow-hidden;
@@ -33,21 +33,21 @@
         @apply font-medium flex flex-col items-start justify-center;
 
         .title {
-          @apply text-[14px];
+          @apply text-[0.926vw];
         }
 
         .artist {
-          @apply text-[10px];
+          @apply text-[0.661vw];
           color: #7c7c7c;
         }
       }
     }
 
     .actions {
-      @apply flex items-center justify-center w-fit gap-[15px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
+      @apply flex items-center justify-center w-fit gap-[0.992vw] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
 
       > div {
-        @apply w-[16px] h-[16px];
+        @apply w-[1.058vw] h-[1.058vw];
 
         svg {
           @apply w-full h-full pointer-events-none;
@@ -76,8 +76,8 @@
     }
 
     .main {
-      width: 24px !important;
-      height: 24px !important;
+      width: 1.587vw !important;
+      height: 1.587vw !important;
 
       &.active {
         .play {
@@ -103,7 +103,7 @@
     }
 
     .close {
-      @apply w-[12px] h-[12px];
+      @apply w-[0.794vw] h-[0.794vw];
 
       img {
         @apply w-full h-full object-center object-cover;
