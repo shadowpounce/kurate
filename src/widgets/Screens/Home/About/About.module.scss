@@ -53,6 +53,10 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
         transition-delay: 0.4s;
       }
 
+      &:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+
       &.shine {
         span {
           animation: shine 2.5s forwards ease;
@@ -78,6 +82,10 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
           transition-duration: 1s;
           transition-delay: 0.5s;
 
+          @media (max-width: $tablet) {
+            @apply w-[20vw] h-[9.231vw] rounded-[22.308vw];
+          }
+
           .spectograph {
             @apply absolute left-0 bottom-0 right-0 w-full h-1/2;
 
@@ -87,6 +95,10 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
             overflow: hidden;
 
             gap: 3px;
+
+            @media (max-width: $tablet) {
+              gap: 1px;
+            }
 
             > div {
               margin: 0 $spectrograph-gap-width 0 0;
@@ -100,6 +112,10 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
               will-change: transform;
 
               border-radius: 6px;
+
+              @media (max-width: $tablet) {
+                @apply w-[2px] rounded-[1px] flex-none;
+              }
 
               @for $i from 1 through 20 {
                 &:nth-child(#{$i}) {
@@ -137,7 +153,11 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
   }
 
   &Group {
-    @apply flex items-start gap-[65px] ml-auto w-fit;
+    @apply flex items-start gap-[4.299vw] ml-auto w-fit;
+
+    @media (max-width: $tablet) {
+      @apply gap-[10.256vw];
+    }
   }
 }
 

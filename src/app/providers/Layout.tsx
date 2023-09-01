@@ -79,7 +79,7 @@ export const Layout: FC<IProps> = ({ children, withPreloader = true }) => {
       }}
     >
       {withPreloader && <Preloader />}
-      <Cursor />
+      {window.innerWidth > 768 && <Cursor />}
       <Menu />
       <Header />
       {children}

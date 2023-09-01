@@ -1,6 +1,10 @@
 .cross {
   @apply w-[2.116vw] h-[2.116vw] relative;
 
+  @media (max-width: $tablet) {
+    @apply w-[6.154vw] h-[6.154vw];
+  }
+
   &.animated {
     svg {
       opacity: 0;
@@ -22,6 +26,10 @@
 
   > svg {
     @apply absolute w-[1.058vw] h-[1.058vw] pointer-events-none;
+
+    @media (max-width: $tablet) {
+      @apply w-[3.077vw] h-[3.077vw];
+    }
 
     transition: translate 0.5s ease;
 

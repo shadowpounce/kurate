@@ -88,17 +88,21 @@ export const RecordsList = () => {
       </div>
       <div className={styles.records}>
         <div className={styles.recordsTop}>
-          <div className="reveal opacity-0 translate-y-full"></div>
-          <div className="reveal opacity-0 translate-y-full">
-            <span>
-              <span>Track</span>
-            </span>
-          </div>
-          <div className="reveal opacity-0 translate-y-full">
-            <span>
-              <span>Artist(s)</span>
-            </span>
-          </div>
+          {window.innerWidth > 768 && (
+            <>
+              <div className="reveal opacity-0 translate-y-full"></div>
+              <div className="reveal opacity-0 translate-y-full">
+                <span>
+                  <span>Track</span>
+                </span>
+              </div>
+              <div className="reveal opacity-0 translate-y-full">
+                <span>
+                  <span>Artist(s)</span>
+                </span>
+              </div>
+            </>
+          )}
           <div
             className={clsx(
               styles.dropdown,
@@ -108,68 +112,93 @@ export const RecordsList = () => {
           >
             <div onClick={() => toggleFilter()} className={styles.head}>
               <span>
-                <span>Genre:</span>{' '}
+                <span
+                  style={{
+                    opacity: activeGenre ? `0.4` : `1`,
+                  }}
+                >
+                  Genre:
+                </span>{' '}
                 <div className={clsx(styles.genre, 'reveal-anim animated')}>
                   {activeGenre && useSplit(activeGenre)}
                 </div>{' '}
               </span>
               <div className={styles.filterIcon}>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.833 3.79199H9.33301"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M3.50033 3.79199H1.16699"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M5.83366 5.83333C6.96124 5.83333 7.87533 4.91925 7.87533 3.79167C7.87533 2.66409 6.96124 1.75 5.83366 1.75C4.70608 1.75 3.79199 2.66409 3.79199 3.79167C3.79199 4.91925 4.70608 5.83333 5.83366 5.83333Z"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12.8333 10.2083H10.5"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4.66699 10.208H1.16699"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8.16667 12.2501C9.29425 12.2501 10.2083 11.336 10.2083 10.2084C10.2083 9.08083 9.29425 8.16675 8.16667 8.16675C7.03909 8.16675 6.125 9.08083 6.125 10.2084C6.125 11.336 7.03909 12.2501 8.16667 12.2501Z"
-                    stroke="#6E6F6F"
-                    strokeWidth="0.875"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                {window.innerWidth > 768 ? (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.833 3.79199H9.33301"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M3.50033 3.79199H1.16699"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M5.83366 5.83333C6.96124 5.83333 7.87533 4.91925 7.87533 3.79167C7.87533 2.66409 6.96124 1.75 5.83366 1.75C4.70608 1.75 3.79199 2.66409 3.79199 3.79167C3.79199 4.91925 4.70608 5.83333 5.83366 5.83333Z"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M12.8333 10.2083H10.5"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M4.66699 10.208H1.16699"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M8.16667 12.2501C9.29425 12.2501 10.2083 11.336 10.2083 10.2084C10.2083 9.08083 9.29425 8.16675 8.16667 8.16675C7.03909 8.16675 6.125 9.08083 6.125 10.2084C6.125 11.336 7.03909 12.2501 8.16667 12.2501Z"
+                      stroke="#6E6F6F"
+                      strokeWidth="0.875"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.6004 7.74634L11.1671 13.1797C10.5254 13.8213 9.47539 13.8213 8.83372 13.1797L3.40039 7.74634"
+                      stroke="white"
+                      stroke-width="1.25"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                )}
               </div>
             </div>
             <div className={styles.body}>

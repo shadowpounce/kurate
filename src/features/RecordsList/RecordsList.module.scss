@@ -1,12 +1,20 @@
 .recordsList {
   @apply flex flex-col h-full relative gap-[2.646vw];
 
+  @media (max-width: $tablet) {
+    @apply gap-[4.7vh];
+  }
+
   .showMore {
     @apply absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-[-50%] z-[3];
   }
 
   .top {
     @apply w-full flex items-end justify-between;
+
+    @media (max-width: $tablet) {
+      @apply flex-row-reverse;
+    }
 
     h2 {
       @apply overflow-hidden;
@@ -22,6 +30,10 @@
       @apply w-[7.937vw] h-[7.937vw] flex items-center justify-center relative;
 
       transition: rotate 0.4s ease;
+
+      @media (max-width: $tablet) {
+        @apply ml-auto rotate-[-90deg] mr-[20vw];
+      }
 
       &:hover {
         rotate: 180deg !important;
@@ -48,8 +60,16 @@
   .records {
     @apply overflow-hidden relative h-full;
 
+    @media (max-width: $tablet) {
+      @apply flex flex-col gap-[2.6vh];
+    }
+
     .shadow {
       @apply pointer-events-none absolute left-0 right-0 bottom-0 h-[25%] z-[2] pointer-events-none;
+
+      @media (max-width: $tablet) {
+        @apply bottom-[-2px];
+      }
 
       background: linear-gradient(
         180deg,
@@ -65,15 +85,38 @@
         @apply text-[0.926vw];
         transition: opacity 0.35s ease;
 
+        @media (max-width: $tablet) {
+          @apply text-[3.590vw];
+        }
+
         > span {
           @apply opacity-[0.4];
+
+          @media (max-width: $tablet) {
+            @apply opacity-100;
+          }
         }
       }
 
       .dropdown {
         @apply relative z-[1];
 
+        @media (max-width: $tablet) {
+          @apply w-full py-[4.103vw] px-[5.128vw] bg-[#181A1A] rounded-[2.308vw];
+          flex: 1 !important;
+
+          transition: border-radius 0.4s ease 0.525s;
+        }
+
         &.active {
+          @apply rounded-b-none delay-0 duration-[200ms];
+
+          .filterIcon {
+            @media (max-width: $tablet) {
+              @apply rotate-[180deg];
+            }
+          }
+
           .body {
             @apply delay-0;
             scale: 1 1;
@@ -86,6 +129,10 @@
 
         .head {
           @apply flex items-center gap-[0.397vw];
+
+          @media (max-width: $tablet) {
+            @apply justify-between;
+          }
 
           .genre {
           }
@@ -113,6 +160,10 @@
           .filterIcon {
             @apply w-[0.926vw] h-[0.926vw];
 
+            @media (max-width: $tablet) {
+              @apply w-[5.128vw] h-[5.128vw] transition-transform duration-[450ms];
+            }
+
             svg {
               @apply w-full h-full;
 
@@ -126,6 +177,10 @@
 
         .body {
           @apply absolute left-0 right-0 bottom-[-1.5vh] translate-y-[100%] rounded-[16px] p-[1.058vw] flex flex-col gap-[14.5px];
+
+          @media (max-width: $tablet) {
+            @apply bottom-0 py-0 pt-[3.590vw] rounded-t-none bg-[#181A1A] gap-[4vw] rounded-[2.308vw];
+          }
 
           transform-origin: bottom center;
           transition: scale 0.5s ease 0.3s;
@@ -142,14 +197,26 @@
             @apply w-full rounded-[8px] px-[0.926vw] py-[1.5vh] flex items-center justify-between relative min-h-[2.778vw] h-[2.778vw] transition-opacity duration-[300ms];
             background-color: #181a1a;
 
+            @media (max-width: $tablet) {
+              @apply py-[12px] px-[14px] bg-[#0E0F0F] h-[10.769vw] w-auto mx-[5.128vw];
+            }
+
             &::after {
               @apply absolute right-[0.926vw] top-1/2 translate-y-[-50%] w-[1.190vw] h-[1.190vw] bg-center bg-cover;
               content: '';
               background-image: url('/images/icons/search.svg');
+
+              @media (max-width: $tablet) {
+                @apply w-[3.590vw] h-[3.590vw] right-[14px];
+              }
             }
 
             input {
               @apply absolute w-full h-full top-0 left-0 right-0 bottom-0 px-[0.926vw] py-[1.5vh] font-medium text-[1.5vh];
+
+              @media (max-width: $tablet) {
+                @apply py-[12px] px-[14px];
+              }
 
               &::placeholder {
                 @apply opacity-[0.4] text-inherit;
@@ -170,6 +237,10 @@
                 rgba(18, 19, 19, 0) 0%,
                 #121313 100%
               );
+
+              @media (max-width: $tablet) {
+                @apply w-[103%] bottom-0 left-1/2 translate-x-[-50%] rounded-b-[2.308vw];
+              }
             }
 
             ul {
@@ -185,6 +256,10 @@
 
               li {
                 @apply p-[1.5vh] transition-colors duration-300 rounded-[8px];
+
+                @media (max-width: $tablet) {
+                  @apply py-[3.846vw] px-[5.128vw] text-[4.103vw];
+                }
 
                 &:last-child {
                   opacity: 0;
@@ -210,6 +285,10 @@
 
     .list {
       @apply w-full flex flex-col relative h-[80%] pr-[0.926vw];
+
+      @media (max-width: $tablet) {
+        @apply h-fit;
+      }
 
       &.active {
         @apply overflow-y-scroll;

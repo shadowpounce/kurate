@@ -21,7 +21,6 @@ export const About = () => {
   return (
     <>
       <section className={clsx(styles.about, 'section')} id="about">
-      
         <div className="container">
           <div className={styles.aboutText}>
             <h3 className="reveal">
@@ -32,33 +31,69 @@ export const About = () => {
             </h3>
             <h3 className="reveal flex items-center justify-center">
               captivating global{' '}
-              <span className={clsx(styles.rect, 'reveal')}>
-                <div className={styles.spectograph}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <img src="/images/About/rect.jpg" alt="" />
-              </span>{' '}
-              audiences,
+              {window.innerWidth > 768 && (
+                <>
+                  <span className={clsx(styles.rect, 'reveal')}>
+                    <div className={styles.spectograph}>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <img src="/images/About/rect.jpg" alt="" />
+                  </span>{' '}
+                  audiences,
+                </>
+              )}
             </h3>
+            {window.innerWidth <= 768 && (
+              <h3 className="reveal flex items-center justify-center">
+                <>
+                  <span className={clsx(styles.rect, 'reveal')}>
+                    <div className={styles.spectograph}>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <img src="/images/About/rect.jpg" alt="" />
+                  </span>{' '}
+                  audiences,
+                </>
+              </h3>
+            )}
             <h3 className="reveal">
               and{' '}
               <span>
@@ -126,13 +161,26 @@ export const About = () => {
           <div className={styles.aboutGroup}>
             <Cross activeId={2} />
             <p className="brand-text">
-              <div className="reveal">
-                Empowering artists, captivating global{' '}
-              </div>
-              <div className="reveal">
-                audiences, and redefining the future of{' '}
-              </div>
-              <div className="reveal">musicas a dynamic record label</div>
+              {window.innerWidth > 768 ? (
+                <>
+                  <div className="reveal">
+                    Empowering artists, captivating global{' '}
+                  </div>
+                  <div className="reveal">
+                    audiences, and redefining the future of{' '}
+                  </div>
+                  <div className="reveal">musicas a dynamic record label</div>
+                </>
+              ) : (
+                <>
+                  <div className="reveal">
+                    Empowering artists, captivating global audiences, and
+                  </div>
+                  <div className="reveal">
+                    redefining the future of musicas a dynamic record label
+                  </div>
+                </>
+              )}
             </p>
           </div>
         </div>

@@ -12,7 +12,7 @@ export const ArtistsSlider = () => {
           hide: true,
         }}
         allowTouchMove={true}
-        slidesPerView={3}
+        slidesPerView={window.innerWidth > 768 ? 3 : 'auto'}
         freeMode={true}
         pagination={{
           clickable: true,

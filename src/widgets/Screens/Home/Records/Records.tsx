@@ -15,7 +15,7 @@ export const Records = () => {
       <div className="container">
         <div className={styles.textCol}>
           <div className={styles.group}>
-            <div>
+            <div className={styles.titleGroup}>
               <h2>
                 <div className={styles.transparent}>
                   {useSplit('Let’s', {
@@ -58,15 +58,24 @@ export const Records = () => {
           </div>
           <div className={styles.group}>
             <Cross activeId={4} />
-            <p className="brand-text">
-              <div className="reveal">
-                Empowering artists, captivating global{' '}
-              </div>
-              <div className="reveal">
-                audiences, and redefining the future of{' '}
-              </div>
-              <div className="reveal">musicas a dynamic record label</div>
-            </p>
+            {window.innerWidth > 768 ? (
+              <p className="brand-text">
+                <div className="reveal">
+                  Empowering artists, captivating global{' '}
+                </div>
+                <div className="reveal">
+                  audiences, and redefining the future of{' '}
+                </div>
+                <div className="reveal">musicas a dynamic record label</div>
+              </p>
+            ) : (
+              <p className="brand-text">
+                <div className="reveal">
+                  Empowering artists, captivating global audiences, and
+                  redefining the future of musicas a dynamic record label
+                </div>
+              </p>
+            )}
           </div>
         </div>
         <div className={styles.recordsList}>

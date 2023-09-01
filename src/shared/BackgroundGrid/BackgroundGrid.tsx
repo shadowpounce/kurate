@@ -10,7 +10,7 @@ export const BackgroundGrid = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!init) {
+    if (!init && window.innerWidth > 768) {
       const cursorGrid = new MouseFollower({
         el: cursorRef.current,
         speed: 0.1,

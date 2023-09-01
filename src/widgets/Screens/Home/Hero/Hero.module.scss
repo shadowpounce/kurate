@@ -2,10 +2,18 @@
   &Logo {
     @apply max-w-[50%] w-full max-h-[25%] h-full absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-100%];
 
+    @media (max-width: $tablet) {
+      @apply w-[75.641vw] max-w-full max-h-[9.5972vh];
+    }
+
     .trademarkSymbol {
       @apply absolute right-0 top-0 opacity-0 translate-y-[200%];
 
       transition-duration: 1s;
+
+      @media (max-width: $tablet) {
+        @apply w-[2.436vw] h-[2.436vw];
+      }
     }
 
     svg {
@@ -32,6 +40,10 @@
 
       transition-duration: 1.25s;
 
+      @media (max-width: $tablet) {
+        @apply text-[3.077vw] gap-[3.077vw];
+      }
+
       .text {
         span {
           transition-duration: 1.25s;
@@ -52,8 +64,16 @@
     &.cardFirst {
       @apply top-0 left-0 translate-x-[50%];
 
+      @media (max-width: $tablet) {
+        @apply translate-x-0 left-[10.256vw];
+      }
+
       .line {
         @apply w-[5.622vw] h-[4.960vw] absolute right-0 bottom-0 z-[2];
+
+        @media (max-width: $tablet) {
+          @apply w-[11.538vw] h-[10.256vw];
+        }
       }
 
       .content {
@@ -72,11 +92,19 @@
 
       .img {
         @apply w-[11.574vw] h-[14.881vw];
+
+        @media (max-width: $tablet) {
+          @apply w-[23.590vw] h-[30.769vw];
+        }
       }
     }
 
     &.cardSecond {
       @apply right-0 top-0 translate-y-[100%];
+
+      @media (max-width: $tablet) {
+        @apply translate-y-0 top-[15.4028vh];
+      }
 
       .content {
         @apply flex-col-reverse items-start translate-y-[50%];
@@ -89,6 +117,10 @@
 
         .img {
           @apply w-[16.204vw] h-[20vh];
+
+          @media (max-width: $tablet) {
+            @apply w-[36.410vw] h-[26.410vw];
+          }
         }
       }
     }

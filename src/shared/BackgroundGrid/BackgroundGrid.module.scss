@@ -4,6 +4,10 @@
   .cursorFollower {
     @apply absolute w-[200%] h-[200%] z-[2] transition-opacity duration-[1s];
 
+    @media (max-width: $tablet) {
+      @apply w-[125%] h-[125%];
+    }
+
     &.hidden {
       opacity: 0;
     }
@@ -36,6 +40,11 @@
       );
     background-size: 10% 20%, 10% 20%;
     background-color: transparent;
+
+    @media (max-width: $tablet) {
+      background-size: 30% 20%, 30% 20%;
+      background-position: center;
+    }
 
     &.hidden {
       opacity: 0;

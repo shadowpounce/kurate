@@ -1,6 +1,10 @@
 .circleScrollLabel {
   @apply w-[12.566vw] h-[12.566vw] relative z-[1];
 
+  @media (max-width: $tablet) {
+    @apply w-[39.231vw] h-[39.231vw];
+  }
+
   .circleText {
     @apply absolute w-full h-full;
 
@@ -9,6 +13,10 @@
 
   .arrow {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-[0.893vw] h-[2.116vw];
+
+    @media (max-width: $tablet) {
+      @apply w-[2.821vw] h-[6.667vw];
+    }
   }
 }
 

@@ -1,8 +1,16 @@
 .threeDCards {
   @apply absolute w-[50vw] h-[85vh] left-1/2 top-[100vh] translate-x-[-50%] translate-y-[-42.5%] z-[3];
 
+  @media (max-width: $tablet) {
+    @apply w-[73.333vw] h-[44.0758vh] translate-y-0 top-[66.2322vh];
+  }
+
   img {
     @apply max-w-[33vw] w-full h-full object-cover object-center;
+
+    @media (max-width: $tablet) {
+      @apply max-w-full;
+    }
   }
 
   &:hover {
@@ -58,9 +66,17 @@
   .content {
     @apply max-w-[33vw] w-full h-full relative mx-auto pointer-events-none;
 
+    @media (max-width: $tablet) {
+      @apply max-w-full h-full;
+    }
+
     .text {
       @apply text-[1.455vw] absolute top-0 left-0 translate-y-[-300%] z-[-1];
       line-height: 84%;
+
+      @media (max-width: $tablet) {
+        @apply text-[4.103vw];
+      }
 
       > div {
         @apply opacity-0 translate-y-[1000%];
@@ -71,10 +87,18 @@
 
     .line {
       @apply absolute bottom-0 right-0 translate-x-1/2 w-[295px] h-[240px] z-[5];
+
+      @media (max-width: $tablet) {
+        @apply w-[44.359vw] h-[35.897vw] translate-x-0;
+      }
     }
 
     .circleScrollLabel {
       @apply absolute left-0 top-0 translate-x-[-50%] translate-y-[25%] z-[5];
+
+      @media (max-width: $tablet) {
+        @apply translate-x-[-25%];
+      }
 
       > div {
         @apply opacity-0 translate-y-full;

@@ -7,6 +7,10 @@
 
   line-height: 100% !important;
 
+  @media (max-width: $tablet) {
+    @apply text-[3.590vw] gap-[2.564vw];
+  }
+
   &:disabled {
     @apply pointer-events-none;
   }
@@ -80,6 +84,10 @@
 
   .arrow {
     @apply w-[1.190vw] h-[1.190vw] overflow-hidden flex justify-end;
+
+    @media (max-width: $tablet) {
+      @apply w-[4.615vw] h-[4.615vw];
+    }
 
     svg {
       @apply w-full h-full min-w-full;

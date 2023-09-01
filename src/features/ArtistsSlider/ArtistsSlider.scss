@@ -5,8 +5,18 @@
     display: flex;
   }
 
+  .swiper {
+    @media (max-width: $tablet) {
+      height: 100%;
+    }
+  }
+
   &__slide {
     @apply flex-[1] min-w-[33%];
+
+    @media (max-width: $tablet) {
+      @apply min-w-[77vw];
+    }
 
     &:nth-child(even) {
       #artists-slider-card-content {

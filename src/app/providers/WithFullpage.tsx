@@ -69,31 +69,63 @@ export const WithFullpage: React.FC<IProps> = ({
       document.querySelectorAll('*[data-scrollable="true"]')
     )
 
-    if (scrollableElements) {
-      scrollableElements.forEach((element) => {
-        element.addEventListener('wheel', (ev) => {
-          const wheelEvent = ev as WheelEvent
+    if (window.innerWidth > 768) {
+      if (scrollableElements) {
+        scrollableElements.forEach((element) => {
+          element.addEventListener('wheel', (ev) => {
+            const wheelEvent = ev as WheelEvent
 
-          const deltaY = wheelEvent.deltaY
+            const deltaY = wheelEvent.deltaY
 
-          window.fullpage_api.setAllowScrolling(false)
+            window.fullpage_api.setAllowScrolling(false)
 
-          if (deltaY < 0) {
-            element.scrollTop = element.scrollTop - 25
-          }
+            if (deltaY < 0) {
+              element.scrollTop = element.scrollTop - 25
+            }
 
-          if (deltaY > 0) {
-            element.scrollTop = element.scrollTop + 25
-          }
+            if (deltaY > 0) {
+              element.scrollTop = element.scrollTop + 25
+            }
+          })
+
+          element.addEventListener('mouseenter', (ev) => {
+            window.fullpage_api.setAllowScrolling(false)
+          })
+
+          element.addEventListener('mouseleave', (ev) => {
+            window.fullpage_api.setAllowScrolling(true)
+          })
         })
+      }
+    }
 
-        element.addEventListener('mouseenter', (ev) => {
+    if (window.innerWidth <= 768) {
+      window.addEventListener('touchstart', (ev) => {
+        const target = ev.target as HTMLDivElement
+
+        if (
+          target.closest('*[data-scrollable="true"]') ||
+          target.dataset.scrollable === 'true'
+        ) {
           window.fullpage_api.setAllowScrolling(false)
-        })
-
-        element.addEventListener('mouseleave', (ev) => {
+          console.log('blocked')
+        } else {
           window.fullpage_api.setAllowScrolling(true)
-        })
+        }
+      })
+
+      window.addEventListener('touchend', (ev) => {
+        const target = ev.target as HTMLDivElement
+
+        if (
+          target.closest('*[data-scrollable="true"]') ||
+          target.dataset.scrollable === 'true'
+        ) {
+          window.fullpage_api.setAllowScrolling(false)
+          console.log('blocked')
+        } else {
+          window.fullpage_api.setAllowScrolling(true)
+        }
       })
     }
   }, [])

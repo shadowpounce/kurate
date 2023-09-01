@@ -11,6 +11,10 @@
 
   padding: 2.646vw 1.984vw 0;
 
+  @media (max-width: $tablet) {
+    padding: 1.5vh 5.128vw 0;
+  }
+
   &.hidden {
     .logo {
       svg {
@@ -33,6 +37,10 @@
 
   .logo {
     @apply w-[5.622vw] h-[1.587vw] overflow-hidden;
+
+    @media (max-width: $tablet) {
+      @apply w-[17.692vw] h-[2.1vh];
+    }
 
     svg {
       path {

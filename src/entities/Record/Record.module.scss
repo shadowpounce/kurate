@@ -1,8 +1,30 @@
 .record {
   @apply flex w-full opacity-0 translate-y-full relative;
   transition-duration: 1s !important;
+  transition-property: opacity, translate, transform, height, min-height !important;
 
   border-top: 1px solid rgba(255, 255, 255, 0.11);
+
+  @media (max-width: $tablet) {
+    @apply h-[80px] items-start;
+
+    border: none;
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba(255, 255, 255, 0.11);
+    }
+  }
+
+  @media (max-width: $tablet) {
+    @apply px-[4.103vw] py-[4.615vw];
+  }
+
+  > * {
+    @media (max-width: $tablet) {
+      max-height: 45px !important;
+      height: 45px !important;
+    }
+  }
 
   &.playing {
     .equalizer {
@@ -16,10 +38,20 @@
 
   span {
     @apply text-white opacity-[0.7] text-[0.926vw] font-medium;
+
+    @media (max-width: $tablet) {
+      @apply text-[3.077vw];
+    }
   }
 
   .equalizer {
     @apply absolute left-0 top-1/2 translate-y-[-50%] w-[1.323vw] h-[1.323vw] flex items-end gap-[2px] opacity-0 pointer-events-none transition-opacity duration-[400ms];
+
+    @media (max-width: $tablet) {
+      height: 4.5vw !important;
+      width: 4.5vw !important;
+      left: 2%;
+    }
 
     .bar {
       @apply flex-1 h-full bg-[#fafafa] rounded-[2px];
@@ -67,8 +99,16 @@
   }
 
   .action {
+    @media (max-width: $tablet) {
+      translate: 0 25%;
+    }
+
     .icon {
       @apply w-[1.984vw] h-[1.984vw] relative;
+
+      @media (max-width: $tablet) {
+        @apply w-[7.179vw] h-[7.179vw] min-w-[7.179vw] min-h-[7.179vw] flex-none;
+      }
 
       &.active {
         .play {
@@ -117,11 +157,62 @@
     }
   }
 
-  .track {
-    @apply flex items-center gap-[1.058vw];
+  .info {
+    @apply flex items-center justify-end gap-[2.308vw] ml-auto mr-0 flex-none translate-y-[75%];
+
+    &.active {
+      svg {
+        @apply rotate-[180deg];
+      }
+    }
 
     span {
+      @apply pointer-events-none;
+    }
+
+    svg {
+      @apply w-[3.846vw] h-[3.846vw] flex items-center justify-center pointer-events-none transition-transform duration-[350ms];
+    }
+  }
+
+  .track {
+    @apply flex items-center gap-[1.058vw] relative;
+
+    @media (max-width: $tablet) {
+      @apply gap-[3.590vw];
+    }
+
+    .mobileInfo {
+      @apply absolute bottom-0 left-0 right-0 flex flex-col gap-[4.103vw] py-[6.154vw] opacity-0 transition-opacity duration-[450ms] pointer-events-none translate-y-full;
+
+      &.active {
+        @apply opacity-100 pointer-events-auto delay-[700ms];
+      }
+
+      .infoGroup {
+        @apply flex flex-col gap-[1.538vw];
+
+        > span {
+          opacity: 0.4;
+          line-height: 100% !important;
+        }
+
+        .title {
+          @apply opacity-[0.7];
+
+          &::before {
+            display: none !important;
+          }
+        }
+      }
+    }
+
+    .title {
       @apply text-[1.058vw] text-white capitalize font-medium opacity-[1] relative;
+
+      @media (max-width: $tablet) {
+        @apply text-[3.590vw];
+      }
 
       &::before {
         content: '';
@@ -144,6 +235,10 @@
     .cover {
       @apply w-[2.646vw] h-[2.646vw] rounded-[4.8px] overflow-hidden;
 
+      @media (max-width: $tablet) {
+        @apply min-w-[11.538vw] w-[11.538vw] h-[11.538vw] min-h-[11.538vw];
+      }
+
       img {
         @apply w-full h-full object-cover object-center;
       }
@@ -152,6 +247,11 @@
 
   > div {
     @apply flex-1 flex items-center h-[9vh];
+
+    @media (max-width: $tablet) {
+      @apply h-fit;
+      height: fit-content !important;
+    }
 
     &:nth-child(2) {
       @apply flex-[0.3] justify-center;

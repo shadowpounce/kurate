@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from 'react'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
 import styles from './Record.module.scss'
 import clsx from 'clsx'
 import { MainContext } from '../../app/providers/MainContext'
@@ -15,8 +15,33 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
   const { setTrackIndex, trackIndex, audioPlay, setAudioPlay } =
     useContext(MainContext)
 
+  const [mobileActive, setMobileActive] = useState<boolean>(false)
+
+  const ref = useRef<HTMLDivElement>(null)
+
+  const toggleMobile = () => {
+    if (ref.current) {
+      const bodyHeight = ref.current.querySelector<HTMLDivElement>(
+        `.${styles.mobileInfo}`
+      )?.offsetHeight
+
+      if (mobileActive) {
+        ref.current.style.height = `80px`
+        setMobileActive(false)
+        return
+      }
+
+      if (!mobileActive && bodyHeight) {
+        ref.current.style.height = `calc(80px + ${bodyHeight}px)`
+        setMobileActive(true)
+        return
+      }
+    }
+  }
+
   return (
     <div
+      ref={ref}
       style={{
         transitionDelay: `${idx && idx * 0.125 + 0.25}s`,
       }}
@@ -105,26 +130,93 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
         <div className={styles.cover}>
           <img src={cover} alt="" />
         </div>
-        <span>{title}</span>
+        <span className={styles.title}>{title}</span>
+
+        {window.innerWidth <= 768 && (
+          <div
+            className={clsx(styles.mobileInfo, mobileActive && styles.active)}
+          >
+            <div className={styles.infoGroup}>
+              <span>Arist(s)</span>
+              <span className={styles.title}>
+                {Array.isArray(artists)
+                  ? artists.map((artist, idx) => {
+                      return `${
+                        idx + 1 === artists.length ? artist : `${artist}, `
+                      }`
+                    })
+                  : artists}
+              </span>
+            </div>
+            <div className={styles.infoGroup}>
+              <span>Genre</span>
+              <span className={styles.title}>
+                {Array.isArray(genre)
+                  ? genre.map((item, idx) => {
+                      return `${idx + 1 === genre.length ? item : `${item}, `}`
+                    })
+                  : genre}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
-      <div className={styles.artists}>
-        <span>
-          {Array.isArray(artists)
-            ? artists.map((artist, idx) => {
-                return `${idx + 1 === artists.length ? artist : `${artist}, `}`
-              })
-            : artists}
-        </span>
-      </div>
-      <div className={styles.genre}>
-        <span>
-          {Array.isArray(genre)
-            ? genre.map((item, idx) => {
-                return `${idx + 1 === genre.length ? item : `${item}, `}`
-              })
-            : genre}
-        </span>
-      </div>
+      {window.innerWidth > 768 && (
+        <>
+          <div className={styles.artists}>
+            <span>
+              {Array.isArray(artists)
+                ? artists.map((artist, idx) => {
+                    return `${
+                      idx + 1 === artists.length ? artist : `${artist}, `
+                    }`
+                  })
+                : artists}
+            </span>
+          </div>
+          <div className={styles.genre}>
+            <span>
+              {Array.isArray(genre)
+                ? genre.map((item, idx) => {
+                    return `${idx + 1 === genre.length ? item : `${item}, `}`
+                  })
+                : genre}
+            </span>
+          </div>
+        </>
+      )}
+      {window.innerWidth <= 768 && (
+        <div
+          onClick={() => toggleMobile()}
+          className={clsx(styles.info, mobileActive && styles.active)}
+        >
+          <span>Info</span>
+          <svg
+            width="16"
+            height="15"
+            viewBox="0 0 16 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.375 9.01892L7.58125 12.8127L3.7875 9.01892"
+              stroke="#FAFAFA"
+              stroke-width="0.9375"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M7.58105 2.1875L7.58105 12.7062"
+              stroke="#FAFAFA"
+              stroke-width="0.9375"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      )}
     </div>
   )
 }

@@ -6,7 +6,11 @@ import { ArtistsSlider } from '../../../../features/ArtistsSlider/ArtistsSlider'
 
 export const Artists = () => {
   return (
-    <section data-grid="false" id="artists" className={clsx('section', styles.artists)}>
+    <section
+      data-grid="false"
+      id="artists"
+      className={clsx('section', styles.artists)}
+    >
       <div className={styles.wrapper}>
         <div className="container">
           <div className={styles.textWrapper}>
@@ -32,7 +36,35 @@ export const Artists = () => {
                 <div className="reveal">our team)</div>
               </span>
             </div>
-            <div>
+            {window.innerWidth > 768 && (
+              <div className={styles.artistsTextBlock}>
+                <img
+                  className={clsx('reveal', styles.soundWaves)}
+                  src="/images/Artists/soundWaves.svg"
+                  alt=""
+                />
+                <p className="brand-text">
+                  <div className="reveal">
+                    Empowering artists, captivating global{' '}
+                  </div>
+                  <div className="reveal">
+                    audiences, and redefining the future of{' '}
+                  </div>
+                  <div className="reveal">musicas a dynamic record label</div>
+                </p>
+                <div className="reveal opacity-0 translate-y-full duration-[1s] delay-[0.5s]">
+                  <Button>Learn more</Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={styles.slider}>
+          <ArtistsSlider />
+        </div>
+        {window.innerWidth <= 768 && (
+          <div className="container">
+            <div className={styles.artistsTextBlock}>
               <img
                 className={clsx('reveal', styles.soundWaves)}
                 src="/images/Artists/soundWaves.svg"
@@ -40,22 +72,18 @@ export const Artists = () => {
               />
               <p className="brand-text">
                 <div className="reveal">
-                  Empowering artists, captivating global{' '}
+                  Empowering artists, captivating global audiences, and
                 </div>
                 <div className="reveal">
-                  audiences, and redefining the future of{' '}
+                  redefining the future of musicas a dynamic record label
                 </div>
-                <div className="reveal">musicas a dynamic record label</div>
               </p>
               <div className="reveal opacity-0 translate-y-full duration-[1s] delay-[0.5s]">
                 <Button>Learn more</Button>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.slider}>
-          <ArtistsSlider />
-        </div>
+        )}
       </div>
     </section>
   )

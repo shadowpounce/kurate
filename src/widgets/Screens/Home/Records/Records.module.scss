@@ -1,12 +1,30 @@
 .records {
   @apply overflow-hidden;
 
+  @media (max-width: $tablet) {
+    @apply overflow-auto;
+  }
+
   div[class='container'] {
     @apply flex gap-[7.275vw] pt-[4.960vw] pb-[1.984vw];
+
+    @media (max-width: $tablet) {
+      @apply flex-col-reverse py-[8vh]  h-fit overflow-hidden flex-none relative;
+    }
+  }
+
+  .titleGroup {
+    @media (max-width: $tablet) {
+      @apply absolute left-[5.128vw] top-[8vh] text-left;
+    }
   }
 
   .textCol {
     @apply h-full flex-[0.30] flex flex-col justify-between;
+
+    @media (max-width: $tablet) {
+      @apply items-center justify-center flex-col-reverse gap-[5vw];
+    }
 
     h2 {
       @apply relative;
@@ -41,10 +59,18 @@
 
     .group {
       @apply flex flex-col gap-[3.307vw] w-full;
+
+      @media (max-width: $tablet) {
+        @apply items-center justify-center text-center;
+      }
     }
   }
 
   .recordsList {
     @apply flex-[0.70] h-[90%];
+
+    @media (max-width: $tablet) {
+      @apply flex-none max-h-[68.7vh] h-[68.7vh];
+    }
   }
 }
