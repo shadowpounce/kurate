@@ -20,7 +20,7 @@ let images = [image1]
 
 console.log(images)
 
-const GlyphURL = 'public/water/SourceSansPro-Black.png'
+const GlyphURL = '/water/SourceSansPro-Black.png'
 
 class Planes {
   constructor(sceneManager, images) {
@@ -829,5 +829,5 @@ class Loader {
 let myApp
 
 if (location.pathname === '/' && window.innerWidth > 768) {
-  myApp = new App()
+  setTimeout(() => (myApp = new App()), 1000)
 }

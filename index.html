@@ -11,12 +11,18 @@
 
     <script src="/libs/ScrollSmoother.min.js"></script>
     <script src="/libs/ScrollTrigger.min.js"></script>
-    <script src="/libs/three.min.js"></script>
-    <script type="text/javascript">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.107/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three'
       window.THREE = THREE
-      // global.THREE = THREE
     </script>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="module" async src="src/test.js"></script>
+    <script type="module" src="/src/test.js"></script>
   </body>
 </html>

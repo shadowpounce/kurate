@@ -3,15 +3,15 @@ import { Route } from 'react-router-dom'
 import { WithRoutes } from './providers/WithRoutes'
 import { Layout } from './providers/Layout'
 
-import * as THREE from 'three'
+// import * as THREE from 'three'
 import createMSDFShader from 'three-bmfont-text/shaders/msdf'
 import createGeometry from 'three-bmfont-text'
 
 import { Effect, EffectComposer } from 'postprocessing'
 
-console.log(THREE)
+// console.log(THREE)
 
-window.THREE = THREE
+// window.THREE = THREE
 window.createGeometry = createGeometry
 window.MSDFShader = createMSDFShader
 window.Effect = Effect
