@@ -1,15 +1,28 @@
 .careersHero {
   div[class='container'] {
     @apply px-[1.058vw];
+
+    @media (max-width: $tablet) {
+      @apply px-[2.564vw];
+    }
   }
 
   .wrapper {
     @apply flex flex-col items-center justify-center w-full h-full bg-no-repeat bg-cover bg-center rounded-b-[1.984vw];
 
+    @media (max-width: $tablet) {
+      @apply px-[9.744vw] py-[9vh];
+    }
+
     background-image: url('/images/Careers/hero-bg.png');
 
     big {
       overflow: hidden;
+
+      @media (max-width: $tablet) {
+        @apply text-[20.513vw];
+      }
+
       span {
         opacity: 0;
         translate: 0 100%;
@@ -19,6 +32,14 @@
 
     .block {
       @apply flex gap-[5.291vw];
+
+      p {
+        @apply opacity-[0.9];
+      }
+
+      @media (max-width: $tablet) {
+        @apply flex-col gap-[9.744vw] ml-auto translate-y-1/2;
+      }
     }
   }
 }

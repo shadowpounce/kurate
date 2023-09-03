@@ -18,8 +18,18 @@ export const Home = () => {
     activeScreen,
     setPlayerActive,
     playerActive,
+    pageLoaded,
   } = useContext(MainContext)
   const [discDeployed, setDiscDeployed] = useState<boolean>(false)
+
+  useEffect(() => {
+    const waterLogo =
+      document.querySelector<HTMLCanvasElement>('#root > canvas')
+
+    if (pageLoaded && waterLogo) {
+      waterLogo.className = `in`
+    }
+  }, [pageLoaded])
 
   return (
     <HomeContext.Provider
@@ -37,6 +47,25 @@ export const Home = () => {
           onLeave: (origin, destination, direction, trigger) => {
             setActiveScreen(destination.index)
             setDirection(direction)
+
+            const waterLogo =
+              document.querySelector<HTMLCanvasElement>('#root > canvas')
+
+            if (destination.index === 0) {
+              if (waterLogo) {
+                waterLogo.className = `in`
+              }
+            } else if (destination.index !== 0) {
+              if (waterLogo) {
+                waterLogo.className = `out`
+              }
+            }
+
+            if (destination.index === 1) {
+              window.fullpage_api.setScrollingSpeed(5000)
+            } else {
+              window.fullpage_api.setScrollingSpeed(1000)
+            }
 
             if (destination.index === 4) {
               setPlayerActive(true)

@@ -4,19 +4,35 @@
   .wrapper {
     @apply flex;
 
+    @media (max-width: $tablet) {
+      @apply flex-col-reverse;
+    }
+
     border-top: 1px solid rgba(252, 252, 252, 0.25);
 
     > .wrap {
       &:nth-child(1) {
         @apply shrink-[1] flex-[0.25] pt-[5.291vw] px-[10.582vw] pb-[10.913vw];
 
+        @media (max-width: $tablet) {
+          @apply pb-[15.4vh] pt-[6.3vh];
+        }
+
         border-right: 1px solid rgba(252, 252, 252, 0.25);
 
         .col {
           @apply w-full flex flex-col gap-[2.315vw];
 
+          @media (max-width: $tablet) {
+            @apply gap-[3.3vh] items-center justify-center;
+          }
+
           .logo {
             @apply w-full h-[5.622vw];
+
+            @media (max-width: $tablet) {
+              @apply min-w-[38.462vw] w-[38.462vw] h-[5vh] min-h-[5vh];
+            }
 
             svg {
               path {
@@ -32,6 +48,10 @@
             transition-delay: 0.2s !important;
             transition-duration: 0.75s !important;
 
+            @media (max-width: $tablet) {
+              @apply gap-[2.564vw];
+            }
+
             p {
               @apply opacity-[0.4];
             }
@@ -42,16 +62,39 @@
       &:nth-child(2) {
         @apply shrink-[1] flex-[0.75] px-[3.968vw] py-[2.646vw] pb-[9.259vw] flex items-start justify-between;
 
+        @media (max-width: $tablet) {
+          @apply flex-wrap justify-center items-center py-[7.7vh];
+          row-gap: 6vh;
+
+          .col {
+            &:not(:last-child) {
+              @apply flex-1 flex items-center justify-center text-center;
+            }
+
+            &:last-child {
+              @apply min-w-full w-full flex items-center justify-center;
+            }
+          }
+        }
+
         .col {
-          @apply flex flex-col gap-[1.852vw] text-[0.794vw] font-medium;
+          @apply flex flex-col gap-[1.852vw]  font-medium;
 
           color: #979797;
+
+          @media (max-width: $tablet) {
+            @apply gap-[3.3vh];
+          }
 
           ul {
             @apply text-[1.587vw] flex flex-col gap-[1.587vw];
             color: $white;
             line-height: 180%;
             letter-spacing: -0.48px;
+
+            @media (max-width: $tablet) {
+              @apply text-[6.154vw] gap-[1vh];
+            }
 
             li {
               @apply opacity-0 translate-y-1/2;
@@ -61,13 +104,12 @@
             }
 
             span {
-              @apply opacity-0 translate-y-1/2;
-              transition-duration: 1s !important;
-              transition-delay: 0.35s !important;
-            }
+              @apply opacity-0 translate-y-1/2 text-[0.794vw];
 
-            span {
-              @apply opacity-0 translate-y-1/2;
+              @media (max-width: $tablet) {
+                @apply text-[3.077vw];
+              }
+
               transition-duration: 1s !important;
               transition-delay: 0.35s !important;
             }

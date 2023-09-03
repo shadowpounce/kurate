@@ -15,6 +15,10 @@
     transform-style: preserve-3d;
     transition: transform 0.2s;
 
+    @media (max-width: $tablet) {
+      @apply w-[7.179vw] h-[7.179vw];
+    }
+
     animation-play-state: paused !important;
 
     &:first-child {
@@ -53,21 +57,45 @@
 
     .cubeFaceFront {
       transform: rotateY(0deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateY(0deg) translateZ(3.59vw);
+      }
     }
     .cubeFaceBack {
       transform: rotateY(180deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateY(180deg) translateZ(3.59vw);
+      }
     }
     .cubeFaceTop {
       transform: rotateX(90deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateX(90deg) translateZ(3.59vw);
+      }
     }
     .cubeFaceRight {
       transform: rotateY(90deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateY(90deg) translateZ(3.59vw);
+      }
     }
     .cubeFaceBottom {
       transform: rotateX(-90deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateX(-90deg) translateZ(3.59vw);
+      }
     }
     .cubeFaceLeft {
       transform: rotateY(-90deg) translateZ(0.926vw);
+
+      @media (max-width: $tablet) {
+        transform: rotateY(-90deg) translateZ(3.59vw);
+      }
     }
   }
 }

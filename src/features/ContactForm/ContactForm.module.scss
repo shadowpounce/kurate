@@ -5,6 +5,10 @@
   background: rgba(72, 72, 72, 0.06);
   backdrop-filter: blur(9.5px);
 
+  @media (max-width: $tablet) {
+    @apply px-[6.154vw] py-[11.282vw] rounded-[5.128vw];
+  }
+
   .waves {
     @apply absolute left-0 top-0 w-full h-full z-[0] pointer-events-none;
   }
@@ -23,28 +27,48 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    @media (max-width: $tablet) {
+      @apply static max-w-full p-[3.077vw] pt-[4.103vw] gap-[2.821vw] rounded-[4.872vw] mb-[9.5vh];
+    }
+
     &.visible {
       opacity: 1;
       scale: 1;
     }
 
     span {
-      @apply text-[0.661vw];
+      @apply text-[0.661vw] opacity-[0.8];
       font-family: 'Poppins', sans-serif;
       line-height: 140%;
       letter-spacing: -0.2px;
+
+      @media (max-width: $tablet) {
+        @apply text-[3.077vw];
+      }
     }
 
     .head {
       @apply px-[1.323vw] flex items-center justify-between w-full;
 
+      @media (max-width: $tablet) {
+        @apply px-[6.154vw];
+      }
+
       p {
         @apply text-[1.323vw];
+
+        @media (max-width: $tablet) {
+          @apply text-[5.128vw];
+        }
       }
     }
 
     .body {
       @apply flex flex-col gap-[0.529vw] w-full;
+
+      @media (max-width: $tablet) {
+        @apply gap-[2.436vw];
+      }
 
       .step {
         @apply w-full rounded-[1.058vw] p-[1.323vw] flex flex-col gap-[0.992vw] relative;
@@ -52,9 +76,17 @@
 
         border: 1px solid rgba(255, 255, 255, 0.15);
 
+        @media (max-width: $tablet) {
+          @apply rounded-[5.128vw] p-[6.154vw];
+        }
+
         .edit {
           @apply absolute right-[1.323vw] top-1/2 translate-y-[-50%] text-[0.794vw] font-medium underline opacity-[0.4];
           font-family: $plusJakarta;
+
+          @media (max-width: $tablet) {
+            @apply text-[3.590vw] right-[6.154vw];
+          }
         }
 
         span {
@@ -63,6 +95,10 @@
 
         p {
           @apply text-[0.926vw] normal-case;
+
+          @media (max-width: $tablet) {
+            @apply text-[4.103vw];
+          }
         }
       }
     }
@@ -72,6 +108,20 @@
     @apply w-full h-full  flex flex-col items-center justify-center relative z-[1];
 
     &.sent {
+      @media (max-width: $tablet) {
+        .infoPanel {
+          display: none;
+        }
+
+        .leftBlock {
+          display: none;
+        }
+
+        .actionButton {
+          display: none;
+        }
+      }
+
       .confirmContent {
         > * {
           transition: 0.35s ease !important;
@@ -107,6 +157,14 @@
 
     .leftBlock {
       @apply absolute left-0 bottom-0 max-w-[20%] w-full flex gap-[2.976vw] flex-col;
+
+      @media (max-width: $tablet) {
+        @apply static max-w-full w-full items-center justify-center gap-[8.974vw] text-center mt-auto;
+
+        p {
+          @apply w-full max-w-full;
+        }
+      }
     }
 
     .group {
@@ -115,11 +173,23 @@
       .wrap {
         @apply flex flex-col items-center justify-center gap-[2.646vw] max-w-[45%] w-full relative;
 
+        @media (max-width: $tablet) {
+          @apply max-w-full gap-[10.256vw];
+        }
+
         .statusContent {
           @apply absolute top-0 left-0 w-full h-full flex-col flex justify-between items-center;
 
+          @media (max-width: $tablet) {
+            @apply h-fit gap-[6.410vw];
+          }
+
           small {
             @apply text-[0.794vw] opacity-[0.6] uppercase;
+
+            @media (max-width: $tablet) {
+              @apply text-[3.077vw];
+            }
 
             span {
               opacity: 0;
@@ -132,8 +202,16 @@
             font-size: 3.968vw !important;
             line-height: 110%;
 
+            @media (max-width: $tablet) {
+              font-size: 7.179vw !important;
+            }
+
             .rect {
               @apply w-[7.540vw] h-full rounded-[11.111vw] object-cover object-center mx-[1.058vw] opacity-0 duration-300 delay-[150ms] translate-y-1/2;
+
+              @media (max-width: $tablet) {
+                @apply w-[13.846vw] h-[6.667vw] mx-[2.308vw] rounded-[20.256vw];
+              }
 
               animation-duration: 1s !important;
               animation-delay: 0.25s !important;
@@ -163,6 +241,10 @@
           opacity: 1 !important;
 
           @apply justify-center gap-[3.307vw];
+
+          small {
+            color: #83c3cc;
+          }
         }
 
         .confirmContent {
@@ -170,6 +252,10 @@
 
           .line {
             @apply w-[4.497vw] h-[3.968vw];
+
+            @media (max-width: $tablet) {
+              @apply w-[17.179vw] h-[14.872vw];
+            }
 
             svg {
               path {
@@ -194,6 +280,10 @@
         @apply text-[1.720vw] text-center text-center normal-case;
         line-height: 122%;
 
+        @media (max-width: $tablet) {
+          @apply text-[5.641vw];
+        }
+
         span {
           @apply opacity-0;
         }
@@ -201,10 +291,18 @@
 
       .input {
         @apply h-[22vh] w-full;
+
+        @media (max-width: $tablet) {
+          @apply h-[11vh];
+        }
       }
 
       .pagination {
         @apply flex items-center gap-[0.265vw] max-w-[5.952vw] w-full h-[2.5px];
+
+        @media (max-width: $tablet) {
+          @apply gap-[1.026vw] max-w-[23.077vw];
+        }
 
         div {
           &.active {
@@ -223,6 +321,10 @@
 
     .actionButton {
       @apply mt-auto translate-y-[-50%];
+
+      @media (max-width: $tablet) {
+        @apply mt-[6vh] mb-[11vh] translate-y-0;
+      }
     }
   }
 }

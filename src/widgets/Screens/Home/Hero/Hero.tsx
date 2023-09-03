@@ -37,6 +37,7 @@ export const Hero = () => {
   return (
     <section className={clsx('section', styles.hero)} id="hero">
       <div className="container">
+        {/* .{styles.} */}
         <div className={clsx(styles.heroCard, styles.cardFirst)}>
           <div className={clsx(styles.content, 'reveal')}>
             <div className={styles.line}>
@@ -76,12 +77,14 @@ export const Hero = () => {
           </div>
         </div>
 
-        <div className={styles.heroLogo}>
-          <Logo />
-          <div className={clsx(styles.trademarkSymbol, 'reveal')}>
-            <img src="/images/icons/trademark-symbol.svg" alt="" />
+        {window.innerWidth <= 768 && (
+          <div className={styles.heroLogo}>
+            <Logo />
+            <div className={clsx(styles.trademarkSymbol, 'reveal')}>
+              <img src="/images/icons/trademark-symbol.svg" alt="" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   )

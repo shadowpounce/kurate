@@ -109,17 +109,17 @@ export const Selected = () => {
 
   return (
     <section
-      onMouseMove={(ev) => mouseMove(ev)}
+      onMouseMove={(ev) => window.innerWidth > 768 && mouseMove(ev)}
       id="selected"
       className={clsx('section', styles.selected)}
     >
       <div className="container">
         <div ref={rootRef} className={clsx(styles.wrapper)}>
           <div className={styles.top}>
-            <h5>{useSplit('Our Artists')}</h5>
             <div className={clsx(styles.icon, 'reveal')}>
               <img src="/images/icons/soundwaves.svg" alt="" />
             </div>
+            <h5>{useSplit('Our Artists')}</h5>
           </div>
           <div className={clsx(styles.tabs, 'reveal')}>
             {artistsData.slice(0, 3).map((artist) => (
@@ -181,7 +181,7 @@ export const Selected = () => {
             </div>
             <div className={clsx(styles.block, styles.right)}>
               <div className={styles.content}>
-                <div></div>
+                {window.innerWidth > 768 && <div></div>}
                 <div ref={recordTitleRef} className={styles.title}>
                   {useSplit(currentRecordTitle ?? '', {
                     duration: 1,

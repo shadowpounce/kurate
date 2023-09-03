@@ -145,34 +145,41 @@ export const ContactForm = () => {
       }}
       className={styles.contactForm}
     >
-      <div
-        className={clsx(
-          styles.infoPanel,
-          stepId > 1 && !formSent && styles.visible
-        )}
-      >
-        <div className={styles.head}>
-          <p>Your info</p>
-          <span>
-            {stepId - 1} / {FORM_STEPS.length}
-          </span>
-        </div>
-        <div className={styles.body}>
-          {FORM_STEPS.slice(0, stepId - 1).map((item, idx) => (
-            <div className={styles.step}>
-              <span>{item.placeholder}</span>
-              <p>{data && data[item.name]}</p>
-              <div onClick={() => backToStep(idx + 1)} className={styles.edit}>
-                Edit
+      {window.innerWidth > 768 && (
+        <div
+          className={clsx(
+            styles.infoPanel,
+            stepId > 1 && !formSent && styles.visible
+          )}
+        >
+          <div className={styles.head}>
+            <p>Your info</p>
+            <span>
+              {stepId - 1} / {FORM_STEPS.length}
+            </span>
+          </div>
+          <div className={styles.body}>
+            {FORM_STEPS.slice(0, stepId - 1).map((item, idx) => (
+              <div className={styles.step}>
+                <span>{item.placeholder}</span>
+                <p>{data && data[item.name]}</p>
+                <div
+                  onClick={() => backToStep(idx + 1)}
+                  className={styles.edit}
+                >
+                  Edit
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className={styles.waves}>
-        <Waves />
-      </div>
+      {window.innerWidth > 768 && (
+        <div className={styles.waves}>
+          <Waves />
+        </div>
+      )}
       <div
         className={clsx(
           styles.content,
@@ -199,30 +206,73 @@ export const ContactForm = () => {
                   )}
                 </small>
                 <h4>
-                  <div>
-                    {useSplit(
-                      'Proceed to submission by',
-                      {
-                        duration: 0.5,
-                        delay: 0.025,
-                        startDelay: 0,
-                        ease: 'ease',
-                      },
-                      true
-                    )}
-                  </div>
-                  <div>
-                    {useSplit(
-                      'pressing button down below',
-                      {
-                        duration: 0.5,
-                        delay: 0.025,
-                        startDelay: 0.5,
-                        ease: 'ease',
-                      },
-                      true
-                    )}
-                  </div>
+                  {window.innerWidth > 768 ? (
+                    <>
+                      <div>
+                        {useSplit(
+                          'Proceed to submission by',
+                          {
+                            duration: 0.5,
+                            delay: 0.025,
+                            startDelay: 0,
+                            ease: 'ease',
+                          },
+                          true
+                        )}
+                      </div>
+                      <div>
+                        {useSplit(
+                          'pressing button down below',
+                          {
+                            duration: 0.5,
+                            delay: 0.025,
+                            startDelay: 0.5,
+                            ease: 'ease',
+                          },
+                          true
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        {useSplit(
+                          'Proceed to submission',
+                          {
+                            duration: 0.5,
+                            delay: 0.025,
+                            startDelay: 0,
+                            ease: 'ease',
+                          },
+                          true
+                        )}
+                      </div>
+                      <div>
+                        {useSplit(
+                          'by pressing button',
+                          {
+                            duration: 0.5,
+                            delay: 0.025,
+                            startDelay: 0.5,
+                            ease: 'ease',
+                          },
+                          true
+                        )}
+                      </div>
+                      <div>
+                        {useSplit(
+                          'down below',
+                          {
+                            duration: 0.5,
+                            delay: 0.025,
+                            startDelay: 1,
+                            ease: 'ease',
+                          },
+                          true
+                        )}
+                      </div>
+                    </>
+                  )}
                 </h4>
                 <div className={styles.line}>
                   <DrawableLine anim={confirmStep && true}>
@@ -370,6 +420,36 @@ export const ContactForm = () => {
             Next step
           </Button>
         </div>
+
+        {window.innerWidth <= 768 && currentStep !== 'name' && (
+          <div
+            className={clsx(
+              styles.infoPanel,
+              stepId > 1 && !formSent && styles.visible
+            )}
+          >
+            <div className={styles.head}>
+              <p>Your info</p>
+              <span>
+                {stepId - 1} / {FORM_STEPS.length}
+              </span>
+            </div>
+            <div className={styles.body}>
+              {FORM_STEPS.slice(0, stepId - 1).map((item, idx) => (
+                <div className={styles.step}>
+                  <span>{item.placeholder}</span>
+                  <p>{data && data[item.name]}</p>
+                  <div
+                    onClick={() => backToStep(idx + 1)}
+                    className={styles.edit}
+                  >
+                    Edit
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className={styles.leftBlock}>
           <Cross activeId={4} />

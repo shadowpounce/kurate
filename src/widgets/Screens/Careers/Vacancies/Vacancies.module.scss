@@ -1,5 +1,18 @@
 .vacancies {
   .wrapper {
-    @apply flex flex-col max-w-[75%] w-full mx-auto overflow-hidden h-full relative pt-[4.960vw] pb-[7.937vw];
+    @apply max-w-[75%] w-full h-full mx-auto overflow-hidden pt-[4.960vw] pb-[7.937vw];
+
+    @media (max-width: $tablet) {
+      @apply py-[6vh] pb-[12vh] max-w-full;
+    }
+
+    &.collapsed {
+      height: fit-content !important;
+      overflow: unset !important;
+    }
+  }
+
+  .wrap {
+    @apply relative w-full h-full flex flex-col;
   }
 }

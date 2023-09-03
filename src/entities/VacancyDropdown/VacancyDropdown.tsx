@@ -1,4 +1,11 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import styles from './VacancyDropdown.module.scss'
 import { Button } from '../../shared/Button/Button'
 import clsx from 'clsx'
@@ -10,6 +17,9 @@ interface IProps {
   text: string
   requirments: string[]
   handleClick?: () => void
+  idx: number
+  showedMore: boolean
+  setShowedMore: Dispatch<SetStateAction<boolean>>
 }
 
 export const VacancyDropdown: FC<IProps> = ({
@@ -19,6 +29,9 @@ export const VacancyDropdown: FC<IProps> = ({
   text,
   requirments,
   handleClick,
+  idx,
+  showedMore,
+  setShowedMore,
 }) => {
   const bodyRef = useRef<HTMLDivElement>(null)
 
@@ -34,7 +47,15 @@ export const VacancyDropdown: FC<IProps> = ({
   }, [bodyRef])
 
   const toggleDropdown = () => {
-    active ? setActive(false) : setActive(true)
+    if (active) {
+      setActive(false)
+    } else {
+      setActive(true)
+
+      if (!showedMore) {
+        setShowedMore(true)
+      }
+    }
   }
 
   return (
@@ -43,7 +64,10 @@ export const VacancyDropdown: FC<IProps> = ({
       style={
         active
           ? {
-              height: `${bodyHeight + 170}px`,
+              height:
+                window.innerWidth > 768
+                  ? `${bodyHeight + 170}px`
+                  : `${bodyHeight + 45}px`,
             }
           : {
               cursor: 'none',
@@ -51,14 +75,23 @@ export const VacancyDropdown: FC<IProps> = ({
       }
       className={clsx(styles.vacancyDropdown, active && styles.active)}
     >
-      <div className={styles.head}>
+      <div
+        style={{
+          transitionDelay: `${idx * 0.125}s`,
+        }}
+        className={clsx(styles.head, 'reveal')}
+      >
         <div className={styles.position}>
           <h6>{position}</h6>
         </div>
         <div className={styles.addInfo}>
-          <span className={styles.position}>{position}</span>
+          {window.innerWidth > 768 && (
+            <span className={styles.position}>{position}</span>
+          )}
           <div className={styles.group}>
-            <span className={styles.type}>{type}</span>
+            {window.innerWidth > 768 && (
+              <span className={styles.type}>{type}</span>
+            )}
             <Button
               className={styles.more}
               handleClick={() => {
@@ -67,13 +100,25 @@ export const VacancyDropdown: FC<IProps> = ({
               }}
               withUnderline={false}
             >
-              More
+              {window.innerWidth > 768 ? `More` : `Info`}
             </Button>
           </div>
         </div>
 
         <div ref={bodyRef} className={styles.body}>
           <div className={styles.wrapper}>
+            {window.innerWidth <= 768 && (
+              <div className={styles.mobileInfoGroup}>
+                <div className={styles.mobileInfoBlock}>
+                  <span className={styles.vacancyInfoLabel}>Location</span>
+                  <p>{location}</p>
+                </div>
+                <div className={styles.mobileInfoBlock}>
+                  <span className={styles.vacancyInfoLabel}>Type</span>
+                  <p>{type}</p>
+                </div>
+              </div>
+            )}
             <div className={styles.squares}>
               <div className={styles.arnament}>
                 <svg

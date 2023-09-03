@@ -2,6 +2,10 @@
   .wrapper {
     @apply max-w-[70%] w-full mx-auto flex flex-col items-center justify-center gap-[1vw] h-full py-[4.960vw];
 
+    @media (max-width: $tablet) {
+      @apply max-w-full py-[8vh] pb-[10vh] gap-[1vh];
+    }
+
     &.selecting {
       .block {
         animation: toHidden 1s forwards ease;
@@ -15,7 +19,15 @@
     .top {
       @apply flex flex-col items-center justify-center gap-[1.116vw];
 
+      @media (max-width: $tablet) {
+        @apply gap-[3vh];
+      }
+
       h5 {
+        @media (max-width: $tablet) {
+          @apply text-[5.128vw];
+        }
+
         span {
           @apply opacity-0 translate-y-full;
         }
@@ -26,6 +38,10 @@
 
         transition-duration: 0.5s !important;
         transition-delay: 0.5s !important;
+
+        @media (max-width: $tablet) {
+          @apply w-[5.128vw] h-[4.1vw] translate-y-0;
+        }
 
         img {
           @apply w-full h-full object-contain object-center;
@@ -39,8 +55,16 @@
       transition-delay: 0.125s !important;
       transition-duration: 1s !important;
 
+      @media (max-width: $tablet) {
+        @apply justify-between w-full gap-[8.205vw];
+      }
+
       .tab {
         @apply flex-1 flex flex-col items-center justify-center gap-[1.257vw] text-[1.455vw] opacity-[0.5] transition-opacity duration-[700ms] whitespace-nowrap;
+
+        @media (max-width: $tablet) {
+          @apply text-[4.1vw] gap-[2.5vw];
+        }
 
         &.active {
           @apply opacity-100;
@@ -60,8 +84,16 @@
     .info {
       @apply relative w-full flex-1;
 
+      @media (max-width: $tablet) {
+        @apply flex flex-col justify-between;
+      }
+
       .covers {
         @apply max-w-[35%] w-full absolute left-1/2 translate-x-[-50%];
+
+        @media (max-width: $tablet) {
+          @apply static translate-x-0 order-2 max-w-[70vw] w-full h-[70vw] mx-auto;
+        }
 
         .wrap {
           @apply pt-[100%] relative opacity-0 translate-y-1/2;
@@ -90,10 +122,18 @@
       .block {
         @apply absolute;
 
+        @media (max-width: $tablet) {
+          @apply static;
+        }
+
         .content {
           > p {
             @apply text-[1.190vw];
             color: rgba(255, 255, 255, 0.5);
+
+            @media (max-width: $tablet) {
+              @apply text-[4.103vw];
+            }
 
             span {
               @apply text-white;
@@ -104,8 +144,22 @@
         &.right {
           @apply right-0 top-1/2 translate-y-[-50%];
 
+          .content {
+            @media (max-width: $tablet) {
+              @apply flex flex-col gap-[3vw] items-center justify-center;
+            }
+          }
+
+          @media (max-width: $tablet) {
+            @apply translate-y-0 order-1;
+          }
+
           .title {
             @apply text-[2.910vw] overflow-hidden absolute left-0 top-0 whitespace-nowrap translate-y-[-100%];
+
+            @media (max-width: $tablet) {
+              @apply text-[6.15vw] static translate-y-0;
+            }
 
             span {
               @apply opacity-0 translate-y-1/2;
@@ -116,11 +170,19 @@
             @apply mt-[2.381vw] mb-[4.762vw] opacity-0 translate-x-1/2;
             transition-duration: 1s !important;
             transition-delay: 0.6s !important;
+
+            @media (max-width: $tablet) {
+              @apply translate-x-0 text-[3.6vw] my-0;
+            }
           }
         }
 
         &.bottomLeft {
           @apply left-0 bottom-0 translate-y-[-50%] max-w-[45%] w-full pointer-events-none;
+
+          @media (max-width: $tablet) {
+            @apply translate-y-[-25%] max-w-full order-3;
+          }
 
           .content {
             @apply flex flex-col items-center justify-center gap-[2.976vw];
@@ -137,6 +199,10 @@
 
             .circlePhoto {
               @apply flex mr-[5.291vw];
+
+              @media (max-width: $tablet) {
+                @apply mr-0;
+              }
 
               > div {
                 @apply opacity-0 rotate-[-45deg] translate-x-1/2 relative;
@@ -163,6 +229,10 @@
               .circle {
                 @apply w-[4.299vw] h-[4.299vw] rounded-[50%] overflow-hidden;
 
+                @media (max-width: $tablet) {
+                  @apply w-[8.205vw] h-[8.205vw];
+                }
+
                 img {
                   @apply w-full h-full object-cover object-center;
                 }
@@ -172,6 +242,11 @@
             h2 {
               @apply flex items-start;
               font-size: 4.995vw !important;
+
+              @media (max-width: $tablet) {
+                font-size: 12.4vw !important;
+              }
+
               span {
                 @apply opacity-0 translate-y-full;
               }

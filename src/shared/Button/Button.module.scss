@@ -1,6 +1,6 @@
 .button {
   font-family: $helveticaNowDisplay !important;
-  @apply flex flex-col gap-[0.628vw] text-[0.926vw] font-semibold w-fit;
+  @apply flex flex-col gap-[0.628vw] text-[0.926vw] font-semibold w-fit overflow-hidden;
 
   transition: 0.5s ease;
   transition-property: background-color, color;
@@ -28,6 +28,10 @@
   &.secondary {
     @apply px-[1.323vw] py-[0.926vw] min-h-[4.6296vh] bg-white
     text-black rounded-[100px];
+
+    @media (max-width: $tablet) {
+      @apply py-[3.590vw] px-[5.128vw] min-h-[5.8vh] items-center justify-center gap-[3.846vw];
+    }
 
     .arrow {
       svg {
@@ -77,6 +81,10 @@
 
   .text {
     @apply flex items-center justify-between gap-[0.926vw];
+
+    @media (max-width: $tablet) {
+      @apply gap-[3.590vw];
+    }
 
     transition-duration: 1s;
     transition-delay: 0.75s;

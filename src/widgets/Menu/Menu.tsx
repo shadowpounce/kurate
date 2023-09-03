@@ -33,7 +33,8 @@ export const Menu = () => {
       className={clsx(
         styles.menu,
         pageLoaded && styles.loaded,
-        playerActive && styles.toPlayer
+        playerActive && styles.toPlayer,
+        window.innerWidth <= 768 && menuActive && styles.mobileOpened
       )}
     >
       <div className={styles.content}>
@@ -45,31 +46,77 @@ export const Menu = () => {
                 {pages.map((page) => (
                   <li>
                     <a href={page.path}>{page.title}</a>
+                    {page.title.toLowerCase() === currentPage && (
+                      <ul className={styles.mobileList}>
+                        {currentPage &&
+                          navLinks[currentPage.toLowerCase()].map(
+                            (link: any) => (
+                              <li
+                                onClick={(ev) => {
+                                  ev.preventDefault()
+                                  toggleMenu()
+                                  toScreen(link.href)
+                                }}
+                                className={styles.navItem}
+                              >
+                                <a href={link.href}>{link.title}</a>
+                              </li>
+                            )
+                          )}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className={styles.col}>
-              <span>Follow</span>
-              <ul>
-                <li>
-                  <a href="">Twitter</a>
-                </li>
-                <li>
-                  <a href="">Instagram</a>
-                </li>
-                <li>
-                  <a href="">Facebook</a>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.col}>
-              <span>Join us</span>
-              <ul>
-                <SendButton withAnim={false} />
-              </ul>
-            </div>
+            {window.innerWidth > 768 ? (
+              <>
+                <div className={styles.col}>
+                  <span>Follow</span>
+                  <ul>
+                    <li>
+                      <a href="">Twitter</a>
+                    </li>
+                    <li>
+                      <a href="">Instagram</a>
+                    </li>
+                    <li>
+                      <a href="">Facebook</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.col}>
+                  <span>Join us</span>
+                  <ul>
+                    <SendButton withAnim={false} />
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <div className={styles.mobileCol}>
+                <div className={styles.col}>
+                  <span>Join us</span>
+                  <ul>
+                    <SendButton withAnim={false} />
+                  </ul>
+                </div>
+                <div className={styles.col}>
+                  <span>Follow</span>
+                  <ul>
+                    <li>
+                      <a href="">Twitter</a>
+                    </li>
+                    <li>
+                      <a href="">Instagram</a>
+                    </li>
+                    <li>
+                      <a href="">Facebook</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className={clsx(styles.panels, menuActive && styles.menuOpened)}>

@@ -8,8 +8,15 @@
   </head>
   <body>
     <div id="root"></div>
+
     <script src="/libs/ScrollSmoother.min.js"></script>
     <script src="/libs/ScrollTrigger.min.js"></script>
+    <script src="/libs/three.min.js"></script>
+    <script type="text/javascript">
+      window.THREE = THREE
+      // global.THREE = THREE
+    </script>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module" async src="src/test.js"></script>
   </body>
 </html>

@@ -16,7 +16,7 @@ const Footer = () => {
               }}
               className={styles.logo}
             >
-              <Logo cover={true} />
+              <Logo />
             </div>
             <div className="reveal">
               <svg

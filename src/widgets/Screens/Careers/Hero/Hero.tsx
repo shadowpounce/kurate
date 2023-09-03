@@ -16,13 +16,22 @@ export const Hero = () => {
           <div className={styles.block}>
             <Cross activeId={0} />
             <p className="brand-text">
-              <div className="reveal">
-                Empowering artists, captivating global{' '}
-              </div>
-              <div className="reveal">
-                audiences, and redefining the future of{' '}
-              </div>
-              <div className="reveal">musicas a dynamic record label</div>
+              {window.innerWidth > 768 ? (
+                <>
+                  <div className="reveal">
+                    Empowering artists, captivating global{' '}
+                  </div>
+                  <div className="reveal">
+                    audiences, and redefining the future of{' '}
+                  </div>
+                  <div className="reveal">musicas a dynamic record label</div>
+                </>
+              ) : (
+                <div className="reveal">
+                  Empowering artists, captivating global audiences, and
+                  redefining the future of musicas a dynamic record label
+                </div>
+              )}
             </p>
           </div>
         </div>

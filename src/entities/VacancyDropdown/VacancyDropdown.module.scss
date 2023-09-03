@@ -1,15 +1,51 @@
+.vacancyInfoLabel {
+  @apply text-[0.794vw] uppercase opacity-[0.4];
+  letter-spacing: 0.6px;
+  color: #fff !important;
+
+  @media (max-width: $tablet) {
+    @apply text-[3.077vw];
+  }
+}
+
 .vacancyDropdown {
-  @apply w-full h-[11.243vw] flex flex-col py-[4.630vw] relative overflow-hidden;
+  @apply w-full h-[11.243vw] min-h-[11.243vw] flex flex-col py-[4.630vw] relative overflow-hidden;
+
+  @media (max-width: $tablet) {
+    @apply min-h-[11.5vh] h-[11.5vh] items-center;
+  }
 
   transition: height 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0.5s;
+
+  @media (max-width: $tablet) {
+    transition-delay: 0.15s !important;
+  }
 
   &.active {
     overflow: unset;
 
     transition-delay: 0s !important;
 
+    .head {
+      .position {
+        @media (max-width: $tablet) {
+          transition-delay: 0s !important;
+          translate: 0 !important;
+          z-index: 2;
+        }
+      }
+
+      .addInfo {
+        @media (max-width: $tablet) {
+          transition-delay: 0s !important;
+          translate: 0 !important;
+          z-index: 2;
+        }
+      }
+    }
+
     .body {
-      @apply opacity-100 delay-300;
+      @apply opacity-100 delay-300 pointer-events-auto;
     }
 
     .arnament {
@@ -60,18 +96,36 @@
   }
 
   .head {
-    @apply w-full flex justify-between items-center relative;
+    @apply w-full flex justify-between items-center relative opacity-0 translate-y-[15%];
+
+    transition-duration: 1s !important;
 
     .position {
       @apply flex-[0.45];
 
+      @media (max-width: $tablet) {
+        translate: 0 125% !important;
+        transition-delay: 0s !important;
+        transition: translate 0.5s ease;
+      }
+
       h6 {
         @apply flex-1;
+
+        @media (max-width: $tablet) {
+          font-size: 5.128vw !important;
+        }
       }
     }
 
     .addInfo {
       @apply flex-[0.55] flex items-center justify-between;
+
+      @media (max-width: $tablet) {
+        translate: 0 125% !important;
+        transition-delay: 0s !important;
+        transition: translate 0.5s ease;
+      }
 
       > span {
         &:nth-child(1) {
@@ -81,6 +135,10 @@
 
       .group {
         @apply flex-1 flex items-center justify-between;
+
+        @media (max-width: $tablet) {
+          @apply justify-end;
+        }
       }
     }
 
@@ -102,13 +160,35 @@
   }
 
   .body {
-    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[3.968vw] transition-opacity duration-500 delay-[750ms];
+    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[3.968vw] transition-opacity duration-500 delay-[750ms] pointer-events-none text-[1.190vw];
+
+    color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: $tablet) {
+      @apply delay-0 text-[3.590vw] pt-0;
+    }
+
+    .mobileInfoGroup {
+      @apply pt-[5vh] flex items-start gap-[20vw];
+    }
+
+    .mobileInfoBlock {
+      @apply flex flex-col gap-[1.667vw];
+    }
 
     .wrapper {
       @apply flex w-full;
 
+      @media (max-width: $tablet) {
+        @apply flex-col;
+      }
+
       .squares {
         @apply flex-[0.45] relative;
+
+        @media (max-width: $tablet) {
+          display: none;
+        }
 
         .arnament {
           @apply w-[9.921vw] h-[9.921vw] absolute left-0 bottom-0;
@@ -149,9 +229,17 @@
       .content {
         @apply flex-[0.55] flex flex-col gap-[2.976vw];
 
+        @media (max-width: $tablet) {
+          @apply flex-1 gap-[8.205vw] py-[5vh];
+        }
+
         .text {
-          @apply opacity-[0.8] text-[1.190vw] max-w-[65%] w-full normal-case;
+          @apply max-w-[65%] w-full normal-case;
           line-height: 140%;
+
+          @media (max-width: $tablet) {
+            @apply max-w-full;
+          }
         }
 
         ul {

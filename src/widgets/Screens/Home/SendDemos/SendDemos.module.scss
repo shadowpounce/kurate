@@ -1,4 +1,16 @@
 .sendDemos {
+  @media (max-width: $tablet) {
+    height: fit-content !important;
+  }
+
+  div[class='container'] {
+    @media (max-width: $tablet) {
+      @apply pt-[14vh] pb-[14vh];
+
+      height: fit-content !important;
+    }
+  }
+
   .ticker {
     @apply absolute w-full top-0 left-0 right-0;
   }
@@ -8,6 +20,10 @@
 
     .contactForm {
       @apply w-full h-[75%] my-auto;
+
+      @media (max-width: $tablet) {
+        @apply h-full;
+      }
     }
   }
 }

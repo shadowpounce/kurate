@@ -1,11 +1,40 @@
 .menu {
   @apply fixed bottom-[2.7778vh] left-1/2 translate-x-[-50%] h-fit w-[35%] z-[2] rounded-[0.794vw];
 
+  &.mobileOpened {
+    @media (max-width: $tablet) {
+      @apply w-[95vw];
+      transition-delay: 0s !important;
+    }
+
+    .dropdownMenu {
+      transition-delay: 0.5s;
+    }
+
+    .playerSwitch {
+      width: 50%;
+    }
+
+    .menuButton {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    @apply bottom-auto top-[90dvh] h-[8vh] w-[75vw];
+    transition-delay: 0.5s !important;
+    transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
   perspective: 1000px;
 
   &.loaded {
     .content {
       @apply opacity-100 translate-y-0;
+
+      @media (max-width: $tablet) {
+        @apply opacity-100;
+      }
     }
   }
 
@@ -31,6 +60,11 @@
     .dropdownMenu {
       @apply absolute left-0 right-0 top-0 translate-y-[-100%] p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[400ms] opacity-0 pointer-events-none;
 
+      @media (max-width: $tablet) {
+        @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none;
+        background: #171717 !important;
+      }
+
       background: rgba(222, 222, 222, 0.03);
       backdrop-filter: blur(59px);
 
@@ -43,18 +77,47 @@
         backdrop-filter: blur(88.5px);
         background: rgba(0, 0, 0, 0.1);
 
+        @media (max-width: $tablet) {
+          @apply rounded-[2.564vw] p-[6.410vw];
+        }
+
+        .mobileCol {
+          @apply flex flex-col gap-[4vh];
+        }
+
         .col {
           @apply flex flex-col gap-[1.323vw];
 
+          @media (max-width: $tablet) {
+            @apply gap-[5.128vw];
+          }
+
           span {
             @apply text-[0.661vw] uppercase font-medium opacity-[0.55];
+
+            @media (max-width: $tablet) {
+              @apply text-[2.564vw];
+            }
           }
 
           ul {
             @apply flex flex-col gap-[0.661vw];
 
+            @media (max-width: $tablet) {
+              @apply gap-[5.128vw];
+            }
+
             li {
               @apply font-medium;
+
+              .mobileList {
+                @apply hidden flex-col gap-[3.077vw] text-[3.590vw] pt-[3.590vw];
+                color: rgba(255, 255, 255, 0.6);
+
+                @media (max-width: $tablet) {
+                  @apply flex;
+                }
+              }
             }
           }
         }
@@ -64,10 +127,18 @@
     .nav {
       @apply p-[0.397vw] text-[1.058vw] text-white font-medium h-full w-full relative;
 
+      @media (max-width: $tablet) {
+        @apply text-[4.103vw];
+      }
+
       transition: border-radius 0.4s ease;
 
       .closeButton {
         @apply absolute top-1/2 right-[1.323vw] translate-y-[-50%] w-[0.794vw] h-[0.794vw] opacity-0 transition-opacity duration-300 pointer-events-none;
+
+        @media (max-width: $tablet) {
+          @apply w-[3.077vw] h-[3.077vw] right-[6.667vw] translate-y-[-27%];
+        }
 
         &.shown {
           @apply opacity-100 pointer-events-auto;
@@ -75,6 +146,10 @@
 
         img {
           @apply w-full h-full object-cover object-center;
+
+          @media (max-width: $tablet) {
+            @apply object-contain;
+          }
         }
       }
 
@@ -84,10 +159,24 @@
         .menuButton {
           @apply opacity-[1] flex items-center justify-center gap-[0.926vw];
           background: #c9c9c90d;
+
+          @media (max-width: $tablet) {
+            @apply gap-[3.590vw] justify-start px-[5.128vw] min-w-[48%] duration-300 w-[48%];
+            transition-property: width;
+            transition-timing-function: ease;
+            display: flex !important ;
+          }
         }
 
         .playerSwitch {
           @apply flex items-center justify-start pr-[0.529vw];
+
+          @media (max-width: $tablet) {
+            @apply min-w-[48%] duration-300 w-[48%] ml-auto;
+            transition-property: width;
+            transition-timing-function: ease;
+            display: flex !important;
+          }
 
           &:hover {
             background-color: rgba(201, 201, 201, 0.0509803922);
@@ -101,6 +190,10 @@
             @apply h-[20px] w-[1px] opacity-[0.2] bg-white;
 
             transition: opacity 0.4s ease;
+
+            @media (max-width: $tablet) {
+              display: none;
+            }
           }
         }
 
@@ -109,6 +202,10 @@
 
           transition: 0.4s ease 0.125s;
           transition-property: background-color, border-radius;
+
+          @media (max-width: $tablet) {
+            @apply hidden rounded-[2.564vw];
+          }
 
           &:hover {
             a {
@@ -122,6 +219,10 @@
 
           .burger {
             @apply w-[0.728vw] h-[0.529vw];
+
+            @media (max-width: $tablet) {
+              @apply min-w-[2.821vw] w-[2.821vw] min-h-[2.308vw] h-[2.308vw];
+            }
 
             img {
               @apply w-full h-full object-contain object-center;
@@ -137,6 +238,11 @@
       backdrop-filter: blur(59px);
 
       transition: border-radius 0.4s ease;
+
+      @media (max-width: $tablet) {
+        @apply rounded-[3.077vw];
+        backdrop-filter: none;
+      }
 
       &.menuOpened {
         border-top-left-radius: 0;
@@ -188,6 +294,11 @@
 
       .panel {
         @apply w-full min-w-full min-h-[7.5vh] h-[7.5vh] rounded-[0.794vw];
+
+        @media (max-width: $tablet) {
+          @apply p-[1.538vw] pt-[2.051vw] rounded-[2.564vw] min-h-[8vh] h-[8vh];
+          background: #171717 !important;
+        }
 
         backface-visibility: hidden;
 

@@ -5,9 +5,17 @@
   background: rgba(217, 217, 217, 0.02);
   backdrop-filter: blur(15px);
 
+  @media (max-width: $tablet) {
+    @apply pt-[7.369vw] py-[6.538vw] px-[9.487vw];
+  }
+
   .content {
     @apply relative w-full h-full text-[4.622vw];
     letter-spacing: -1.7px;
+
+    @media (max-width: $tablet) {
+      @apply text-[10.256vw];
+    }
 
     .placeholder {
       @apply absolute left-0 top-1/2 translate-y-[-50%] opacity-[0.1] pointer-events-none whitespace-nowrap;
@@ -46,6 +54,10 @@
       line-height: 140%;
       letter-spacing: 0.6px;
 
+      @media (max-width: $tablet) {
+        @apply text-[2.564vw] translate-y-[-100%];
+      }
+
       span {
         opacity: 0;
         translate: 0 50%;
@@ -54,6 +66,10 @@
 
     input {
       @apply text-[2.646vw] w-full h-full rounded-none outline-none absolute left-0 right-0 top-0 bottom-0;
+
+      @media (max-width: $tablet) {
+        @apply text-[4.103vw];
+      }
 
       line-height: 100%;
       letter-spacing: -0.8px;

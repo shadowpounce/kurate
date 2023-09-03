@@ -7,6 +7,10 @@
   transition-property: translate;
   transition-delay: 0.5s;
 
+  @media (max-width: $tablet) {
+    @apply py-[9.231vw] px-[5.128vw];
+  }
+
   &.closing {
     translate: 0 100%;
   }
@@ -16,6 +20,10 @@
 
     .logo {
       @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[21.164vw] h-[5.622vw];
+
+      @media (max-width: $tablet) {
+        @apply w-[45.641vw] h-[6vh];
+      }
 
       > div {
         @apply opacity-[0] duration-[750ms] w-full h-full;
@@ -42,6 +50,10 @@
 
           img {
             @apply w-full h-full object-cover object-center;
+
+            @media (max-width: $tablet) {
+              @apply object-contain;
+            }
           }
         }
       }
@@ -52,6 +64,10 @@
       letter-spacing: 0.8px;
 
       @apply absolute;
+
+      @media (max-width: $tablet) {
+        @apply text-[3.077vw];
+      }
 
       &.left,
       &.right {
@@ -64,14 +80,30 @@
 
       &.left {
         @apply opacity-[0.5] left-0 top-1/2 translate-y-[-50%];
+
+        @media (max-width: $tablet) {
+          @apply translate-y-0 top-[65dvh];
+        }
       }
 
       &.right {
         @apply text-white right-0 top-1/2 translate-y-[-50%];
+
+        @media (max-width: $tablet) {
+          @apply translate-y-0 top-[65dvh] text-left;
+
+          p {
+            @apply text-right;
+          }
+        }
       }
 
       &.bottom {
         @apply flex flex-col items-center gap-[1.984vw] text-[0.794vw] font-medium left-1/2 translate-x-[-50%] bottom-0;
+
+        @media (max-width: $tablet) {
+          @apply text-[3.077vw] w-full text-center gap-[7.692vw];
+        }
 
         line-height: 125%;
 
@@ -109,6 +141,10 @@
 
         span {
           @apply text-[0.794vw] opacity-[0.6];
+
+          @media (max-width: $tablet) {
+            @apply text-[3.077vw];
+          }
         }
       }
     }

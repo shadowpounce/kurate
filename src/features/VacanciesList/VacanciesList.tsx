@@ -1,49 +1,53 @@
-import { useState } from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { vacanciesData } from '../../data'
 import { VacancyDropdown } from '../../entities/VacancyDropdown/VacancyDropdown'
 import { Button } from '../../shared/Button/Button'
 import styles from './VacanciesList.module.scss'
 import clsx from 'clsx'
 
-export const VacanciesList = () => {
-  const [showedMore, setShowedMore] = useState<boolean>(false)
+interface IProps {
+  showedMore: boolean
+  setShowedMore: Dispatch<SetStateAction<boolean>>
+}
+
+export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
   const [canScroll, setCanScroll] = useState<boolean>(false)
 
   return (
-    <div className={styles.vacanciesList}>
+    <>
       <div className={clsx(styles.top, 'reveal')}>
         <div className={styles.group}>
-          <span>Position</span>
+          <span className={styles.vacancyInfoLabel}>
+            {window.innerWidth > 768 ? 'Position' : 'Open vacancies'}
+          </span>
         </div>
-        <div className={styles.group}>
-          <span>Location</span>
-          <span>Type</span>
-          <span></span>
-        </div>
+        {window.innerWidth > 768 && (
+          <div className={styles.group}>
+            <span className={styles.vacancyInfoLabel}>Location</span>
+            <span className={styles.vacancyInfoLabel}>Type</span>
+            <span className={styles.vacancyInfoLabel}></span>
+          </div>
+        )}
       </div>
-      <div className={clsx(styles.listWrapper)}>
-        <ul
-          data-scrollable="true"
-          className={clsx(styles.list, canScroll && styles.collapsed, 'reveal')}
-        >
-          {vacanciesData
-            .slice(0, showedMore ? vacanciesData.length - 1 : 4)
-            .map((vacancy) => (
-              <VacancyDropdown
-                handleClick={() => {
-                  if (!showedMore) {
-                    canScroll ? setCanScroll(false) : setCanScroll(true)
-                  }
-                }}
-                position={vacancy.position}
-                location={vacancy.location}
-                text={vacancy.text}
-                requirments={vacancy.requirments}
-                type={vacancy.type}
-              />
-            ))}
-        </ul>
-      </div>
+      <ul className={styles.vacanciesList}>
+        {vacanciesData.map((vacancy, idx) => (
+          <VacancyDropdown
+            showedMore={showedMore}
+            setShowedMore={setShowedMore}
+            idx={idx}
+            handleClick={() => {
+              if (!showedMore) {
+                canScroll ? setCanScroll(false) : setCanScroll(true)
+              }
+            }}
+            position={vacancy.position}
+            location={vacancy.location}
+            text={vacancy.text}
+            requirments={vacancy.requirments}
+            type={vacancy.type}
+          />
+        ))}
+      </ul>
       {!showedMore && (
         <Button
           handleClick={() => {
@@ -56,6 +60,6 @@ export const VacanciesList = () => {
           Show more
         </Button>
       )}
-    </div>
+    </>
   )
 }
