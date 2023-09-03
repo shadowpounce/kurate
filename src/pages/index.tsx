@@ -8,6 +8,7 @@ export const pages = [
     path: '/',
     element: <Home />,
     withPreloader: true,
+    withThreeDCards: true,
   },
   {
     title: 'Careers',

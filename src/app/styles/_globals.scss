@@ -59,9 +59,9 @@ header {
 }
 
 #root > canvas {
-  @apply absolute top-[24.4vh] left-1/2 w-1/2 h-1/2 z-[100] mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0;
-  width: 100% !important;
-  height: 100% !important;
+  @apply absolute top-[24.4vh] left-1/2 w-1/2 h-1/2 z-[2] mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0;
+  width: 80% !important;
+  height: 80% !important;
 
   transition: 1s ease;
   transition-property: opacity, transform;
@@ -70,12 +70,14 @@ header {
     opacity: 1 !important;
     transform: translateX(-50%) translateY(-35%) !important;
     transition-delay: 0.25s !important;
+    pointer-events: auto;
   }
 
   &.out {
     opacity: 0 !important;
     transition-duration: 0.75s !important;
     transform: translateX(-50%) translateY(-100%) !important;
+    pointer-events: none;
   }
 }
 

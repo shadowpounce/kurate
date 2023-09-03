@@ -1,9 +1,10 @@
 .artists {
   .wrapper {
-    @apply w-full h-full flex flex-col gap-[3vh];
+    @apply w-full min-h-[150vh] h-[150vh] flex flex-col gap-[3vh];
 
     @media (max-width: $tablet) {
       @apply pb-[10vh] justify-between h-fit;
+      min-height: unset !important;
     }
   }
 
@@ -12,6 +13,10 @@
 
     @media (max-width: $tablet) {
       @apply flex-none h-fit pt-[8vh];
+    }
+
+    &:nth-child(3) {
+      @apply pt-0;
     }
   }
 
@@ -67,10 +72,10 @@
   }
 
   .slider {
-    @apply flex-[0.7];
+    @apply flex-[0.7] overflow-hidden;
 
     @media (max-width: $tablet) {
-      @apply flex-[0.5];
+      @apply flex-1;
     }
   }
 }

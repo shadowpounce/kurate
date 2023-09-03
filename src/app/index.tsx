@@ -25,7 +25,12 @@ const App = () => {
           key={page.path}
           path={page.path}
           element={
-            <Layout withPreloader={page.withPreloader}>{page.element}</Layout>
+            <Layout
+              withThreeDCards={page.withThreeDCards}
+              withPreloader={page.withPreloader}
+            >
+              {page.element}
+            </Layout>
           }
         ></Route>
       ))}

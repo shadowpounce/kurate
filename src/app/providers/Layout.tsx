@@ -9,15 +9,21 @@ import { MainContext } from './MainContext'
 import { Preloader } from '../../widgets/Preloader/Preloader'
 import { Menu } from '../../widgets/Menu/Menu'
 import { useLocation } from 'react-router-dom'
+import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
 
 MouseFollower.registerGSAP(gsap)
 
 interface IProps {
   children: ReactNode
   withPreloader?: boolean
+  withThreeDCards?: boolean
 }
 
-export const Layout: FC<IProps> = ({ children, withPreloader = true }) => {
+export const Layout: FC<IProps> = ({
+  children,
+  withPreloader = true,
+  withThreeDCards = false,
+}) => {
   const [currentPage, setCurrentPage] = useState<string>('')
   const [pageLoaded, setPageLoaded] = useState<boolean>(false)
   const [activeScreen, setActiveScreen] = useState<number>(0)
@@ -83,6 +89,7 @@ export const Layout: FC<IProps> = ({ children, withPreloader = true }) => {
       <Menu />
       <Header />
       {children}
+      {/* {withThreeDCards && <ThreeDCards />} */}
       <BackgroundGrid />
     </MainContext.Provider>
   )
