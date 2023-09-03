@@ -3,7 +3,7 @@
     @apply w-full h-full flex flex-col gap-[3vh];
 
     @media (max-width: $tablet) {
-      @apply pb-[8vh] justify-between h-fit;
+      @apply pb-[10vh] justify-between h-fit;
     }
   }
 

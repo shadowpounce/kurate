@@ -9,7 +9,7 @@
     @apply flex gap-[7.275vw] pt-[4.960vw] pb-[1.984vw];
 
     @media (max-width: $tablet) {
-      @apply flex-col-reverse py-[8vh]  h-fit overflow-hidden flex-none relative;
+      @apply flex-col-reverse py-[8vh] pb-[10vh] h-fit overflow-hidden flex-none relative;
     }
   }
 

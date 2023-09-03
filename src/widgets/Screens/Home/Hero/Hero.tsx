@@ -37,7 +37,6 @@ export const Hero = () => {
   return (
     <section className={clsx('section', styles.hero)} id="hero">
       <div className="container">
-        {/* .{styles.} */}
         <div className={clsx(styles.heroCard, styles.cardFirst)}>
           <div className={clsx(styles.content, 'reveal')}>
             <div className={styles.line}>

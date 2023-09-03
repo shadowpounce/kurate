@@ -21,7 +21,7 @@
   }
 
   @media (max-width: $tablet) {
-    @apply bottom-auto top-[90dvh] h-[8vh] w-[75vw];
+    @apply bottom-auto top-[85dvh] h-[12vh] w-[75vw];
     transition-delay: 0.5s !important;
     transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   }
@@ -61,7 +61,7 @@
       @apply absolute left-0 right-0 top-0 translate-y-[-100%] p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[400ms] opacity-0 pointer-events-none;
 
       @media (max-width: $tablet) {
-        @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none;
+        @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none top-1/2;
         background: #171717 !important;
       }
 
@@ -240,6 +240,10 @@
       transition: border-radius 0.4s ease;
 
       @media (max-width: $tablet) {
+        @apply flex items-end h-[12vh];
+      }
+
+      @media (max-width: $tablet) {
         @apply rounded-[3.077vw];
         backdrop-filter: none;
       }
@@ -316,6 +320,10 @@
 
         &:nth-child(2) {
           @apply absolute left-0 right-0 bottom-[-100%];
+
+          @media (max-width: $tablet) {
+            @apply min-h-[12vh] h-[12vh];
+          }
 
           z-index: 2;
 

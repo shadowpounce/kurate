@@ -14,8 +14,16 @@
   .wrapper {
     @apply w-full h-full flex items-center justify-between;
 
+    @media (max-width: $tablet) {
+      @apply flex-wrap;
+    }
+
     .info {
       @apply flex items-center gap-[0.794vw];
+
+      @media (max-width: $tablet) {
+        @apply gap-[4.359vw] mb-auto;
+      }
 
       .cover {
         @apply flex;
@@ -34,11 +42,19 @@
 
         .title {
           @apply text-[0.926vw];
+
+          @media (max-width: $tablet) {
+            @apply text-[3.590vw];
+          }
         }
 
         .artist {
           @apply text-[0.661vw];
           color: #7c7c7c;
+
+          @media (max-width: $tablet) {
+            @apply text-[2.564vw];
+          }
         }
       }
     }
@@ -46,8 +62,16 @@
     .actions {
       @apply flex items-center justify-center w-fit gap-[0.992vw] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
 
+      @media (max-width: $tablet) {
+        @apply static min-w-full translate-x-0 translate-y-0 gap-[3.846vw] order-3;
+      }
+
       > div {
         @apply w-[1.058vw] h-[1.058vw];
+
+        @media (max-width: $tablet) {
+          @apply w-[4.872vw] min-w-[4.872vw] h-[4.872vw] min-h-[4.872vw];
+        }
 
         svg {
           @apply w-full h-full pointer-events-none;
@@ -79,6 +103,13 @@
       width: 1.587vw !important;
       height: 1.587vw !important;
 
+      @media (max-width: $tablet) {
+        width: 3.077vw !important;
+        height: 3.077vw !important;
+        min-width: 3.077vw !important;
+        min-height: 3.077vw !important;
+      }
+
       &.active {
         .play {
           opacity: 0 !important;
@@ -104,6 +135,10 @@
 
     .close {
       @apply w-[0.794vw] h-[0.794vw];
+
+      @media (max-width: $tablet) {
+        @apply w-[3.077vw] h-[3.077vw] order-2 mb-auto translate-y-full;
+      }
 
       img {
         @apply w-full h-full object-center object-cover;

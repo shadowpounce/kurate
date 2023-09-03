@@ -5,12 +5,6 @@ window.THREE = THREE
 import { Effect } from 'postprocessing'
 import { EffectComposer, RenderPass, EffectPass } from 'postprocessing'
 
-// const createGeometry = require('three-bmfont-text')
-
-// const MSDFShader = require('three-bmfont-text/shaders/msdf')
-
-// import { createMSDFShader as MSDFShader } from 'three-bmfont-text/shaders/msdf'
-
 function lerp(current, target, speed = 0.1, limit = 0.001) {
   let change = (target - current) * speed
   if (Math.abs(change) < limit) {
@@ -19,16 +13,13 @@ function lerp(current, target, speed = 0.1, limit = 0.001) {
   return change
 }
 
-import image1 from '../public/images/water-logo.png'
-import image2 from '../public/water/image-2.jpg'
-import image3 from '../public/water/image-3.jpg'
+import image1 from '/images/water-logo.png'
 import { font } from './font'
 
 let images = [image1]
 
 console.log(images)
 
-// import font from 'public/water/SourceSansPro-Black.json'
 const GlyphURL = 'public/water/SourceSansPro-Black.png'
 
 class Planes {
@@ -111,7 +102,6 @@ class Planes {
         intersection.uv.x,
         intersection.uv.y
       )
-      document.body.style.cursor = 'pointer'
       if (this.hovering !== index) this.sceneManager.onPlaneHover(index)
       this.hovering = index
     } else {
@@ -839,5 +829,5 @@ class Loader {
 let myApp
 
 if (location.pathname === '/' && window.innerWidth > 768) {
-  setTimeout(() => (myApp = new App()), 1000)
+  myApp = new App()
 }
