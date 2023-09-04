@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import { genres, recordsData } from '../../data'
 import { Record } from '../../entities/Record/Record'
 import { Button } from '../../shared/Button/Button'
+import { IRecord } from '../../interfaces/IRecord.interface'
 
 export const RecordsList = () => {
   const [filterActive, setFilterActive] = useState<boolean>(false)
@@ -113,9 +114,15 @@ export const RecordsList = () => {
             <div onClick={() => toggleFilter()} className={styles.head}>
               <span>
                 <span
-                  style={{
-                    opacity: activeGenre ? `0.4` : `1`,
-                  }}
+                  style={
+                    window.innerWidth <= 768
+                      ? {
+                          opacity: activeGenre ? `0.4` : `1`,
+                        }
+                      : {
+                          opacity: `0.4`,
+                        }
+                  }
                 >
                   Genre:
                 </span>{' '}
@@ -236,9 +243,10 @@ export const RecordsList = () => {
           className={clsx(styles.list, showedMore && styles.active)}
         >
           {!activeGenre
-            ? recordsData.map((record, idx) => (
+            ? recordsData.map((record: IRecord) => (
                 <Record
-                  idx={idx}
+                  audio={record.audio}
+                  id={record.id}
                   title={record.title}
                   cover={record.cover}
                   artists={record.artists}
@@ -252,14 +260,11 @@ export const RecordsList = () => {
                       (item) => item.toLowerCase() === activeGenre.toLowerCase()
                     )
                   }
-
-                  return (
-                    record.genre.toLowerCase() === activeGenre.toLowerCase()
-                  )
                 })
                 .map((record) => (
                   <Record
-                    idx={record.id}
+                    audio={record.audio}
+                    id={record.id}
                     title={record.title}
                     cover={record.cover}
                     artists={record.artists}

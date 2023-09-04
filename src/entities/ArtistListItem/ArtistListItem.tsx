@@ -63,6 +63,9 @@ export const ArtistListItem: FC<IProps> = ({
       }}
       className={clsx(styles.artistListItem, active && styles.active)}
     >
+      <div className={styles.img}>
+        <img src={Array.isArray(media) ? media[0] : media} alt="" />
+      </div>
       <div
         style={{
           transitionDelay: `${idx * 0.15 + 0.25}s`,
@@ -78,9 +81,7 @@ export const ArtistListItem: FC<IProps> = ({
             <Button withUnderline={false}>View on Spotify</Button>
           </div>
         )}
-        <div className={styles.img}>
-          <img src={Array.isArray(media) ? media[0] : media} alt="" />
-        </div>
+
         <h6 className={styles.author}>{title}</h6>
         {window.innerWidth > 768 ? (
           <>
@@ -93,7 +94,7 @@ export const ArtistListItem: FC<IProps> = ({
           </>
         ) : (
           <Button
-          className={styles.headButton}
+            className={styles.headButton}
             handleClick={() => {
               toggleDropdown()
             }}

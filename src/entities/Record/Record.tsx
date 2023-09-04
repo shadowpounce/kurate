@@ -2,16 +2,9 @@ import { FC, useContext, useEffect, useRef, useState } from 'react'
 import styles from './Record.module.scss'
 import clsx from 'clsx'
 import { MainContext } from '../../app/providers/MainContext'
+import { IRecord } from '../../interfaces/IRecord.interface'
 
-interface IProps {
-  idx?: number
-  cover: string
-  title: string
-  artists: string | string[]
-  genre: string | string[]
-}
-
-export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
+export const Record: FC<IRecord> = ({ cover, title, artists, genre, id }) => {
   const { setTrackIndex, trackIndex, audioPlay, setAudioPlay } =
     useContext(MainContext)
 
@@ -43,12 +36,12 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
     <div
       ref={ref}
       style={{
-        transitionDelay: `${idx && idx * 0.125 + 0.25}s`,
+        transitionDelay: `${id && id * 0.125 + 0.25}s`,
       }}
       className={clsx(
         styles.record,
         'reveal',
-        audioPlay && trackIndex === idx && styles.playing
+        audioPlay && trackIndex === id && styles.playing
       )}
     >
       <div className={styles.equalizer}>
@@ -60,18 +53,18 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
       <div className={styles.action}>
         <div
           onClick={() => {
-            if (trackIndex !== idx) {
+            if (trackIndex !== id) {
               if (audioPlay) {
                 setAudioPlay(false)
-                setTrackIndex(idx)
+                setTrackIndex(id)
                 setAudioPlay(true)
               } else {
                 setAudioPlay(true)
-                setTrackIndex(idx)
+                setTrackIndex(id)
               }
             }
 
-            if (trackIndex === idx) {
+            if (trackIndex === id) {
               if (audioPlay) {
                 setAudioPlay(false)
               } else {
@@ -81,7 +74,7 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
           }}
           className={clsx(
             styles.icon,
-            idx === trackIndex && audioPlay && styles.active
+            id === trackIndex && audioPlay && styles.active
           )}
         >
           <svg
@@ -140,9 +133,9 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
               <span>Arist(s)</span>
               <span className={styles.title}>
                 {Array.isArray(artists)
-                  ? artists.map((artist, idx) => {
+                  ? artists.map((artist, id) => {
                       return `${
-                        idx + 1 === artists.length ? artist : `${artist}, `
+                        id + 1 === artists.length ? artist : `${artist}, `
                       }`
                     })
                   : artists}
@@ -152,8 +145,8 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
               <span>Genre</span>
               <span className={styles.title}>
                 {Array.isArray(genre)
-                  ? genre.map((item, idx) => {
-                      return `${idx + 1 === genre.length ? item : `${item}, `}`
+                  ? genre.map((item, id) => {
+                      return `${id + 1 === genre.length ? item : `${item}, `}`
                     })
                   : genre}
               </span>
@@ -166,9 +159,9 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
           <div className={styles.artists}>
             <span>
               {Array.isArray(artists)
-                ? artists.map((artist, idx) => {
+                ? artists.map((artist, id) => {
                     return `${
-                      idx + 1 === artists.length ? artist : `${artist}, `
+                      id + 1 === artists.length ? artist : `${artist}, `
                     }`
                   })
                 : artists}
@@ -177,8 +170,8 @@ export const Record: FC<IProps> = ({ cover, title, artists, genre, idx }) => {
           <div className={styles.genre}>
             <span>
               {Array.isArray(genre)
-                ? genre.map((item, idx) => {
-                    return `${idx + 1 === genre.length ? item : `${item}, `}`
+                ? genre.map((item, id) => {
+                    return `${id + 1 === genre.length ? item : `${item}, `}`
                   })
                 : genre}
             </span>
