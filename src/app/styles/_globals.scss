@@ -59,7 +59,7 @@ header {
 }
 
 #root > canvas {
-  @apply absolute top-[24.4vh] left-1/2 w-1/2 h-1/2 z-[0] mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0 pointer-events-none;
+  @apply absolute top-[24.4vh] left-1/2 w-1/2 h-1/2 z-[0] mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0;
   width: 80% !important;
   height: 80% !important;
 

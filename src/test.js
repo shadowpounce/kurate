@@ -115,7 +115,7 @@ class Planes {
       const zoomTarget = this.hovering === i ? 1 : 0
       const uZoom = meshes[i].material.uniforms.uZoom
 
-      // const zoomChange = lerp(uZoom.value, zoomTarget, 1, 1)
+      const zoomChange = lerp(uZoom.value, zoomTarget, 1, 1)
       // if (zoomChange !== 0) {
       //   uZoom.value += zoomChange
       //   uZoom.needsUpdate = true
@@ -228,7 +228,7 @@ const easeOutSine = (t, b, c, d) => {
 
 const easeOutQuad = (t, b, c, d) => {
   t /= d
-  return -c * t * (t - 2.25) + b
+  return -c * t * (t - 2.15) + b
 }
 
 const loadTextAssets = (assets, loader) => {
@@ -362,15 +362,16 @@ class Text {
 class TouchTexture {
   constructor(parent) {
     this.size = 128
-    this.width = window.innerWidth / 2
-    this.height = window.innerHeight / 2
+    this.width = window.innerWidth
+    this.height = window.innerHeight
     this.width = this.height = this.size
 
     this.maxAge = 128
-    this.radius = 0.02 * this.size
+    this.radius = 0.015 * this.size
     // this.radius = 0.15 * 1000;
 
     this.speed = 1 / this.maxAge
+    // this.speed = 0.01;
 
     this.trail = []
     this.last = null
@@ -526,7 +527,9 @@ class App {
 
     this.composer = new EffectComposer(this.renderer)
 
-    document.body.querySelector('#root').append(this.renderer.domElement)
+    document.body
+      .querySelector('#background-grid')
+      .parentElement.append(this.renderer.domElement)
     this.renderer.domElement.id = 'webGLApp'
 
     this.camera = new THREE.PerspectiveCamera(
@@ -636,10 +639,10 @@ class App {
 
     // window.addEventListener('resize', this.onResize)
     document.body
-      .querySelector('#water-mouse-field')
+      .querySelector('#hero .container')
       .addEventListener('mousemove', this.onMouseMove)
     document.body
-      .querySelector('#water-mouse-field')
+      .querySelector('#hero .container')
       .addEventListener('touchmove', this.onTouchMove)
   }
   onTouchMove(ev) {

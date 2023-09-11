@@ -37,9 +37,9 @@ export const Hero = () => {
   return (
     <section className={clsx('section', styles.hero)} id="hero">
       <div className="container">
-        {window.innerWidth > 768 && (
+        {/* {window.innerWidth > 768 && (
           <div id="water-mouse-field" className={styles.waterMouseField}></div>
-        )}
+        )} */}
         <div className={clsx(styles.heroCard, styles.cardFirst)}>
           <div className={clsx(styles.content, 'reveal')}>
             <div className={styles.line}>

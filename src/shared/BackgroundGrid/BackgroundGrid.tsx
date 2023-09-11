@@ -29,7 +29,7 @@ export const BackgroundGrid = () => {
   }, [])
 
   return (
-    <div className={styles.backgroundGrid}>
+    <div id="background-grid" className={styles.backgroundGrid}>
       <div
         ref={cursorRef}
         className={clsx(
