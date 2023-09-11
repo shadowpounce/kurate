@@ -18,8 +18,6 @@ import { font } from './font'
 
 let images = [image1]
 
-console.log(images)
-
 const GlyphURL = '/water/SourceSansPro-Black.png'
 
 class Planes {
@@ -228,7 +226,7 @@ const easeOutSine = (t, b, c, d) => {
 
 const easeOutQuad = (t, b, c, d) => {
   t /= d
-  return -c * t * (t - 2.15) + b
+  return -c * t * (t - 2) + b
 }
 
 const loadTextAssets = (assets, loader) => {
@@ -367,7 +365,7 @@ class TouchTexture {
     this.width = this.height = this.size
 
     this.maxAge = 128
-    this.radius = 0.015 * this.size
+    this.radius = 0.02 * this.size
     // this.radius = 0.15 * 1000;
 
     this.speed = 1 / this.maxAge
@@ -653,7 +651,7 @@ class App {
     const raycaster = this.raycaster
     this.mouse = {
       x: ev.clientX / window.innerWidth,
-      y: 1 - ev.clientY / window.innerHeight,
+      y: 1 - (ev.clientY / window.innerHeight) * 1.4,
     }
     this.touchTexture.addTouch(this.mouse)
 
