@@ -138,6 +138,17 @@ export const MusicPlayer = () => {
               setTrackIndex(getRandomIntInclusive(0, recordsData.length - 1))
             }
 
+            if (repeatMode) {
+              setAudioPlay(false)
+
+              if (ref.current?.audio.current) {
+                setTrackIndex(trackIndex)
+                ref.current.audio.current.play()
+              }
+
+              setAudioPlay(true)
+            }
+
             if (!shuffleMode && !repeatMode) {
               next()
             }

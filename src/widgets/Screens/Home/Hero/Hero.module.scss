@@ -1,4 +1,8 @@
 .hero {
+  .waterMouseField {
+    @apply absolute left-1/2 top-1/2 w-full h-full translate-x-[-50%] translate-y-[-50%] z-[0];
+  }
+
   &Logo {
     @apply max-w-[50%] w-full max-h-[25%] h-full absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-100%];
 
@@ -25,7 +29,7 @@
   }
 
   &Card {
-    @apply absolute select-none;
+    @apply absolute select-none z-[2];
 
     &:hover {
       img {

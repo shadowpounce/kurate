@@ -86,6 +86,10 @@
       @apply gap-[3.590vw];
     }
 
+    p {
+      @apply normal-case font-normal;
+    }
+
     transition-duration: 1s;
     transition-delay: 0.75s;
   }

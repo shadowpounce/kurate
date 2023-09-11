@@ -12,7 +12,7 @@ import { IRecord } from '../../interfaces/IRecord.interface'
 
 export const RecordsList = () => {
   const [filterActive, setFilterActive] = useState<boolean>(false)
-  const [activeGenre, setActiveGenre] = useState<string | undefined>()
+  const [activeGenre, setActiveGenre] = useState<string | undefined>('')
 
   const [filterString, setFilterString] = useState<string>('')
 
@@ -221,6 +221,7 @@ export const RecordsList = () => {
               </div>
               <div className={styles.bodyList}>
                 <ul data-scrollable="true">
+                  <li onClick={() => selectGenre('')}>All genres</li>
                   {filterString
                     ? genres
                         .filter((item) =>
@@ -242,7 +243,7 @@ export const RecordsList = () => {
           data-scrollable="true"
           className={clsx(styles.list, showedMore && styles.active)}
         >
-          {!activeGenre
+          {activeGenre === ''
             ? recordsData.map((record: IRecord) => (
                 <Record
                   audio={record.audio}
@@ -257,7 +258,8 @@ export const RecordsList = () => {
                 .filter((record) => {
                   if (Array.isArray(record.genre)) {
                     return record.genre.find(
-                      (item) => item.toLowerCase() === activeGenre.toLowerCase()
+                      (item) =>
+                        item.toLowerCase() === activeGenre?.toLowerCase()
                     )
                   }
                 })

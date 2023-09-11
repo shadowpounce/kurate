@@ -115,11 +115,11 @@ class Planes {
       const zoomTarget = this.hovering === i ? 1 : 0
       const uZoom = meshes[i].material.uniforms.uZoom
 
-      const zoomChange = lerp(uZoom.value, zoomTarget, 1, 1)
-      if (zoomChange !== 0) {
-        uZoom.value += zoomChange
-        uZoom.needsUpdate = true
-      }
+      // const zoomChange = lerp(uZoom.value, zoomTarget, 1, 1)
+      // if (zoomChange !== 0) {
+      //   uZoom.value += zoomChange
+      //   uZoom.needsUpdate = true
+      // }
     }
   }
   getPlaneMetrics(viewWidth, viewHeight, width, height) {
@@ -228,7 +228,7 @@ const easeOutSine = (t, b, c, d) => {
 
 const easeOutQuad = (t, b, c, d) => {
   t /= d
-  return -c * t * (t - 2) + b
+  return -c * t * (t - 2.25) + b
 }
 
 const loadTextAssets = (assets, loader) => {
@@ -361,17 +361,16 @@ class Text {
 
 class TouchTexture {
   constructor(parent) {
-    this.size = 64
-    this.width = window.innerWidth
-    this.height = window.innerHeight
+    this.size = 128
+    this.width = window.innerWidth / 2
+    this.height = window.innerHeight / 2
     this.width = this.height = this.size
 
-    this.maxAge = 64
-    this.radius = 0.1 * this.size
+    this.maxAge = 128
+    this.radius = 0.02 * this.size
     // this.radius = 0.15 * 1000;
 
     this.speed = 1 / this.maxAge
-    // this.speed = 0.01;
 
     this.trail = []
     this.last = null
@@ -637,10 +636,10 @@ class App {
 
     // window.addEventListener('resize', this.onResize)
     document.body
-      .querySelector('#root > canvas')
+      .querySelector('#water-mouse-field')
       .addEventListener('mousemove', this.onMouseMove)
     document.body
-      .querySelector('#root > canvas')
+      .querySelector('#water-mouse-field')
       .addEventListener('touchmove', this.onTouchMove)
   }
   onTouchMove(ev) {

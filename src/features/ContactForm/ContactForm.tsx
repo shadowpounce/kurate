@@ -346,7 +346,7 @@ export const ContactForm = () => {
                   </div>
                   <div>
                     {useSplit(
-                      'in our label!',
+                      'interest in our label!',
                       {
                         duration: 0.5,
                         delay: 0.025,
