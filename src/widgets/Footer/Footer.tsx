@@ -6,13 +6,22 @@ import { SendButton } from '../../entities/SendButton/SendButton'
 
 const Footer = () => {
   return (
-    <footer data-grid="false" className={clsx(styles.footer, 'section')}>
+    <footer
+      data-start="top 65%"
+      data-grid="false"
+      className={clsx(styles.footer, 'section')}
+    >
       <div className={styles.wrapper}>
         <div className={styles.wrap}>
           <div className={styles.col}>
             <div
               onClick={() => {
-                window.fullpage_api.moveTo(1)
+                // window.fullpage_api.moveTo(1)
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                })
               }}
               className={styles.logo}
             >

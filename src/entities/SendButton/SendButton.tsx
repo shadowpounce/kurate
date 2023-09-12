@@ -11,10 +11,14 @@ export const SendButton: FC<IProps> = ({ withAnim = true }) => {
     <Button
       handleClick={() => {
         const contactSection =
-          document.querySelector<HTMLDataElement>('#contact')
+          document.querySelector<HTMLDivElement>('#contact')
 
         if (contactSection) {
-          window.fullpage_api.moveTo(Number(contactSection.dataset.screen) + 1)
+          window.scrollTo({
+            left: 0,
+            top: contactSection.offsetTop,
+            behavior: 'smooth',
+          })
         } else {
           location.href = '/#contact'
         }

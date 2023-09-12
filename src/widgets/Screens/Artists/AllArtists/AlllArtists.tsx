@@ -12,10 +12,14 @@ export const AlllArtists = () => {
     <section
       id="all-artists"
       data-grid="false"
-      className={clsx('section', styles.allArtists)}
+      className={clsx(
+        'section',
+        styles.allArtists,
+        showedMore && styles.collapsed
+      )}
     >
       <div className="container">
-        <div className={clsx(styles.wrapper, showedMore && styles.collapsed)}>
+        <div className={clsx(styles.wrapper)}>
           <div className={styles.wrap}>
             <span className="section-span">
               <div className="reveal">ALL ARTISTS</div>

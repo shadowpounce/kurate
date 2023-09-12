@@ -89,7 +89,6 @@ export const Layout: FC<IProps> = ({
       <Menu />
       <Header />
       {children}
-      {/* {withThreeDCards && <ThreeDCards />} */}
       <BackgroundGrid />
     </MainContext.Provider>
   )

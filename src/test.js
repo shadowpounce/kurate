@@ -13,7 +13,7 @@ function lerp(current, target, speed = 0.1, limit = 0.001) {
   return change
 }
 
-import image1 from '/images/water-logo.png'
+import image1 from '/images/water-logo.svg'
 import { font } from './font'
 
 let images = [image1]

@@ -54,6 +54,10 @@
           transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1) !important;
         }
       }
+
+      > img {
+        @apply w-[2.447vw] h-[2.447vw] opacity-0 translate-y-[-50%] translate-x-1/2 object-contain object-center duration-1000 delay-[250ms];
+      }
     }
   }
 

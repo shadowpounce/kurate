@@ -8,6 +8,7 @@ import { RecordsList } from '../../../../features/RecordsList/RecordsList'
 export const Records = () => {
   return (
     <section
+      data-end="bottom 50%"
       data-grid="false"
       id="releases"
       className={clsx(styles.records, 'section')}

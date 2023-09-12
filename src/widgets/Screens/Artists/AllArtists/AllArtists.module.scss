@@ -1,5 +1,13 @@
 .allArtists {
-  height: 100% !important;
+  &.collapsed {
+    height: fit-content !important;
+
+    .wrapper {
+      height: fit-content !important;
+      overflow: unset !important;
+    }
+  }
+
   .wrapper {
     @apply max-w-[75%] w-full mx-auto  py-[4.960vw] pb-[7.937vw] overflow-hidden h-full;
 
@@ -17,11 +25,6 @@
       }
     }
 
-    &.collapsed {
-      height: fit-content !important;
-      overflow: unset !important;
-    }
-
     .showMore {
       @apply mx-auto absolute left-1/2 translate-x-[-50%] bottom-0;
 
@@ -36,8 +39,6 @@
       &::-webkit-scrollbar {
         appearance: none;
       }
-
-      
     }
   }
 }

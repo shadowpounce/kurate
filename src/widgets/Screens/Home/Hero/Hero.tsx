@@ -3,39 +3,54 @@ import styles from './Hero.module.scss'
 import { Logo } from '../../../../shared/Logo/Logo'
 import { DrawableLine } from '../../../../shared/DrawableLine/DrawableLine'
 import { useContext, useState, useEffect, useRef } from 'react'
+import gsap from 'gsap'
 import { MainContext } from '../../../../app/providers/MainContext'
 
 export const Hero = () => {
   const { activeScreen, pageLoaded } = useContext(MainContext)
 
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [ctx, setCtx] = useState<any>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext('2d')
-      setCtx(ctx)
-    }
-  }, [])
+    if (pageLoaded && ref.current) {
+      const canvas = document.querySelector<HTMLCanvasElement>('#root > canvas')
 
-  useEffect(() => {
-    if (ctx) {
-      const img = new Image()
-      img.src = '/images/water-logo.png'
-      img.onload = () => {
-        ctx.drawImage(
-          img,
-          0,
-          0,
-          canvasRef.current?.width,
-          canvasRef.current?.height
-        )
-      }
+      gsap.to(canvas, {
+        opacity: 1,
+        yPercent: -20,
+        duration: 1,
+        delay: 0.25,
+        ease: 'ease',
+        onComplete: () => {
+          ScrollTrigger.create({
+            trigger: ref.current,
+            start: `top top`,
+            end: 'bottom 25%',
+            scrub: 0.1,
+            animation: gsap.fromTo(
+              canvas,
+              {
+                opacity: 1,
+                yPercent: -20,
+              },
+              {
+                opacity: 0,
+                yPercent: -100,
+              }
+            ),
+          })
+        },
+      })
     }
-  }, [ctx])
+  }, [pageLoaded])
 
   return (
-    <section className={clsx('section', styles.hero)} id="hero">
+    <section
+      ref={ref}
+      data-end="bottom 50%"
+      className={clsx('section', styles.hero)}
+      id="hero"
+    >
       <div className="container">
         {/* {window.innerWidth > 768 && (
           <div id="water-mouse-field" className={styles.waterMouseField}></div>

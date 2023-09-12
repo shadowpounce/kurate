@@ -4,6 +4,8 @@ import { HomeScreens } from '../../widgets/Screens/Home'
 import { WithFullpage } from '../../app/providers/WithFullpage'
 import { MainContext } from '../../app/providers/MainContext'
 import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
+import { WithScrollSmoother } from '../../app/providers/WithScrollSmoother'
+import { BackgroundGrid } from '../../shared/BackgroundGrid/BackgroundGrid'
 
 export const Home = () => {
   const { setCurrentPage } = useContext(MainContext)
@@ -22,14 +24,14 @@ export const Home = () => {
   } = useContext(MainContext)
   const [discDeployed, setDiscDeployed] = useState<boolean>(false)
 
-  useEffect(() => {
-    const waterLogo =
-      document.querySelector<HTMLCanvasElement>('#root > canvas')
+  // useEffect(() => {
+  //   const waterLogo =
+  //     document.querySelector<HTMLCanvasElement>('#root > canvas')
 
-    if (pageLoaded && waterLogo) {
-      waterLogo.className = `in`
-    }
-  }, [pageLoaded])
+  //   if (pageLoaded && waterLogo) {
+  //     waterLogo.className = `in`
+  //   }
+  // }, [pageLoaded])
 
   return (
     <HomeContext.Provider
@@ -38,7 +40,12 @@ export const Home = () => {
         setDiscDeployed,
       }}
     >
-      <WithFullpage
+      <WithScrollSmoother>
+        <ThreeDCards />
+        {HomeScreens.map((screen) => screen)}
+      </WithScrollSmoother>
+
+      {/* <WithFullpage
         fullpageOptions={{
           credits: {
             enabled: false,
@@ -82,11 +89,8 @@ export const Home = () => {
           },
         }}
       >
-        <>
-          <ThreeDCards />
-          {HomeScreens.map((screen) => screen)}
-        </>
-      </WithFullpage>
+    
+      </WithFullpage> */}
     </HomeContext.Provider>
   )
 }

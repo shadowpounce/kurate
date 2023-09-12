@@ -43,20 +43,20 @@ export const ThreeDCards = () => {
       </div>
       <AnimatedCard
         config={{
-          rotation: 30,
+          rotation: 100,
           transition: {
-            duration: 0.5,
+            duration: 1,
             timingMode: 'ease',
           },
-          transform: {
-            figureIcon: {
-              rotation: 20,
-              translateZ: 160,
-            },
-            titleTranslateZ: 140,
-            bodyTextTranslateZ: 100,
-            buttonTranslateZ: 80,
-          },
+          // transform: {
+          //   figureIcon: {
+          //     rotation: 20,
+          //     translateZ: 160,
+          //   },
+          //   titleTranslateZ: 140,
+          //   bodyTextTranslateZ: 100,
+          //   buttonTranslateZ: 80,
+          // },
         }}
         className={clsx(styles.movementField, 'reveal')}
       >

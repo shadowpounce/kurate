@@ -39,7 +39,11 @@ const Header = () => {
       <div
         onClick={() => {
           currentPage === 'home'
-            ? window.fullpage_api.moveTo(1)
+            ? window.scrollTo({
+                left: 0,
+                top: 0,
+                behavior: 'smooth',
+              })
             : (location.href = '/')
         }}
         className={styles.logo}

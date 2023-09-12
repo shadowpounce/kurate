@@ -9,11 +9,15 @@ export const Vacancies = () => {
   return (
     <section
       data-grid="false"
-      className={clsx('section', styles.vacancies)}
+      className={clsx(
+        'section',
+        styles.vacancies,
+        showedMore && styles.collapsed
+      )}
       id="open-vacancies"
     >
       <div className="container">
-        <div className={clsx(styles.wrapper, showedMore && styles.collapsed)}>
+        <div className={clsx(styles.wrapper)}>
           <div className={styles.wrap}>
             <VacanciesList
               showedMore={showedMore}

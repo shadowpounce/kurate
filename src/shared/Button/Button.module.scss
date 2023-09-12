@@ -1,6 +1,6 @@
 .button {
   font-family: $helveticaNowDisplay !important;
-  @apply flex flex-col gap-[0.628vw] text-[0.926vw] font-semibold w-fit overflow-hidden;
+  @apply flex flex-col gap-[0.628vw] text-[0.926vw] font-semibold w-fit;
 
   transition: 0.5s ease;
   transition-property: background-color, color;

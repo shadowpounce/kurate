@@ -16,6 +16,9 @@
 
         @media (max-width: $tablet) {
           @apply pb-[15.4vh] pt-[6.3vh];
+
+          border-top: 1px solid rgba(252, 252, 252, 0.25);
+          border-right: 0;
         }
 
         border-right: 1px solid rgba(252, 252, 252, 0.25);

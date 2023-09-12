@@ -1,14 +1,18 @@
 .vacancies {
+  &.collapsed {
+    height: fit-content !important;
+
+    .wrapper {
+      height: fit-content !important;
+      overflow: unset !important;
+    }
+  }
+
   .wrapper {
     @apply max-w-[75%] w-full h-full mx-auto overflow-hidden pt-[4.960vw] pb-[7.937vw];
 
     @media (max-width: $tablet) {
       @apply py-[6vh] pb-[12vh] max-w-full;
-    }
-
-    &.collapsed {
-      height: fit-content !important;
-      overflow: unset !important;
     }
   }
 

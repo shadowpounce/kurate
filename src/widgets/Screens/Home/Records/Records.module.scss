@@ -1,10 +1,6 @@
 .records {
   @apply overflow-hidden;
 
-  @media (max-width: $tablet) {
-    @apply overflow-auto;
-  }
-
   div[class='container'] {
     @apply flex gap-[7.275vw] pt-[4.960vw] pb-[1.984vw];
 

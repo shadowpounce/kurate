@@ -1,22 +1,33 @@
 import clsx from 'clsx'
 import styles from './Disc.module.scss'
-import { useContext } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { MainContext } from '../../app/providers/MainContext'
 import { HomeContext } from '../../app/providers/HomeContext'
 import { DrawableLine } from '../../shared/DrawableLine/DrawableLine'
 
 export const Disc = () => {
-  const { activeScreen } = useContext(MainContext)
+  const ref = useRef<HTMLDivElement>(null)
 
-  const { discDeployed } = useContext(HomeContext)
+  const { pageLoaded } = useContext(MainContext)
+
+  const { discDeployed, setDiscDeployed } = useContext(HomeContext)
+
+  useEffect(() => {
+    if (pageLoaded) {
+      ScrollTrigger.create({
+        trigger: ref.current,
+        start: `top 50%`,
+        onEnter: () => {
+          !discDeployed && setDiscDeployed(true)
+        },
+      })
+    }
+  }, [pageLoaded])
 
   return (
     <div
-      className={clsx(
-        styles.disc,
-        discDeployed && styles.animated
-        //  'section'
-      )}
+      ref={ref}
+      className={clsx(styles.disc, discDeployed && styles.animated)}
     >
       <div className={clsx(styles.piece, styles.middle)}>
         <img src="/images/Disc/hole.svg" alt="" className={styles.hole} />

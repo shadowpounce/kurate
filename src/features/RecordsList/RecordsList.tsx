@@ -71,20 +71,7 @@ export const RecordsList = () => {
               </svg>
             </DrawableLine>
           </div>
-          <svg
-            className={clsx(styles.icon, 'reveal')}
-            width="43"
-            height="42"
-            viewBox="0 0 43 42"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M40 3L3 39M3 39V10M3 39H33.5"
-              stroke="white"
-              strokeWidth="6"
-            />
-          </svg>
+          <img className="reveal" src="/images/icons/arrow-tip.png" alt="" />
         </div>
       </div>
       <div className={styles.records}>

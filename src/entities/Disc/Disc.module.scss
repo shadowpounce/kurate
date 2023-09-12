@@ -10,6 +10,8 @@
   align-items: center;
   justify-content: center;
 
+  z-index: 0;
+
   @media (max-width: $tablet) {
     @apply w-[87.692vw] mx-auto h-[24vw];
   }

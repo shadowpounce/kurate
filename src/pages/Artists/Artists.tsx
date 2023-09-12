@@ -7,6 +7,7 @@ import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
 import { ArtistsContext } from '../../app/providers/ArtistsContext'
 import { ArtistsScreens } from '../../widgets/Screens/Artists'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { WithScrollSmoother } from '../../app/providers/WithScrollSmoother'
 
 export const Artists = () => {
   const {
@@ -30,20 +31,9 @@ export const Artists = () => {
         setSelectedArtist,
       }}
     >
-      <WithFullpage
-        fullpageOptions={{
-          credits: {
-            enabled: false,
-          },
-          scrollingSpeed: 1000,
-          onLeave: (origin, destination, direction, trigger) => {
-            setActiveScreen(destination.index)
-            setDirection(direction)
-          },
-        }}
-      >
-        <>{ArtistsScreens.map((screen) => screen)}</>
-      </WithFullpage>
+      <WithScrollSmoother>
+        {ArtistsScreens.map((screen) => screen)}
+      </WithScrollSmoother>
     </ArtistsContext.Provider>
   )
 }

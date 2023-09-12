@@ -1,5 +1,5 @@
 .backgroundGrid {
-  @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full pointer-events-none;
+  @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full pointer-events-none z-[-1];
 
   .cursorFollower {
     @apply absolute w-[200%] h-[200%] z-[2] transition-opacity duration-[1s];

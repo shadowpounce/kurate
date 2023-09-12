@@ -8,6 +8,7 @@ import { ArtistsContext } from '../../app/providers/ArtistsContext'
 import { CareersScreens } from '../../widgets/Screens/Careers'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CareersContext } from '../../app/providers/CareersContext'
+import { WithScrollSmoother } from '../../app/providers/WithScrollSmoother'
 
 export const Careers = () => {
   const {
@@ -25,20 +26,9 @@ export const Careers = () => {
 
   return (
     <CareersContext.Provider value={{}}>
-      <WithFullpage
-        fullpageOptions={{
-          credits: {
-            enabled: false,
-          },
-          scrollingSpeed: 1000,
-          onLeave: (origin, destination, direction, trigger) => {
-            setActiveScreen(destination.index)
-            setDirection(direction)
-          },
-        }}
-      >
-        <>{CareersScreens.map((screen) => screen)}</>
-      </WithFullpage>
+      <WithScrollSmoother>
+        {CareersScreens.map((screen) => screen)}
+      </WithScrollSmoother>
     </CareersContext.Provider>
   )
 }

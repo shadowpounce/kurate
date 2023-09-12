@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import styles from './Menu.module.scss'
 import { navLinks } from '../../data'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { MainContext } from '../../app/providers/MainContext'
 import { pages } from '../../pages'
 import { SendButton } from '../../entities/SendButton/SendButton'
@@ -16,7 +16,16 @@ export const Menu = () => {
     playerActive,
     setPlayerActive,
     currentPage,
+    activeScreen,
   } = useContext(MainContext)
+
+  useEffect(() => {
+    if (activeScreen === 4) {
+      setPlayerActive(true)
+    } else {
+      setPlayerActive(false)
+    }
+  }, [pageLoaded, activeScreen])
 
   const toggleMenu = () => {
     menuActive ? setMenuActive(false) : setMenuActive(true)
@@ -25,7 +34,17 @@ export const Menu = () => {
   const toScreen = (id: string) => {
     const screen = document.querySelector<HTMLDataElement>(id)
 
-    window.fullpage_api.moveTo(Number(screen?.dataset.screen) + 1)
+    const toSection = document.querySelector<HTMLDivElement>(
+      `*[data-screen="${screen?.dataset.screen}"]`
+    )
+
+    if (toSection) {
+      window.scrollTo({
+        left: 0,
+        top: toSection.offsetTop,
+        behavior: 'smooth',
+      })
+    }
   }
 
   return (
