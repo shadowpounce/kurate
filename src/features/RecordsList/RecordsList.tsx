@@ -98,7 +98,7 @@ export const RecordsList = () => {
               'reveal opacity-0 translate-y-full'
             )}
           >
-            <div onClick={() => toggleFilter()} className={styles.head}>
+            <div className={styles.head}>
               <span>
                 <span
                   style={
@@ -117,7 +117,7 @@ export const RecordsList = () => {
                   {activeGenre && useSplit(activeGenre)}
                 </div>{' '}
               </span>
-              <div className={styles.filterIcon}>
+              <div onClick={() => toggleFilter()} className={styles.filterIcon}>
                 {window.innerWidth > 768 ? (
                   <svg
                     width="14"
@@ -193,6 +193,36 @@ export const RecordsList = () => {
                     />
                   </svg>
                 )}
+              </div>
+              <div
+                onClick={() => {
+                  setActiveGenre('')
+                  setFilterActive(false)
+                }}
+                className={styles.resetFilterIcon}
+              >
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.51465 9.38086L9.99993 0.895577"
+                    stroke="#6E6F6F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.99993 9.38079L1.51465 0.895508"
+                    stroke="#6E6F6F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </div>
             </div>
             <div className={styles.body}>

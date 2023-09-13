@@ -147,18 +147,35 @@
                 @apply opacity-100;
               }
             }
+          }
 
-            .filterIcon {
+          > span {
+            @apply flex items-center gap-[2.5px];
+          }
+
+          .resetFilterIcon {
+            @apply w-[0.8vw] h-[0.8vw] transition-opacity duration-[450ms] ml-auto;
+
+            &:hover {
               svg {
                 path {
                   stroke: #fff;
                 }
               }
             }
-          }
 
-          > span {
-            @apply flex items-center gap-[2.5px];
+            @media (max-width: $tablet) {
+              @apply w-[5.128vw] h-[5.128vw];
+            }
+
+            svg {
+              @apply w-full h-full pointer-events-none;
+
+              path {
+                transition: 0.3s ease;
+                transition-property: stroke;
+              }
+            }
           }
 
           .filterIcon {
@@ -166,6 +183,14 @@
 
             @media (max-width: $tablet) {
               @apply w-[5.128vw] h-[5.128vw] transition-transform duration-[450ms];
+            }
+
+            &:hover {
+              svg {
+                path {
+                  stroke: #fff;
+                }
+              }
             }
 
             svg {
@@ -295,7 +320,7 @@
       }
 
       &.active {
-        @apply overflow-y-scroll;
+        @apply overflow-y-scroll h-full;
       }
 
       &::-webkit-scrollbar {

@@ -19,6 +19,7 @@ export const Record: FC<IRecord> = ({ cover, title, artists, genre, id }) => {
       )?.offsetHeight
 
       if (mobileActive) {
+        ref.current.style.minHeight = `80px`
         ref.current.style.height = `80px`
         setMobileActive(false)
         return
@@ -26,6 +27,7 @@ export const Record: FC<IRecord> = ({ cover, title, artists, genre, id }) => {
 
       if (!mobileActive && bodyHeight) {
         ref.current.style.height = `calc(80px + ${bodyHeight}px)`
+        ref.current.style.minHeight = `calc(80px + ${bodyHeight}px)`
         setMobileActive(true)
         return
       }

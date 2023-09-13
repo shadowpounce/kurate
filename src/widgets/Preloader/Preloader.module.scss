@@ -19,7 +19,7 @@
     @apply w-full h-full uppercase relative;
 
     .logo {
-      @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[21.164vw] h-[5.622vw];
+      @apply absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] relative w-[24vw] h-[7vw];
 
       @media (max-width: $tablet) {
         @apply w-[45.641vw] h-[6vh];
@@ -49,7 +49,7 @@
           }
 
           img {
-            @apply w-full h-full object-cover object-center;
+            @apply w-full h-full object-contain object-center;
 
             @media (max-width: $tablet) {
               @apply object-contain;

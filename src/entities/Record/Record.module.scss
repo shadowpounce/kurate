@@ -6,7 +6,10 @@
   border-top: 1px solid rgba(255, 255, 255, 0.11);
 
   @media (max-width: $tablet) {
-    @apply h-[80px] items-start;
+    @apply h-[80px] items-start min-h-[80px];
+
+    transition-duration: 0.5s !important;
+    transition-delay: 0s !important;
 
     border: none;
 
@@ -183,10 +186,10 @@
     }
 
     .mobileInfo {
-      @apply absolute bottom-0 left-0 right-0 flex flex-col gap-[4.103vw] py-[6.154vw] opacity-0 transition-opacity duration-[450ms] pointer-events-none translate-y-full;
+      @apply absolute bottom-0 left-0 right-0 flex flex-col gap-[4.103vw] py-[6.154vw] opacity-0 transition-opacity duration-[250ms] pointer-events-none translate-y-full;
 
       &.active {
-        @apply opacity-100 pointer-events-auto delay-[700ms];
+        @apply opacity-100 pointer-events-auto delay-[500ms] duration-[450ms];
       }
 
       .infoGroup {

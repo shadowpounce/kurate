@@ -52,10 +52,10 @@ export const Preloader = () => {
         <div className={styles.logo}>
           <div className="reveal">
             <div className={styles.filled}>
-              <img src="/images/Preloader/logo.png" alt="" />
+              <img src="/images/Preloader/logo.svg" alt="" />
             </div>
             <div className={styles.shadow}>
-              <img src="/images/Preloader/logo-shadow.png" alt="" />
+              <img src="/images/Preloader/logo-shadow.svg" alt="" />
             </div>
           </div>
         </div>
