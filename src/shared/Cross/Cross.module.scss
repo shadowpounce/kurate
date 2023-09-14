@@ -1,10 +1,6 @@
 .cross {
   @apply w-[10vw] h-[10vw] relative flex flex-col-reverse items-center justify-center;
 
-  @media (max-width: $tablet) {
-    @apply w-[6.154vw] h-[6.154vw];
-  }
-
   &.animated {
     svg {
       opacity: 0;

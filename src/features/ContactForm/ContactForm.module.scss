@@ -163,7 +163,7 @@
       }
 
       @media (max-width: $tablet) {
-        @apply static max-w-full w-full items-center justify-center gap-[8.974vw] text-center mt-auto;
+        @apply relative max-w-full w-full items-center justify-center gap-[8.974vw] text-center mt-auto;
 
         p {
           @apply w-full max-w-full;
