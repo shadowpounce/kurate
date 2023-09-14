@@ -64,9 +64,20 @@ const Footer = () => {
           <div className={styles.col}>
             <span className="reveal">Follow</span>
             <ul>
-              <li className="reveal">Twitter</li>
-              <li className="reveal">Instagram</li>
-              <li className="reveal">Facebook</li>
+              <li className="reveal">
+                <a href="">Twitter</a>
+              </li>
+              <li className="reveal">
+                <a href="">Instagram</a>
+              </li>
+              <li className="reveal">
+                <a
+                  href="
+                "
+                >
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
           <div className={styles.col}>

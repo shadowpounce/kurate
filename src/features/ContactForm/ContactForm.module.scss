@@ -158,6 +158,10 @@
     .leftBlock {
       @apply absolute left-0 bottom-0 max-w-[20%] w-full flex gap-[2.976vw] flex-col;
 
+      .cross {
+        @apply absolute left-0 top-0 translate-x-[-35%] translate-y-[-80%];
+      }
+
       @media (max-width: $tablet) {
         @apply static max-w-full w-full items-center justify-center gap-[8.974vw] text-center mt-auto;
 

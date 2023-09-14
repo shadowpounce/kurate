@@ -159,7 +159,9 @@ export const About = () => {
             </h3>
           </div>
           <div className={styles.aboutGroup}>
-            <Cross activeId={2} />
+            <div className={styles.aboutGroupCross}>
+              <Cross activeId={2} />
+            </div>
             <p className="brand-text">
               {window.innerWidth > 768 ? (
                 <>

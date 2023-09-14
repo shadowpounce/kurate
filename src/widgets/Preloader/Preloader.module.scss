@@ -108,6 +108,7 @@
         line-height: 125%;
 
         .cross {
+          @apply absolute left-1/2 translate-x-[-50%] top-0 translate-y-[-80%];
           pointer-events: none;
         }
 
@@ -119,20 +120,26 @@
           p {
             opacity: 0;
             translate: 0 25%;
-            animation: crossAnim 1s forwards ease 1s;
+            animation: crossAnimSecond 1s forwards ease 1s;
           }
 
           span {
             p {
               opacity: 0;
               translate: 0 25%;
-              animation: crossAnim 1s forwards ease 1s;
+              animation: crossAnimSecond 1s forwards ease 1s;
             }
           }
         }
 
         svg {
-          animation: crossAnim 1s forwards ease 1.25s !important;
+          &:nth-child(1) {
+            animation: crossAnimFirst 1s forwards ease 1.25s !important;
+          }
+
+          &:nth-child(2) {
+            animation: crossAnimSecond 1s forwards ease 1.25s !important;
+          }
         }
 
         p {
@@ -157,10 +164,16 @@
   }
 }
 
-@keyframes crossAnim {
+@keyframes crossAnimFirst {
+  to {
+    opacity: 1;
+    transform: translateX(-100%) translateY(0);
+  }
+}
+
+@keyframes crossAnimSecond {
   to {
     opacity: 1;
     transform: translateX(0) translateY(0);
-    translate: 0;
   }
 }

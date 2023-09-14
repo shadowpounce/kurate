@@ -19,7 +19,7 @@ export const Hero = () => {
         opacity: 1,
         yPercent: -20,
         duration: 1,
-        delay: 0.25,
+        delay: 0,
         ease: 'ease',
         onComplete: () => {
           ScrollTrigger.create({

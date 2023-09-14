@@ -100,10 +100,28 @@
             }
 
             li {
-              @apply opacity-0 translate-y-1/2;
+              @apply opacity-0 translate-y-1/2 relative w-fit;
               transition-duration: 1s !important;
               transition-delay: 0.35s !important;
               line-height: 100%;
+
+              &:hover {
+                a::after {
+                  @apply w-full;
+                }
+              }
+
+              a {
+                @apply w-fit relative;
+
+                &::after {
+                  content: '';
+
+                  transition: width 0.4s ease;
+
+                  @apply absolute block w-0 bottom-[-1vh] h-[0.15vh] bg-white;
+                }
+              }
             }
 
             span {

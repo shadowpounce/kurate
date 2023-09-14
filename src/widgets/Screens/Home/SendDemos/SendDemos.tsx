@@ -2,8 +2,13 @@ import clsx from 'clsx'
 import styles from './SendDemos.module.scss'
 import { ContactForm } from '../../../../features/ContactForm/ContactForm'
 import { TextTicker } from '../../../../shared/TextTicker/TextTicker'
+import { FC } from 'react'
 
-export const SendDemos = () => {
+interface IProps {
+  sectionActiveId?: number
+}
+
+export const SendDemos: FC<IProps> = ({ sectionActiveId = 4 }) => {
   return (
     <section
       data-grid="false"
@@ -16,7 +21,7 @@ export const SendDemos = () => {
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.contactForm}>
-            <ContactForm />
+            <ContactForm sectionActiveId={sectionActiveId} />
           </div>
         </div>
       </div>

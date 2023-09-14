@@ -58,7 +58,9 @@ export const Records = () => {
             <SendButton />
           </div>
           <div className={styles.group}>
-            <Cross activeId={4} />
+            <div className={styles.cross}>
+              <Cross activeId={4} />
+            </div>
             {window.innerWidth > 768 ? (
               <p className="brand-text">
                 <div className="reveal">

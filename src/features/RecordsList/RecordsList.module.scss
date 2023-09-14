@@ -320,7 +320,11 @@
       }
 
       &.active {
-        @apply overflow-y-scroll h-full;
+        @apply overflow-y-scroll h-full pb-[10vh];
+
+        @media (max-width: $tablet) {
+          @apply overflow-y-scroll h-full pb-[0];
+        }
       }
 
       &::-webkit-scrollbar {

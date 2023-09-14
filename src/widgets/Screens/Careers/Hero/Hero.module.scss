@@ -31,7 +31,11 @@
     }
 
     .block {
-      @apply flex gap-[5.291vw];
+      @apply flex gap-[5.291vw] relative;
+
+      .cross {
+        @apply absolute left-0 top-0 translate-x-[-75%] translate-y-[-40%];
+      }
 
       p {
         @apply opacity-[0.9];

@@ -14,7 +14,9 @@ export const Hero = () => {
         <div className={styles.wrapper}>
           <big>{useSplit('Careers')}</big>
           <div className={styles.block}>
-            <Cross activeId={0} />
+            <div className={styles.cross}>
+              <Cross activeId={0} />
+            </div>
             <p className="brand-text">
               {window.innerWidth > 768 ? (
                 <>

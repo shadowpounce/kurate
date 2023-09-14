@@ -1,5 +1,5 @@
 .cross {
-  @apply w-[2.116vw] h-[2.116vw] relative;
+  @apply w-[10vw] h-[10vw] relative flex flex-col-reverse items-center justify-center;
 
   @media (max-width: $tablet) {
     @apply w-[6.154vw] h-[6.154vw];
@@ -8,14 +8,21 @@
   &.animated {
     svg {
       opacity: 0;
-      animation: init 2s forwards ease 0.5s;
+
+      &:nth-child(1) {
+        animation: initFirst 2s forwards ease 0.5s;
+      }
+
+      &:nth-child(2) {
+        animation: initSecond 2s forwards ease 0.5s;
+      }
     }
   }
 
   &:hover {
     svg {
       &:nth-child(1) {
-        translate: -100% 100% !important;
+        translate: -150% 100% !important;
       }
 
       &:nth-child(2) {
@@ -25,25 +32,32 @@
   }
 
   > svg {
-    @apply absolute w-[1.058vw] h-[1.058vw] pointer-events-none;
+    @apply w-[1.058vw] h-[1.058vw] pointer-events-none;
 
     @media (max-width: $tablet) {
       @apply w-[3.077vw] h-[3.077vw];
     }
 
-    transition: translate 0.5s ease;
+    transition: translate 0.4s ease;
 
     &:nth-child(1) {
-      @apply bottom-0 left-0 translate-x-[-100%] translate-y-full opacity-0;
+      @apply opacity-0 translate-x-[-200%] translate-y-[100%];
     }
 
     &:nth-child(2) {
-      @apply top-0 right-0 translate-x-full translate-y-[-100%] opacity-0;
+      @apply opacity-0 translate-y-[-100%] translate-x-[100%];
     }
   }
 }
 
-@keyframes init {
+@keyframes initFirst {
+  to {
+    opacity: 1;
+    transform: translateX(-100%) translateY(0);
+  }
+}
+
+@keyframes initSecond {
   to {
     opacity: 1;
     transform: translateX(0) translateY(0);

@@ -6,6 +6,6 @@ import { Selected } from './Selected/Selected'
 export const ArtistsScreens = [
   <Selected />,
   <AlllArtists />,
-  <SendDemos />,
+  <SendDemos sectionActiveId={2} />,
   <Footer />,
 ]

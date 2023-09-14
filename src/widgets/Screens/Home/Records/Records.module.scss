@@ -54,7 +54,11 @@
     }
 
     .group {
-      @apply flex flex-col gap-[3.307vw] w-full;
+      @apply flex flex-col gap-[3.307vw] w-full relative;
+
+      .cross {
+        @apply absolute top-0 left-0 translate-x-[-35%] translate-y-[-80%];
+      }
 
       @media (max-width: $tablet) {
         @apply items-center justify-center text-center;

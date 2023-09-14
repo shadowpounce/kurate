@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Button } from '../../shared/Button/Button'
 import { Cross } from '../../shared/Cross/Cross'
 import { Input } from '../../shared/Input/Input'
@@ -23,7 +23,11 @@ const FORM_STEPS = [
   },
 ]
 
-export const ContactForm = () => {
+interface IProps {
+  sectionActiveId: number
+}
+
+export const ContactForm: FC<IProps> = ({ sectionActiveId }) => {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [link, setLink] = useState<string>('')
@@ -40,6 +44,16 @@ export const ContactForm = () => {
 
   const [confirmStep, setConfirmStep] = useState<boolean>(false)
   const [formSent, setFormSent] = useState<boolean>(false)
+
+  const [activeIdCross, setActiveIdCross] = useState<number>(0)
+
+  useEffect(() => {
+    const section = document.querySelector<HTMLDataElement>('#contact')
+
+    const id = section?.dataset.screen
+
+    setActiveIdCross(Number(id))
+  }, [])
 
   useEffect(() => {
     if (stepId === FORM_STEPS.length + 1) {
@@ -452,7 +466,9 @@ export const ContactForm = () => {
         )}
 
         <div className={styles.leftBlock}>
-          <Cross activeId={4} />
+          <div className={styles.cross}>
+            <Cross activeId={sectionActiveId} />
+          </div>
           <p className="brand-text">
             <div className="reveal">
               Empowering artists, captivating global{' '}
