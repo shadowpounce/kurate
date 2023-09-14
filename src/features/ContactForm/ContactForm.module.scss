@@ -160,6 +160,10 @@
 
       .cross {
         @apply absolute left-0 top-0 translate-x-[-35%] translate-y-[-80%];
+
+        @media (max-width: $tablet) {
+          @apply left-1/2 translate-x-[-50%] translate-y-[-125%];
+        }
       }
 
       @media (max-width: $tablet) {

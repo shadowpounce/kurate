@@ -105,6 +105,10 @@
               transition-delay: 0.35s !important;
               line-height: 100%;
 
+              @media (max-width: $tablet) {
+                @apply w-full text-center;
+              }
+
               &:hover {
                 a::after {
                   @apply w-full;
@@ -113,6 +117,10 @@
 
               a {
                 @apply w-fit relative;
+
+                @media (max-width: $tablet) {
+                  @apply w-full text-center;
+                }
 
                 &::after {
                   content: '';

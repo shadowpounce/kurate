@@ -110,6 +110,10 @@
         .cross {
           @apply absolute left-1/2 translate-x-[-50%] top-0 translate-y-[-80%];
           pointer-events: none;
+
+          @media (max-width: $tablet) {
+            @apply translate-y-[-125%];
+          }
         }
 
         > div {

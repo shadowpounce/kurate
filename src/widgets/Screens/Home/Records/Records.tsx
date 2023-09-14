@@ -14,47 +14,90 @@ export const Records = () => {
       className={clsx(styles.records, 'section')}
     >
       <div className="container">
+        {window.innerWidth <= 768 && (
+          <div className={styles.titleGroup}>
+            <h2>
+              <div className={styles.transparent}>
+                {useSplit('Let’s', {
+                  duration: 1,
+                  delay: 0.075,
+                  startDelay: 0.5,
+                  ease: 'ease',
+                })}
+              </div>
+              <div className={styles.filled}>
+                {useSplit('Let’s', {
+                  duration: 1,
+                  delay: 0.075,
+                  startDelay: 1,
+                  ease: 'ease',
+                })}
+              </div>
+            </h2>
+            <h2>
+              <div className={styles.transparent}>
+                {useSplit('Explore', {
+                  duration: 1,
+                  delay: 0.075,
+                  startDelay: 1,
+                  ease: 'ease',
+                })}
+              </div>
+
+              <div className={styles.filled}>
+                {useSplit('Explore', {
+                  duration: 1,
+                  delay: 0.075,
+                  startDelay: 1.5,
+                  ease: 'ease',
+                })}
+              </div>
+            </h2>
+          </div>
+        )}
         <div className={styles.textCol}>
           <div className={styles.group}>
-            <div className={styles.titleGroup}>
-              <h2>
-                <div className={styles.transparent}>
-                  {useSplit('Let’s', {
-                    duration: 1,
-                    delay: 0.075,
-                    startDelay: 0.5,
-                    ease: 'ease',
-                  })}
-                </div>
-                <div className={styles.filled}>
-                  {useSplit('Let’s', {
-                    duration: 1,
-                    delay: 0.075,
-                    startDelay: 1,
-                    ease: 'ease',
-                  })}
-                </div>
-              </h2>
-              <h2>
-                <div className={styles.transparent}>
-                  {useSplit('Explore', {
-                    duration: 1,
-                    delay: 0.075,
-                    startDelay: 1,
-                    ease: 'ease',
-                  })}
-                </div>
+            {window.innerWidth > 768 && (
+              <div className={styles.titleGroup}>
+                <h2>
+                  <div className={styles.transparent}>
+                    {useSplit('Let’s', {
+                      duration: 1,
+                      delay: 0.075,
+                      startDelay: 0.5,
+                      ease: 'ease',
+                    })}
+                  </div>
+                  <div className={styles.filled}>
+                    {useSplit('Let’s', {
+                      duration: 1,
+                      delay: 0.075,
+                      startDelay: 1,
+                      ease: 'ease',
+                    })}
+                  </div>
+                </h2>
+                <h2>
+                  <div className={styles.transparent}>
+                    {useSplit('Explore', {
+                      duration: 1,
+                      delay: 0.075,
+                      startDelay: 1,
+                      ease: 'ease',
+                    })}
+                  </div>
 
-                <div className={styles.filled}>
-                  {useSplit('Explore', {
-                    duration: 1,
-                    delay: 0.075,
-                    startDelay: 1.5,
-                    ease: 'ease',
-                  })}
-                </div>
-              </h2>
-            </div>
+                  <div className={styles.filled}>
+                    {useSplit('Explore', {
+                      duration: 1,
+                      delay: 0.075,
+                      startDelay: 1.5,
+                      ease: 'ease',
+                    })}
+                  </div>
+                </h2>
+              </div>
+            )}
             <SendButton />
           </div>
           <div className={styles.group}>
