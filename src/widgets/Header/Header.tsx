@@ -18,13 +18,17 @@ const Header = () => {
     if (header) {
       if (pageLoaded) {
         if (currentPage === 'home') {
-          if (activeScreen > 0) {
+          if (activeScreen >= 0 && activeScreen <= 2) {
             header.classList.add(styles.shown)
           }
 
-          if (activeScreen === 0) {
+          if (activeScreen > 2) {
             header.classList.remove(styles.shown)
           }
+
+          // if (activeScreen === 0) {
+          //   header.classList.remove(styles.shown)
+          // }
         }
 
         if (currentPage !== 'home') {
@@ -35,7 +39,14 @@ const Header = () => {
   }, [activeScreen, pageLoaded, currentPage])
 
   return (
-    <header ref={ref} className={clsx(styles.header, pageLoaded && `animated`)}>
+    <header
+      ref={ref}
+      className={clsx(
+        styles.header,
+        pageLoaded && `animated`,
+        pageLoaded && styles.shown
+      )}
+    >
       <div
         onClick={() => {
           currentPage === 'home'

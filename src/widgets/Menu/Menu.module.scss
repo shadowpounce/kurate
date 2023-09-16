@@ -1,6 +1,12 @@
 .menu {
   @apply fixed bottom-[2.7778vh] left-1/2 translate-x-[-50%] h-fit w-[35%] z-[4] rounded-[0.794vw];
 
+  &.menuOpened {
+    .dropdownMenu {
+      transition-delay: 1s;
+    }
+  }
+
   &.mobileOpened {
     @media (max-width: $tablet) {
       @apply w-[95vw];
@@ -9,6 +15,10 @@
 
     .dropdownMenu {
       transition-delay: 0.5s;
+
+      @media (max-width: $tablet) {
+        transition-delay: 0.5s;
+      }
     }
 
     .playerSwitch {
@@ -58,15 +68,12 @@
     transform-style: preserve-3d;
 
     .dropdownMenu {
-      @apply absolute left-0 right-0 top-0 translate-y-[-100%] p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[400ms] opacity-0 pointer-events-none;
+      @apply absolute left-0 right-0 top-0 p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[400ms] opacity-0 pointer-events-none;
 
       @media (max-width: $tablet) {
-        @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none top-1/2;
+        @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none top-1/2 translate-y-[-100%];
         background: #171717 !important;
       }
-
-      background: rgba(222, 222, 222, 0.03);
-      backdrop-filter: blur(59px);
 
       &.opened {
         @apply opacity-100 pointer-events-auto;
@@ -125,10 +132,10 @@
     }
 
     .nav {
-      @apply p-[0.397vw] text-[1.058vw] text-white font-medium h-full w-full relative;
+      @apply p-[0.397vw] text-[1.058vw] text-white font-medium w-full relative h-full flex items-end;
 
       @media (max-width: $tablet) {
-        @apply text-[4.103vw];
+        @apply text-[4.103vw] block;
       }
 
       transition: border-radius 0.4s ease;
@@ -137,7 +144,7 @@
         @apply absolute top-1/2 right-[1.323vw] translate-y-[-50%] w-[0.794vw] h-[0.794vw] opacity-0 transition-opacity duration-300 pointer-events-none;
 
         @media (max-width: $tablet) {
-          @apply w-[3.077vw] h-[3.077vw] right-[6.667vw] translate-y-[-27%];
+          @apply w-[3.077vw] h-[3.077vw] right-[6.667vw] translate-y-[-50%];
         }
 
         &.shown {
@@ -154,7 +161,11 @@
       }
 
       nav {
-        @apply flex w-full h-full relative;
+        @apply flex w-full h-[5.75vh] relative;
+
+        @media (max-width: $tablet) {
+          @apply h-full;
+        }
 
         .menuButton {
           @apply opacity-[1] flex items-center justify-center gap-[0.926vw];
@@ -249,8 +260,10 @@
       }
 
       &.menuOpened {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        @media (max-width: $tablet) {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
 
         .panel {
           border-top-left-radius: 0;
@@ -268,11 +281,11 @@
 
           background: #c9c9c90d;
 
-          &:not(:first-child) {
+          &:not(:nth-child(2)) {
             pointer-events: none !important;
           }
 
-          &:first-child {
+          &:nth-child(2) {
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
           }
@@ -309,7 +322,7 @@
         transform-style: preserve-3d;
 
         transition: 1s ease;
-        transition-property: transform, border-radius, backdrop-filter;
+        transition-property: transform, border-radius, backdrop-filter, height;
 
         background: rgba(222, 222, 222, 0.03);
 
