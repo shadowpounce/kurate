@@ -39,7 +39,7 @@ export const WithScrollSmoother: FC<IProps> = ({ children }) => {
 
   useEffect(() => {
     if (pageLoaded) {
-      document.body.style.overflowY = `auto`
+      setTimeout(() => document.body.classList.add('page-loaded'), 0)
 
       const sections = Array.from(
         document.querySelectorAll<HTMLDivElement>('.section')

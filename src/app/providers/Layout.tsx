@@ -1,6 +1,13 @@
 import { gsap } from 'gsap'
 import MouseFollower from 'mouse-follower'
-import { FC, ReactNode, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react'
 import Header from '../../widgets/Header/Header'
 import Footer from '../../widgets/Footer/Footer'
 import { BackgroundGrid } from '../../shared/BackgroundGrid/BackgroundGrid'
@@ -17,15 +24,19 @@ interface IProps {
   children: ReactNode
   withPreloader?: boolean
   withThreeDCards?: boolean
+  pageLoaded: boolean
+  setPageLoaded: Dispatch<SetStateAction<boolean>>
 }
 
 export const Layout: FC<IProps> = ({
   children,
   withPreloader = true,
   withThreeDCards = false,
+  pageLoaded,
+  setPageLoaded,
 }) => {
   const [currentPage, setCurrentPage] = useState<string>('')
-  const [pageLoaded, setPageLoaded] = useState<boolean>(false)
+
   const [activeScreen, setActiveScreen] = useState<number>(0)
   const [direction, setDirection] = useState<string>('')
   const [menuActive, setMenuActive] = useState<boolean>(false)
@@ -41,15 +52,33 @@ export const Layout: FC<IProps> = ({
 
   const location = useLocation()
 
-  useEffect(() => {
-    if (!withPreloader && !pageLoaded) {
-      setTimeout(() => setPageLoaded(true), 500)
-    }
-  }, [withPreloader])
+  // useEffect(() => {
+  //   if (!withPreloader && !pageLoaded) {
+  //     setTimeout(() => setPageLoaded(true), 500)
+  //   }
+  // }, [withPreloader])
 
   if (location.hash && hash === '') {
     setHash(location.hash)
   }
+
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      const waterLogo =
+        document.querySelector<HTMLCanvasElement>('#root > canvas')
+
+      if (currentPage === 'home') {
+        if (waterLogo) {
+          waterLogo.style.display = `block`
+        }
+        window.updateTouchRender()
+      } else {
+        if (waterLogo) {
+          waterLogo.style.display = `none`
+        }
+      }
+    }
+  }, [currentPage])
 
   return (
     <MainContext.Provider
@@ -84,7 +113,7 @@ export const Layout: FC<IProps> = ({
         setHash,
       }}
     >
-      {withPreloader && <Preloader />}
+      {!pageLoaded && <Preloader />}
       {window.innerWidth > 768 && <Cursor />}
       <Menu />
       <Header />

@@ -8,6 +8,7 @@ import createMSDFShader from 'three-bmfont-text/shaders/msdf'
 import createGeometry from 'three-bmfont-text'
 
 import { Effect, EffectComposer } from 'postprocessing'
+import { useState } from 'react'
 
 // console.log(THREE)
 
@@ -18,6 +19,8 @@ window.Effect = Effect
 window.EffectComposer = EffectComposer
 
 const App = () => {
+  const [pageLoaded, setPageLoaded] = useState<boolean>(false)
+
   return (
     <WithRoutes>
       {pages.map((page) => (
@@ -26,6 +29,8 @@ const App = () => {
           path={page.path}
           element={
             <Layout
+              setPageLoaded={setPageLoaded}
+              pageLoaded={pageLoaded}
               withThreeDCards={page.withThreeDCards}
               withPreloader={page.withPreloader}
             >

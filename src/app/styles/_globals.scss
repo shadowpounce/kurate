@@ -13,10 +13,20 @@ body {
 
   cursor: none;
 
+  &.page-loaded {
+    overflow-y: auto !important;
+
+    &::-webkit-scrollbar {
+      width: 6px !important;
+    }
+  }
+
   &::-webkit-scrollbar {
     appearance: none;
-    width: 6px;
+    width: 0px;
     background-color: #000;
+
+    transition: width 1s ease;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -76,7 +86,7 @@ header {
 }
 
 #root > canvas {
-  @apply fixed top-[24.4vh] left-1/2 w-1/2 h-1/2 mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0 z-[-1] pointer-events-none;
+  @apply fixed top-[24.4vh] left-1/2 w-1/2 h-1/2 mix-blend-lighten  translate-x-[-50%] translate-y-[-15%] opacity-0 z-[-1] pointer-events-none block;
   width: 80% !important;
   height: 80% !important;
 

@@ -515,7 +515,7 @@ void mainUv(inout vec2 uv) {
 
 `
 
-class App {
+class WaterLogo {
   constructor() {
     this.renderer = new THREE.WebGLRenderer({
       antialias: false,
@@ -637,12 +637,22 @@ class App {
 
     // window.addEventListener('resize', this.onResize)
     document.body
-      .querySelector('#hero .container')
+      .querySelector('#home-hero .container')
       .addEventListener('mousemove', this.onMouseMove)
     document.body
-      .querySelector('#hero .container')
+      .querySelector('#home-hero .container')
       .addEventListener('touchmove', this.onTouchMove)
   }
+
+  updateTouchRender() {
+    document.body
+      .querySelector('#home-hero .container')
+      .addEventListener('mousemove', this.onMouseMove)
+    document.body
+      .querySelector('#home-hero .container')
+      .addEventListener('touchmove', this.onTouchMove)
+  }
+
   onTouchMove(ev) {
     const touch = ev.targetTouches[0]
     this.onMouseMove({ clientX: touch.clientX, clientY: touch.clientY })
@@ -828,6 +838,29 @@ class Loader {
 
 let myApp
 
-if (location.pathname === '/' && window.innerWidth > 768) {
-  setTimeout(() => (myApp = new App()), 1000)
+function initWaterLogo() {
+  myApp = new WaterLogo(0)
 }
+
+// function destroyWaterLogo() {
+//   const waterLogo = document.querySelectorAll('#webGLApp')
+
+//   if (waterLogo) {
+//     Array.from(waterLogo).forEach((wLogo) => {
+//       wLogo.parentElement.removeChild(wLogo)
+//     })
+//   }
+// }
+
+window.initWaterLogo = initWaterLogo
+window.updateTouchRender = updateTouchRender
+
+function updateTouchRender() {
+  if (myApp) {
+    myApp.updateTouchRender()
+  }
+}
+
+setTimeout(() => initWaterLogo(), 1000)
+
+// window.destroyWaterLogo = destroyWaterLogo

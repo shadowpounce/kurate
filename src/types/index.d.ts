@@ -7,5 +7,7 @@ declare global {
     MSDFShader: any
     Effect: any
     EffectComposer: any
+    initWaterLogo: any
+    updateTouchRender: any
   }
 }

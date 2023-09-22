@@ -7,12 +7,12 @@ import gsap from 'gsap'
 import { MainContext } from '../../../../app/providers/MainContext'
 
 export const Hero = () => {
-  const { activeScreen, pageLoaded } = useContext(MainContext)
+  const { activeScreen, pageLoaded, currentPage } = useContext(MainContext)
 
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (pageLoaded && ref.current) {
+    if (pageLoaded && ref.current && currentPage === 'home') {
       const canvas = document.querySelector<HTMLCanvasElement>('#root > canvas')
 
       gsap.to(canvas, {
@@ -42,14 +42,14 @@ export const Hero = () => {
         },
       })
     }
-  }, [pageLoaded])
+  }, [pageLoaded, currentPage])
 
   return (
     <section
       ref={ref}
       data-end="bottom 50%"
       className={clsx('section', styles.hero)}
-      id="hero"
+      id="home-hero"
     >
       <div className="container">
         {/* {window.innerWidth > 768 && (

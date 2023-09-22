@@ -5,7 +5,7 @@ import { Button } from '../../shared/Button/Button'
 import { Logo } from '../../shared/Logo/Logo'
 import styles from './Header.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
-import { useLocation, useNavigate, useNavigation } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useNavigation } from 'react-router-dom'
 
 const Header = () => {
   const { activeScreen, pageLoaded, currentPage } = useContext(MainContext)
@@ -47,20 +47,21 @@ const Header = () => {
         pageLoaded && styles.shown
       )}
     >
-      <div
-        onClick={() => {
-          currentPage === 'home'
-            ? window.scrollTo({
-                left: 0,
-                top: 0,
-                behavior: 'smooth',
-              })
-            : (location.href = '/')
-        }}
+      <Link
+        to={'/'}
+        // onClick={() => {
+        //   currentPage === 'home'
+        //     ? window.scrollTo({
+        //         left: 0,
+        //         top: 0,
+        //         behavior: 'smooth',
+        //       })
+        //     : (location.href = '/')
+        // }}
         className={styles.logo}
       >
         <Logo />
-      </div>
+      </Link>
       {document.querySelector('#contact') && <SendButton />}
     </header>
   )

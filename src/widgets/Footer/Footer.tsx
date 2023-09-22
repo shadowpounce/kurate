@@ -3,6 +3,7 @@ import styles from './Footer.module.scss'
 import { Logo } from '../../shared/Logo/Logo'
 import { Button } from '../../shared/Button/Button'
 import { SendButton } from '../../entities/SendButton/SendButton'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -51,17 +52,17 @@ const Footer = () => {
             <span className="reveal">Explore</span>
             <ul>
               <li className="reveal">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="reveal">
-                <a href="/artists">Artists</a>
+                <Link to="/artists">Artists</Link>
               </li>
               <li className="reveal">
-                <a href="/careers">Careers</a>
+                <Link to="/careers">Careers</Link>
               </li>
-              <a href="/licenses" className={clsx('reveal', styles.colLogo)}>
+              <Link to="/licenses" className={clsx('reveal', styles.colLogo)}>
                 <Logo />
-              </a>
+              </Link>
             </ul>
           </div>
           <div className={styles.col}>

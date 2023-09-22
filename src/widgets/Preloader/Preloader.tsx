@@ -35,7 +35,7 @@ export const Preloader = () => {
 
   useEffect(() => {
     if (closing) {
-      setTimeout(() => setPageLoaded(true), 1000)
+      setTimeout(() => setPageLoaded(true), 1700)
     }
   }, [closing])
 

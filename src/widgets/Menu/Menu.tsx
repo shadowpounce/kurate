@@ -7,6 +7,7 @@ import { pages } from '../../pages'
 import { SendButton } from '../../entities/SendButton/SendButton'
 import { MusicPlayer } from '../../features/MusicPlayer/MusicPlayer'
 import { Cubes } from '../../shared/Cubes/Cubes'
+import { Link } from 'react-router-dom'
 
 export const Menu = () => {
   const {
@@ -102,14 +103,13 @@ export const Menu = () => {
                             navLinks[currentPage.toLowerCase()].map(
                               (link: any) => (
                                 <li
-                                  onClick={(ev) => {
-                                    ev.preventDefault()
+                                  onClick={() => {
                                     toggleMenu()
                                     toScreen(link.href)
                                   }}
                                   className={styles.navItem}
                                 >
-                                  <a href={link.href}>{link.title}</a>
+                                  <Link to={link.href}>{link.title}</Link>
                                 </li>
                               )
                             )}
@@ -186,21 +186,25 @@ export const Menu = () => {
                     <ul>
                       {pages.map((page) => (
                         <li>
-                          <a
+                          <Link
                             onClick={(ev) => {
+                              setMenuActive(false)
                               if (page.title.toLowerCase() === currentPage) {
-                                ev.preventDefault()
                                 window.scrollTo({
                                   left: 0,
                                   top: 0,
                                   behavior: 'smooth',
                                 })
+                              } else {
+                                if (page.title.toLowerCase() === 'home') {
+                                  window.initWaterLogo()
+                                }
                               }
                             }}
-                            href={page.path}
+                            to={page.path}
                           >
                             {page.title}
-                          </a>
+                          </Link>
                           {page.title.toLowerCase() === currentPage && (
                             <ul className={styles.mobileList}>
                               {currentPage &&
@@ -208,13 +212,14 @@ export const Menu = () => {
                                   (link: any) => (
                                     <li
                                       onClick={(ev) => {
+                                        setMenuActive(false)
                                         ev.preventDefault()
                                         toggleMenu()
                                         toScreen(link.href)
                                       }}
                                       className={styles.navItem}
                                     >
-                                      <a href={link.href}>{link.title}</a>
+                                      <Link to={link.href}>{link.title}</Link>
                                     </li>
                                   )
                                 )}
@@ -301,14 +306,12 @@ export const Menu = () => {
               {currentPage &&
                 navLinks[currentPage.toLowerCase()].map((link: any) => (
                   <li
-                    onClick={(ev) => {
-                      ev.preventDefault()
-
+                    onClick={() => {
                       toScreen(link.href)
                     }}
                     className={styles.navItem}
                   >
-                    <a href={link.href}>{link.title}</a>
+                    <Link to={link.href}>{link.title}</Link>
                   </li>
                 ))}
               <li
