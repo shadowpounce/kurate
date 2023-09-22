@@ -10,11 +10,13 @@ export const Cursor = () => {
     if (!init) {
       const cursor = new MouseFollower({
         el: cursorRef.current,
+        container: document.body,
         speed: 0.3,
         stateDetection: {
           '-artist-card': '.artist-slider-card',
           '-record-cover': '.record-cover',
         },
+        hideOnLeave: true,
       })
 
       setInit(true)

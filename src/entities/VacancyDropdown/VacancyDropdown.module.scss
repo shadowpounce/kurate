@@ -15,7 +15,7 @@
     @apply min-h-[11.5vh] h-[11.5vh] items-center;
   }
 
-  transition: height 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0.5s;
+  transition: height 0.5s cubic-bezier(0.65, 0, 0.35, 1) 0s;
 
   @media (max-width: $tablet) {
     transition-delay: 0.15s !important;
@@ -146,7 +146,7 @@
       > div {
         > div {
           &:last-child {
-            rotate: 90deg !important;
+            rotate: 90deg;
 
             transition: rotate 0.4s ease;
           }
@@ -160,7 +160,7 @@
   }
 
   .body {
-    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[3.968vw] transition-opacity duration-500 delay-[750ms] pointer-events-none text-[1.190vw];
+    @apply transition-transform duration-700 translate-y-[100%] w-full absolute opacity-0 left-0 right-0 bottom-0 pt-[3.968vw] transition-opacity duration-500 delay-[150ms] pointer-events-none text-[1.190vw];
 
     color: rgba(255, 255, 255, 0.8);
 
@@ -212,14 +212,12 @@
             rect {
               &:nth-child(1) {
                 translate: 50% -25%;
-                transition-delay: 0.5s;
+                transition-delay: 0.125s;
               }
 
               &:nth-child(2) {
                 translate: 2.5% 20%;
-                transition-delay: 0.25s;
-
-                transition-delay: 0.25s;
+                transition-delay: 0s;
               }
             }
           }

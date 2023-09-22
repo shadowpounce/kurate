@@ -25,6 +25,10 @@ body {
   }
 }
 
+#root {
+  overflow: hidden !important;
+}
+
 #preloader {
   &.animated {
     .reveal {
@@ -114,6 +118,14 @@ footer {
       width: 100% !important;
     }
   }
+}
+
+#smooth-wrapper {
+  overflow: hidden !important;
+}
+
+#smooth-content {
+  overflow: hidden !important;
 }
 
 section {
@@ -228,7 +240,7 @@ big {
 }
 
 .brand-text {
-  @apply opacity-[0.6] max-w-[25.198vw] normal-case;
+  @apply opacity-[0.6] max-w-[25.198vw] normal-case pointer-events-none;
   line-height: 150%;
 
   @media (max-width: $tablet) {

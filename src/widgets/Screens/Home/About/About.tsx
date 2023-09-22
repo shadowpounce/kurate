@@ -49,12 +49,6 @@ export const About = () => {
                       <div></div>
                       <div></div>
                       <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
                     </div>
                     <img src="/images/About/rect.jpg" alt="" />
                   </span>{' '}

@@ -54,6 +54,7 @@ export const ArtistListItem: FC<IProps> = ({
 
   return (
     <li
+      data-start="top 100%"
       data-height={bodyHeight}
       style={{
         height:
@@ -63,9 +64,9 @@ export const ArtistListItem: FC<IProps> = ({
       }}
       className={clsx(styles.artistListItem, active && styles.active)}
     >
-      <div className={styles.img}>
+      {/* <div className={styles.img}>
         <img src={Array.isArray(media) ? media[0] : media} alt="" />
-      </div>
+      </div> */}
       <div
         style={{
           transitionDelay: `${idx * 0.15 + 0.25}s`,
@@ -78,7 +79,7 @@ export const ArtistListItem: FC<IProps> = ({
               <span className={styles.artistInfoLabel}>Genre</span>
               <div className={styles.artistInfoTitle}>{theme}</div>
             </div>
-            <Button withUnderline={false}>View on Spotify</Button>
+            <Button withUnderline={false}>Listen</Button>
           </div>
         )}
 
@@ -88,7 +89,7 @@ export const ArtistListItem: FC<IProps> = ({
             <span className={styles.theme}>{theme}</span>
             <a href="" className={styles.spotifyLink}>
               <Button withUnderline={false} withAnim={false}>
-                View on Spotify
+                Listen
               </Button>
             </a>
           </>

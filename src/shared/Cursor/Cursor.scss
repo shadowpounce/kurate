@@ -1,6 +1,12 @@
 .cursor {
   @apply z-[5] fixed pointer-events-none;
 
+  &.-hidden {
+    div {
+      @apply opacity-0 scale-[0.5] duration-500;
+    }
+  }
+
   &.-artist-card {
     div {
       @apply w-[8.333vw] h-[8.333vw] bg-white border-none;
@@ -56,7 +62,8 @@
     justify-content: center;
 
     transition: 1s ease;
-    transition-property: width, height, background-color, border, border-radius;
+    transition-property: width, height, background-color, border, border-radius,
+      opacity, scale;
 
     &::before {
       content: '';

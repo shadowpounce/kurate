@@ -61,7 +61,7 @@ const Header = () => {
       >
         <Logo />
       </div>
-      <SendButton />
+      {document.querySelector('#contact') && <SendButton />}
     </header>
   )
 }

@@ -436,4 +436,5 @@ export const navLinks: {
       href: '#open-vacancies',
     },
   ],
+  licenses: [],
 }

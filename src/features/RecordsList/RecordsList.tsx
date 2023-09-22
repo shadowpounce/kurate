@@ -238,7 +238,7 @@ export const RecordsList = () => {
               </div>
               <div className={styles.bodyList}>
                 <ul data-scrollable="true">
-                  <li onClick={() => selectGenre('')}>All genres</li>
+                  {/* <li onClick={() => selectGenre('')}>All genres</li> */}
                   {filterString
                     ? genres
                         .filter((item) =>

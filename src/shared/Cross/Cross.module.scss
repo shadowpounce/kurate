@@ -1,5 +1,5 @@
 .cross {
-  @apply w-[10vw] h-[10vw] relative flex flex-col-reverse items-center justify-center;
+  @apply w-[10vw] h-[10vw] relative flex flex-col-reverse items-center justify-center scale-[2];
 
   &.animated {
     svg {
@@ -18,17 +18,17 @@
   &:hover {
     svg {
       &:nth-child(1) {
-        translate: -150% 100% !important;
+        translate: -75% 50% !important;
       }
 
       &:nth-child(2) {
-        translate: 100% -100% !important;
+        translate: 50% -50% !important;
       }
     }
   }
 
   > svg {
-    @apply w-[1.058vw] h-[1.058vw] pointer-events-none;
+    @apply w-[1.058vw] h-[1.058vw] pointer-events-none scale-[0.5];
 
     @media (max-width: $tablet) {
       @apply w-[3.077vw] h-[3.077vw];
@@ -38,9 +38,12 @@
 
     &:nth-child(1) {
       @apply opacity-0 translate-x-[-200%] translate-y-[100%];
+
+      transform-origin: top right;
     }
 
     &:nth-child(2) {
+      transform-origin: bottom right;
       @apply opacity-0 translate-y-[-100%] translate-x-[100%];
     }
   }
@@ -49,13 +52,13 @@
 @keyframes initFirst {
   to {
     opacity: 1;
-    transform: translateX(-100%) translateY(0);
+    transform: scale(0.5) translateX(-100%) translateY(0);
   }
 }
 
 @keyframes initSecond {
   to {
     opacity: 1;
-    transform: translateX(0) translateY(0);
+    transform: scale(0.5) translateX(0) translateY(0);
   }
 }

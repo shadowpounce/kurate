@@ -3,7 +3,7 @@
 
   &.menuOpened {
     .dropdownMenu {
-      transition-delay: 1s;
+      @apply delay-[250ms] duration-[400ms];
     }
   }
 
@@ -50,6 +50,8 @@
 
   &.toPlayer {
     .panel {
+      transition-duration: 1s !important;
+
       &:nth-child(1) {
         transform: rotateX(90deg) translateZ(70px) !important;
       }
@@ -68,7 +70,7 @@
     transform-style: preserve-3d;
 
     .dropdownMenu {
-      @apply absolute left-0 right-0 top-0 p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[400ms] opacity-0 pointer-events-none;
+      @apply absolute left-0 right-0 top-0 p-[0.397vw] w-full rounded-[0.794vw] rounded-b-none transition-opacity duration-[200ms] opacity-0 pointer-events-none;
 
       @media (max-width: $tablet) {
         @apply p-[1.538vw] pb-0 rounded-[3.077vw] rounded-b-none top-1/2 translate-y-[-100%];
@@ -97,6 +99,28 @@
 
           @media (max-width: $tablet) {
             @apply gap-[5.128vw];
+          }
+
+          &.pages {
+            li {
+              a {
+                @apply relative w-fit;
+
+                &:hover {
+                  &::after {
+                    @apply w-full;
+                  }
+                }
+
+                &::after {
+                  content: '';
+
+                  transition: width 0.4s ease;
+
+                  @apply absolute block w-0 bottom-[-0.5vh] min-h-[0.1vh] h-[0.1vh] bg-white;
+                }
+              }
+            }
           }
 
           span {
@@ -321,7 +345,7 @@
 
         transform-style: preserve-3d;
 
-        transition: 1s ease;
+        transition: 0.5s ease;
         transition-property: transform, border-radius, backdrop-filter, height;
 
         background: rgba(222, 222, 222, 0.03);

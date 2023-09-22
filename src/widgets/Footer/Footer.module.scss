@@ -89,6 +89,14 @@
             @apply gap-[3.3vh];
           }
 
+          &Logo {
+            @apply w-[8vw] h-[5vh];
+
+            @media (max-width: $tablet) {
+              @apply w-[18vw] h-[3vh] mx-auto;
+            }
+          }
+
           ul {
             @apply text-[1.587vw] flex flex-col gap-[1.587vw];
             color: $white;

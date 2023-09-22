@@ -90,7 +90,7 @@ export const Menu = () => {
             className={clsx(styles.dropdownMenu, menuActive && styles.opened)}
           >
             <div className={styles.body}>
-              <div className={styles.col}>
+              <div className={clsx(styles.col, styles.pages)}>
                 <span>Explore</span>
                 <ul>
                   {pages.map((page) => (
@@ -181,12 +181,26 @@ export const Menu = () => {
                 )}
               >
                 <div className={styles.body}>
-                  <div className={styles.col}>
+                  <div className={clsx(styles.col, styles.pages)}>
                     <span>Explore</span>
                     <ul>
                       {pages.map((page) => (
                         <li>
-                          <a href={page.path}>{page.title}</a>
+                          <a
+                            onClick={(ev) => {
+                              if (page.title.toLowerCase() === currentPage) {
+                                ev.preventDefault()
+                                window.scrollTo({
+                                  left: 0,
+                                  top: 0,
+                                  behavior: 'smooth',
+                                })
+                              }
+                            }}
+                            href={page.path}
+                          >
+                            {page.title}
+                          </a>
                           {page.title.toLowerCase() === currentPage && (
                             <ul className={styles.mobileList}>
                               {currentPage &&

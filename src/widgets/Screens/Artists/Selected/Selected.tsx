@@ -193,7 +193,7 @@ export const Selected = () => {
                 <p className={clsx(styles.author, 'reveal')}>
                   by <span>{selectedArtist && selectedArtist.title}</span>
                 </p>
-                <Button>View on Spotify</Button>
+                <Button>Listen</Button>
               </div>
             </div>
             <div className={clsx(styles.block, styles.bottomLeft)}>
@@ -234,7 +234,7 @@ export const Selected = () => {
                       ))}
                 </div>
                 <p className={clsx('reveal', styles.theme)}>
-                  Theme:
+                  Theme: <span className="hidden-letter"></span>
                   <span>{selectedArtist && selectedArtist.theme}</span>
                 </p>
               </div>

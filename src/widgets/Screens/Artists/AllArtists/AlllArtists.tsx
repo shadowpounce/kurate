@@ -10,6 +10,7 @@ export const AlllArtists = () => {
 
   return (
     <section
+      data-start="top 50%"
       id="all-artists"
       data-grid="false"
       className={clsx(
@@ -41,7 +42,7 @@ export const AlllArtists = () => {
                 onClick={() => setShowedMore(true)}
                 className={styles.showMore}
               >
-                <Button>Show more</Button>
+                <Button withArrow={false}>Show more</Button>
               </div>
             )}
           </div>

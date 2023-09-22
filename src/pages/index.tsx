@@ -1,6 +1,7 @@
 import { Artists } from './Artists/Artists'
 import { Careers } from './Careers/Careers'
 import { Home } from './Home/Home'
+import { Licenses } from './Licenses/Licenses'
 
 export const pages = [
   {
@@ -20,6 +21,12 @@ export const pages = [
     title: 'Artists',
     path: '/artists',
     element: <Artists />,
+    withPreloader: false,
+  },
+  {
+    title: 'Licenses',
+    path: '/licenses',
+    element: <Licenses />,
     withPreloader: false,
   },
 ]

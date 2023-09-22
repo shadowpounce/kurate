@@ -60,14 +60,14 @@
     }
 
     .actions {
-      @apply flex items-center justify-center w-fit gap-[0.992vw] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
+      @apply flex items-center justify-center w-fit gap-[0.5vw] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%];
 
       @media (max-width: $tablet) {
         @apply static min-w-full translate-x-0 translate-y-0 gap-[3.846vw] order-3;
       }
 
       > div {
-        @apply w-[1.058vw] h-[1.058vw];
+        @apply w-[1.25vw] h-[1.25vw];
 
         @media (max-width: $tablet) {
           @apply w-[4.872vw] min-w-[4.872vw] h-[4.872vw] min-h-[4.872vw];
@@ -80,6 +80,10 @@
             @apply duration-300 transition-colors;
           }
         }
+      }
+
+      > * {
+        transition: scale 0.35s ease;
       }
     }
 
@@ -100,8 +104,8 @@
     }
 
     .main {
-      width: 1.587vw !important;
-      height: 1.587vw !important;
+      width: 1.85vw !important;
+      height: 1.85vw !important;
 
       @media (max-width: $tablet) {
         width: 3.077vw !important;

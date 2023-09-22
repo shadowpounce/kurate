@@ -1,4 +1,4 @@
-$spectrograph-bars-count: 20;
+$spectrograph-bars-count: 14;
 $spectrograph-bar-width: 8px;
 
 $spectrograph-bar-cells-count: 5;
@@ -87,12 +87,9 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
           }
 
           .spectograph {
-            @apply absolute left-0 bottom-0 right-0 w-full h-full;
+            @apply absolute left-0 bottom-0 right-0 w-full h-full flex items-end justify-center overflow-hidden;
 
             color: #fff;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
 
             gap: 3px;
 
@@ -157,6 +154,10 @@ $spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
 
     &Cross {
       @apply absolute top-0 translate-y-[-40%] translate-x-[-80%] left-0;
+
+      @media (max-width: $tablet) {
+        @apply translate-x-[-150%] translate-y-[-15%];
+      }
     }
 
     @media (max-width: $tablet) {

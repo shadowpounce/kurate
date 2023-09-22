@@ -57,7 +57,7 @@
     }
 
     .bar {
-      @apply flex-1 h-full bg-[#fafafa] rounded-[2px];
+      @apply w-[0.25vw] h-full bg-[#fafafa] rounded-[2px] translate-x-full;
       animation: equalizer 1.9s steps(20, end) infinite;
       animation-play-state: paused;
 

@@ -50,7 +50,6 @@ export const Record: FC<IRecord> = ({ cover, title, artists, genre, id }) => {
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
       </div>
       <div className={styles.action}>
         <div

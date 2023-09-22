@@ -100,7 +100,8 @@ export const VacancyDropdown: FC<IProps> = ({
               }}
               withUnderline={false}
             >
-              {window.innerWidth > 768 ? `More` : `Info`}
+              {window.innerWidth <= 768 && `Info`}
+              {window.innerWidth > 768 && active ? 'Collapse' : `Expand`}
             </Button>
           </div>
         </div>

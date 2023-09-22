@@ -68,19 +68,24 @@ export const MusicPlayer = () => {
   function next() {
     if (!shuffleMode) {
       setTrackIndex(trackIndex < recordsData.length - 1 ? trackIndex + 1 : 0)
+
+      setRepeatMode(false)
+
+      setAudioPlay(true)
     } else {
       setTrackIndex(getRandomIntInclusive(0, recordsData.length - 1))
+      setAudioPlay(true)
     }
   }
 
   function prev() {
     const idPrev = trackIndex
 
-    if (!shuffleMode) {
-      setTrackIndex(trackIndex === 0 ? recordsData.length - 1 : trackIndex - 1)
-    } else {
-      setTrackIndex(idPrev)
-    }
+    setTrackIndex(trackIndex === 0 ? recordsData.length - 1 : trackIndex - 1)
+
+    setRepeatMode(false)
+
+    setAudioPlay(true)
   }
 
   function togglePlay() {
@@ -94,8 +99,8 @@ export const MusicPlayer = () => {
   function toggleShuffle() {
     if (!shuffleMode) {
       setShuffleMode(true)
-      setTrackIndex(getRandomIntInclusive(0, recordsData.length - 1))
-      setAudioPlay(true)
+      // setTrackIndex(getRandomIntInclusive(0, recordsData.length - 1))
+      // setAudioPlay(true)
     } else {
       setShuffleMode(false)
     }
@@ -185,7 +190,14 @@ export const MusicPlayer = () => {
         </div>
         <div className={styles.actions}>
           <div
-            onClick={() => toggleShuffle()}
+            onClick={(ev) => {
+              toggleShuffle()
+
+              const target = ev.target as HTMLDivElement
+
+              target.style.scale = `1.25`
+              setTimeout(() => (target.style.scale = `1`), 500)
+            }}
             className={clsx(styles.shuffle, shuffleMode && styles.active)}
           >
             <svg
@@ -210,7 +222,13 @@ export const MusicPlayer = () => {
             </svg>
           </div>
           <div
-            onClick={() => prev()}
+            onClick={(ev) => {
+              prev()
+              const target = ev.target as HTMLDivElement
+
+              target.style.scale = `1.25`
+              setTimeout(() => (target.style.scale = `1`), 500)
+            }}
             className={clsx(styles.direction, styles.prev)}
           >
             <svg
@@ -231,7 +249,13 @@ export const MusicPlayer = () => {
             </svg>
           </div>
           <div
-            onClick={() => togglePlay()}
+            onClick={(ev) => {
+              const target = ev.target as HTMLDivElement
+
+              target.style.scale = `1.25`
+              setTimeout(() => (target.style.scale = `1`), 500)
+              togglePlay()
+            }}
             className={clsx(styles.main, audioPlay && styles.active)}
           >
             <svg
@@ -281,7 +305,13 @@ export const MusicPlayer = () => {
           </div>
 
           <div
-            onClick={() => next()}
+            onClick={(ev) => {
+              const target = ev.target as HTMLDivElement
+
+              target.style.scale = `1.25`
+              setTimeout(() => (target.style.scale = `1`), 500)
+              next()
+            }}
             className={clsx(styles.direction, styles.next)}
           >
             <svg
@@ -302,7 +332,13 @@ export const MusicPlayer = () => {
             </svg>
           </div>
           <div
-            onClick={() => toggleRepeat()}
+            onClick={(ev) => {
+              toggleRepeat()
+              const target = ev.target as HTMLDivElement
+
+              target.style.scale = `1.25`
+              setTimeout(() => (target.style.scale = `1`), 500)
+            }}
             className={clsx(styles.repeat, repeatMode && styles.active)}
           >
             <svg

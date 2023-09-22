@@ -59,6 +59,9 @@ const Footer = () => {
               <li className="reveal">
                 <a href="/careers">Careers</a>
               </li>
+              <a href="/licenses" className={clsx('reveal', styles.colLogo)}>
+                <Logo />
+              </a>
             </ul>
           </div>
           <div className={styles.col}>

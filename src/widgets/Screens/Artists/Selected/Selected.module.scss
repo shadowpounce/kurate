@@ -1,9 +1,9 @@
 .selected {
   .wrapper {
-    @apply max-w-[70%] w-full mx-auto flex flex-col items-center justify-center gap-[1vw] h-full py-[4.960vw];
+    @apply max-w-[70%] w-full mx-auto flex flex-col items-center justify-center gap-[1.5vw] h-full py-[4.960vw];
 
     @media (max-width: $tablet) {
-      @apply max-w-full py-[8vh] pb-[10vh] gap-[1vh];
+      @apply max-w-full py-[8vh] pb-[10vh] gap-[4vh] overflow-hidden;
     }
 
     &.selecting {
@@ -56,7 +56,7 @@
       transition-duration: 1s !important;
 
       @media (max-width: $tablet) {
-        @apply justify-between w-full gap-[8.205vw];
+        @apply justify-between w-full gap-[6vw];
       }
 
       .tab {
@@ -146,7 +146,7 @@
 
           .content {
             @media (max-width: $tablet) {
-              @apply flex flex-col gap-[3vw] items-center justify-center;
+              @apply flex flex-col gap-[5vw] items-center justify-center;
             }
           }
 

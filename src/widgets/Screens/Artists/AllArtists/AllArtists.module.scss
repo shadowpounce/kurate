@@ -6,6 +6,10 @@
       height: fit-content !important;
       overflow: unset !important;
     }
+
+    .wrap::after {
+      display: none;
+    }
   }
 
   .wrapper {
@@ -18,6 +22,18 @@
     .wrap {
       @apply flex flex-col w-full h-full relative;
 
+      &::after {
+        content: '';
+
+        @apply absolute left-0 right-0 bottom-0 h-[25%] pointer-events-none;
+
+        background-image: linear-gradient(
+          180deg,
+          rgba(18, 19, 19, 0) 0%,
+          #0e0f0f 100%
+        );
+      }
+
       span[class='section-span'] {
         @media (max-width: $tablet) {
           @apply text-[3.077vw];
@@ -26,7 +42,7 @@
     }
 
     .showMore {
-      @apply mx-auto absolute left-1/2 translate-x-[-50%] bottom-0;
+      @apply mx-auto absolute left-1/2 translate-x-[-50%] bottom-0 z-[1];
 
       @media (max-width: $tablet) {
         @apply mt-[7vh] static translate-x-0;
