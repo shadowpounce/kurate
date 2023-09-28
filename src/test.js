@@ -359,13 +359,13 @@ class Text {
 
 class TouchTexture {
   constructor(parent) {
-    this.size = 128
+    this.size = 64
     this.width = window.innerWidth
     this.height = window.innerHeight
     this.width = this.height = this.size
 
-    this.maxAge = 128
-    this.radius = 0.02 * this.size
+    this.maxAge = 64
+    this.radius = 0.1 * this.size
     // this.radius = 0.15 * 1000;
 
     this.speed = 1 / this.maxAge
