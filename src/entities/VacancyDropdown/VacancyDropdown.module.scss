@@ -143,6 +143,12 @@
     }
 
     .more {
+      @apply absolute right-0 top-1/2 translate-y-[-50%] h-[10vh] justify-center;
+
+      @media (max-width: $tablet) {
+        @apply relative translate-y-0 top-0 h-fit;
+      }
+
       > div {
         > div {
           &:last-child {
