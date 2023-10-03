@@ -160,13 +160,13 @@ export const MusicPlayer = () => {
           }}
         />
       </div>
-      <div
+      {/* <div
         style={{
           // width: `${currentTime / (currentDuration / 100)}%`,
           width: `${el && el.style.width}`,
         }}
         className={styles.progress}
-      ></div>
+      ></div> */}
       <div className={styles.wrapper}>
         <div className={styles.info}>
           <Cubes

@@ -63,6 +63,14 @@ export const Layout: FC<IProps> = ({
   }
 
   useEffect(() => {
+    window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth',
+    })
+  }, [currentPage])
+
+  useEffect(() => {
     if (window.innerWidth > 768) {
       const waterLogo =
         document.querySelector<HTMLCanvasElement>('#root > canvas')

@@ -1,11 +1,102 @@
+$spectrograph-bars-count: 14;
+$spectrograph-bar-width: 3px;
+
+$spectrograph-bar-cells-count: 5;
+$spectrograph-bar-cell-height: 2px;
+
+$spectrograph-gap-height: 2px;
+$spectrograph-gap-width: 1px;
+
+$spectrograph-height: $spectrograph-bar-cells-count *
+  ($spectrograph-bar-cell-height + $spectrograph-gap-height);
+$spectrograph-width: ($spectrograph-bar-width * $spectrograph-bars-count) +
+  ($spectrograph-gap-width * ($spectrograph-bars-count - 1));
+
 .scene {
-  @apply w-fit flex;
+  @apply w-fit flex relative;
   perspective: 1000px;
 
   &.hovered {
     &:hover {
       .cube {
         animation-play-state: running !important;
+      }
+    }
+  }
+
+  &.audioPlaying {
+    .cube {
+      animation-play-state: running !important;
+    }
+
+    .spectograph {
+      @apply opacity-100;
+    }
+  }
+
+  &Action {
+    @apply w-[1.25vw] h-[1.25vw] absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-[3];
+
+    @media (max-width: $tablet) {
+      @apply w-[5vw] h-[5vw];
+    }
+
+    &.audioNotPlaying {
+      svg {
+        &:first-child {
+          animation: playTicker 2.5s infinite linear;
+        }
+      }
+    }
+
+    svg {
+      @apply w-full h-full absolute top-0 left-0;
+
+      > * {
+        pointer-events: none;
+      }
+    }
+  }
+
+  .spectograph {
+    @apply absolute left-0 bottom-0 right-0 w-full h-full flex items-end justify-center overflow-hidden z-[2] transition-opacity duration-[300ms] opacity-0 translate-y-[15%] pointer-events-none;
+
+    color: #95b6c5;
+
+    gap: 3px;
+
+    @media (max-width: $tablet) {
+      gap: 1px;
+    }
+
+    > div {
+      margin: 0 $spectrograph-gap-width 0 0;
+      flex: 0 0 $spectrograph-bar-width;
+      height: 50%;
+      background: currentColor;
+      transform: translateY(25%);
+      transform-origin: center bottom;
+      animation: animation 3s steps($spectrograph-bar-cells-count, start)
+        infinite alternate;
+      will-change: transform;
+
+      border-radius: 6px;
+
+      @media (max-width: $tablet) {
+        @apply w-[2px] rounded-[1px] flex-none;
+      }
+
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          animation-name: animation#{random(3)};
+          animation-delay: #{$i * 50}ms;
+          animation-duration: #{random(3) * 100 + 1500}ms;
+          animation-timing-function: ease-in-out;
+        }
+      }
+
+      &:last-child {
+        margin: 0;
       }
     }
   }
@@ -21,7 +112,7 @@
 
     animation-play-state: paused !important;
 
-    &:first-child {
+    &:nth-child(3) {
       animation: rotate 3s infinite linear;
 
       .cubeFace {
@@ -113,5 +204,55 @@
 @keyframes rotate {
   to {
     transform: rotateX(360deg);
+  }
+}
+
+@keyframes playTicker {
+  15% {
+    scale: 1.5;
+  }
+
+  30% {
+    scale: 1;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes animation1 {
+  0%,
+  5% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animation2 {
+  0%,
+  66% {
+    transform: translateY(100%);
+  }
+
+  33%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animation3 {
+  33%,
+  66% {
+    transform: translateY(100%);
+  }
+
+  0%,
+  45%,
+  100% {
+    transform: translateY(0);
   }
 }

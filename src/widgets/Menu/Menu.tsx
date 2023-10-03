@@ -18,6 +18,7 @@ export const Menu = () => {
     setPlayerActive,
     currentPage,
     activeScreen,
+    audioPlay,
   } = useContext(MainContext)
 
   const navPanelRef = useRef<HTMLDivElement>(null)
@@ -315,8 +316,18 @@ export const Menu = () => {
                   </li>
                 ))}
               <li
-                onClick={() => {
-                  setPlayerActive(true)
+                onClick={(ev) => {
+                  const target = ev.target as HTMLDivElement
+
+                  if (
+                    target.classList.contains('player-switch-action-button')
+                  ) {
+                    if (!audioPlay) {
+                      setPlayerActive(true)
+                    }
+                  } else {
+                    setPlayerActive(true)
+                  }
                 }}
                 className={clsx(styles.navItem, styles.playerSwitch)}
               >

@@ -3,10 +3,13 @@ import { FreeMode, Scrollbar, Mousewheel } from 'swiper'
 import './ArtistsSlider.scss'
 import { artistsData } from '../../data'
 import { ArtistsSliderCard } from '../../entities/ArtistsSliderCard/ArtistsSliderCard'
+import { useEffect, useRef } from 'react'
 
 export const ArtistsSlider = () => {
+  const ref = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="artists-slider">
+    <div ref={ref} className="artists-slider">
       <Swiper
         scrollbar={{
           hide: true,

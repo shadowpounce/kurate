@@ -9,13 +9,13 @@
 
   &.-artist-card {
     div {
-      @apply w-[8.333vw] h-[8.333vw] bg-white border-none;
+      @apply w-[6vw] h-[6vw] bg-white border-none;
 
       &::before {
         background-image: url('/images/Cursor/swiper.svg');
 
-        width: 4.497vw;
-        height: 1.72vw;
+        width: 3.25vw;
+        height: 1vw;
 
         background-color: transparent;
 
