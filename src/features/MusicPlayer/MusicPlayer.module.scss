@@ -43,7 +43,7 @@
                 @apply w-[0.75vw] h-[0.75vw] top-[-200%];
 
                 @media (max-width: $tablet) {
-                  @apply w-[2.25vw] h-[2.25vw];
+                  @apply w-[2.25vw] h-[2.25vw] top-[-100%];
                 }
               }
 
