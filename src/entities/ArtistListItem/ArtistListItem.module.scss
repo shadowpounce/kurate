@@ -15,6 +15,10 @@
     transition-duration: 1s !important;
     transition-property: opacity, translate !important;
 
+    @media (max-width: $tablet) {
+      @apply opacity-100 translate-y-0;
+    }
+
     &Button {
       @media (max-width: $tablet) {
         @apply ml-auto;

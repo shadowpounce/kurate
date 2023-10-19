@@ -31,7 +31,7 @@
   }
 
   @media (max-width: $tablet) {
-    @apply bottom-auto top-[84dvh] h-[12vh] w-[75vw];
+    @apply bottom-auto top-[75vh] h-[12vh] w-[75vw];
     transition-delay: 0.5s !important;
     transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   }

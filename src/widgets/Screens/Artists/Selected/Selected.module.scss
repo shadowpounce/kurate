@@ -197,6 +197,10 @@
           .title {
             @apply relative whitespace-nowrap;
 
+            @media (max-width: $tablet) {
+              @apply h-[10vh];
+            }
+
             .circlePhoto {
               @apply flex mr-[5.291vw];
 

@@ -94,7 +94,7 @@
         }
 
         p {
-          @apply text-[0.926vw] normal-case;
+          @apply text-[0.926vw] normal-case overflow-hidden w-[85%];
 
           @media (max-width: $tablet) {
             @apply text-[4.103vw];

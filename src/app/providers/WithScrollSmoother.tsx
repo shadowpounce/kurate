@@ -38,35 +38,39 @@ export const WithScrollSmoother: FC<IProps> = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if (pageLoaded) {
-      setTimeout(() => document.body.classList.add('page-loaded'), 0)
+    const ctx = gsap.context(() => {
+      if (pageLoaded) {
+        setTimeout(() => document.body.classList.add('page-loaded'), 0)
 
-      const sections = Array.from(
-        document.querySelectorAll<HTMLDivElement>('.section')
-      )
+        const sections = Array.from(
+          document.querySelectorAll<HTMLDivElement>('.section')
+        )
 
-      sections.map((section, idx) => {
-        section.dataset.screen = `${idx}`
+        sections.map((section, idx) => {
+          section.dataset.screen = `${idx}`
 
-        ScrollTrigger.create({
-          trigger: section,
-          start: section.dataset.start ?? `top 25%`,
-          end: section.dataset.end ?? 'bottom bottom',
-          onEnter: () => {
-            setActiveScreen(idx)
-            !section.classList.contains('animated') &&
-              section.classList.add('animated')
-          },
-          onEnterBack: () => {
-            setActiveScreen(idx)
-          },
+          ScrollTrigger.create({
+            trigger: section,
+            start: section.dataset.start ?? `top 25%`,
+            end: section.dataset.end ?? 'bottom bottom',
+            onEnter: () => {
+              setActiveScreen(idx)
+              !section.classList.contains('animated') &&
+                section.classList.add('animated')
+            },
+            onEnterBack: () => {
+              setActiveScreen(idx)
+            },
+          })
         })
-      })
-    }
+      }
 
-    if (!pageLoaded) {
-      document.body.style.overflowY = `hidden`
-    }
+      if (!pageLoaded) {
+        document.body.style.overflowY = `hidden`
+      }
+    })
+
+    return () => ctx.revert()
   }, [pageLoaded])
 
   return (

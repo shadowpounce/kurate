@@ -97,7 +97,9 @@ export const Menu = () => {
                 <ul>
                   {pages.map((page) => (
                     <li>
-                      <Link to={page.path}>{page.title}</Link>
+                      <Link onClick={() => setMenuActive(false)} to={page.path}>
+                        {page.title}
+                      </Link>
                       {page.title.toLowerCase() === currentPage && (
                         <ul className={styles.mobileList}>
                           {currentPage &&

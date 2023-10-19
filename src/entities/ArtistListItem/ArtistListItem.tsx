@@ -71,7 +71,7 @@ export const ArtistListItem: FC<IProps> = ({
         style={{
           transitionDelay: `${idx * 0.15 + 0.25}s`,
         }}
-        className={clsx(styles.head, 'reveal')}
+        className={clsx(styles.head, window.innerWidth > 768 && 'reveal')}
       >
         {window.innerWidth <= 768 && (
           <div ref={bodyRef} className={styles.mobileBody}>

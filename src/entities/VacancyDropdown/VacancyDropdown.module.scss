@@ -98,6 +98,10 @@
   .head {
     @apply w-full flex justify-between items-center relative opacity-0 translate-y-[15%];
 
+    @media (max-width: $tablet) {
+      @apply opacity-100 translate-y-0;
+    }
+
     transition-duration: 1s !important;
 
     .position {

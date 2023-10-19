@@ -79,14 +79,14 @@ export const VacancyDropdown: FC<IProps> = ({
         style={{
           transitionDelay: `${idx * 0.125}s`,
         }}
-        className={clsx(styles.head, 'reveal')}
+        className={clsx(styles.head, window.innerWidth > 768 && 'reveal')}
       >
         <div className={styles.position}>
           <h6>{position}</h6>
         </div>
         <div className={styles.addInfo}>
           {window.innerWidth > 768 && (
-            <span className={styles.position}>{position}</span>
+            <span className={styles.position}>{location}</span>
           )}
           <div className={styles.group}>
             {window.innerWidth > 768 && (
@@ -98,6 +98,7 @@ export const VacancyDropdown: FC<IProps> = ({
                 toggleDropdown()
                 handleClick && handleClick()
               }}
+              withAnim={window.innerWidth > 768 ? true : false}
               withUnderline={false}
             >
               {window.innerWidth <= 768 && `Info`}

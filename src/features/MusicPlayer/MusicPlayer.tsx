@@ -73,7 +73,7 @@ export const MusicPlayer = () => {
 
       setAudioPlay(true)
     } else {
-      setTrackIndex(getRandomIntInclusive(0, recordsData.length - 1))
+      setTrackIndex(trackIndex < recordsData.length - 1 ? trackIndex + 1 : 0)
       setAudioPlay(true)
     }
   }

@@ -63,6 +63,28 @@ export const ContactForm: FC<IProps> = ({ sectionActiveId }) => {
     }
   }, [stepId])
 
+  useEffect(() => {
+    if (data) {
+      if (stepId === 1) {
+        if (data.name !== '') {
+          setActiveValue(data.name)
+        }
+      }
+
+      if (stepId === 2) {
+        if (data.email !== '') {
+          setActiveValue(data.email)
+        }
+      }
+
+      if (stepId === 3) {
+        if (data.link !== '') {
+          setActiveValue(data.link)
+        }
+      }
+    }
+  }, [stepId])
+
   const [data, setData] = useState<{
     [key: string]: any
   }>()
@@ -127,6 +149,14 @@ export const ContactForm: FC<IProps> = ({ sectionActiveId }) => {
     if (confirmStep) {
       setFormSent(true)
       return
+    }
+
+    if (data) {
+      if (stepId === 3 && !data.link.includes('soundcloud')) {
+        alert('Try again. Your link must be contain a link from SoundCloud')
+
+        return
+      }
     }
 
     if (stepId !== FORM_STEPS.length) {
