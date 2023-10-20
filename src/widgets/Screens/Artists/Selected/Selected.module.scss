@@ -75,8 +75,10 @@
           @apply w-full h-[1.5px] bg-[#fafafa];
         }
 
-        &:hover {
-          @apply opacity-100;
+        @media (min-width: 769px) {
+          &:hover {
+            @apply opacity-100;
+          }
         }
       }
     }
