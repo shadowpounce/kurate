@@ -129,13 +129,17 @@ export const Menu = () => {
                     <span>Follow</span>
                     <ul>
                       <li>
-                        <a href="">Twitter</a>
+                        <a href="https://twitter.com/kuratemusic">Twitter</a>
                       </li>
                       <li>
-                        <a href="">Instagram</a>
+                        <a href="https://www.instagram.com/kuratemusic/">
+                          Instagram
+                        </a>
                       </li>
                       <li>
-                        <a href="">Facebook</a>
+                        <a href="https://www.facebook.com/kuratemusic">
+                          Facebook
+                        </a>
                       </li>
                     </ul>
                   </div>
