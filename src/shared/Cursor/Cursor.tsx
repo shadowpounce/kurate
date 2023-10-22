@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import './Cursor.scss'
 import MouseFollower from 'mouse-follower'

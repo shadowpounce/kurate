@@ -9,21 +9,24 @@
 
   &.-artist-card {
     div {
-      @apply w-[6vw] h-[6vw] bg-white border-none;
-
-      &::before {
-        background-image: url('/images/Cursor/swiper.svg');
-
-        width: 3.25vw;
-        height: 1vw;
-
-        background-color: transparent;
-
-        scale: 1;
-
-        // transition-delay: 0.5s;
-      }
+      opacity: 0 !important;
     }
+    // div {
+    //   @apply w-[6vw] h-[6vw] bg-white border-none;
+
+    //   &::before {
+    //     background-image: url('/images/Cursor/swiper.svg');
+
+    //     width: 3.25vw;
+    //     height: 1vw;
+
+    //     background-color: transparent;
+
+    //     scale: 1;
+
+    //     // transition-delay: 0.5s;
+    //   }
+    // }
   }
 
   &.-record-cover {

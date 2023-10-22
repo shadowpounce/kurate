@@ -1,6 +1,8 @@
 .artists-slider {
   @apply w-full h-full;
 
+  cursor: grab !important;
+
   .swiper-wrapper {
     display: flex;
     height: 100%;
