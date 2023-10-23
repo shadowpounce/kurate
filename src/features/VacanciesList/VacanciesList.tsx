@@ -1,14 +1,19 @@
-import { Dispatch, FC, SetStateAction, useContext, useState } from 'react'
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { vacanciesData } from '../../data'
 import { VacancyDropdown } from '../../entities/VacancyDropdown/VacancyDropdown'
 import { Button } from '../../shared/Button/Button'
 import styles from './VacanciesList.module.scss'
 import clsx from 'clsx'
-import useSplit from '../../hooks/useSplit'
-import { MainContext } from '../../app/providers/MainContext'
 
-const types = ['remote', 'hybrid', 'full-time']
-const locations = ['london', 'sheffield']
+const types = ['all', 'remote', 'hybrid', 'full-time']
+const locations = ['all', 'london', 'sheffield']
 
 interface IProps {
   showedMore: boolean
@@ -21,11 +26,15 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
   const [filterActive, setFilterActive] = useState<boolean>(false)
   const [filterTwoActive, setFilterTwoActive] = useState<boolean>(false)
 
-  const [activeLocation, setActiveLocation] = useState<string | undefined>('')
-  const [activeType, setActiveType] = useState<string | undefined>('')
+  const [activeLocation, setActiveLocation] = useState<string | undefined>(
+    'all'
+  )
+  const [activeType, setActiveType] = useState<string | undefined>('all')
 
   const [filterString, setFilterString] = useState<string>('')
   const [filterTwoString, setFilterTwoString] = useState<string>('')
+
+  const [filteredData, setFilteredData] = useState<any[]>(vacanciesData)
 
   const toggleFilter = (filter: string) => {
     if (filter === 'location') {
@@ -48,6 +57,44 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
 
     setActiveType(genre)
   }
+
+  useEffect(() => {
+    if (activeType !== 'all' && activeLocation !== 'all') {
+      setFilteredData(
+        vacanciesData.filter(
+          (vacancy) =>
+            vacancy.location.toLowerCase() === activeLocation &&
+            vacancy.type.toLowerCase() === activeType
+        )
+      )
+
+      return
+    }
+
+    if (activeType !== 'all' || activeLocation !== 'all') {
+      if (activeType !== 'all') {
+        setFilteredData(
+          vacanciesData.filter(
+            (vacancy) => vacancy.type.toLowerCase() === activeType
+          )
+        )
+      }
+
+      if (activeLocation !== 'all') {
+        setFilteredData(
+          vacanciesData.filter(
+            (vacancy) => vacancy.location.toLowerCase() === activeLocation
+          )
+        )
+      }
+
+      return
+    }
+
+    if (activeLocation === 'all' && activeType === 'all') {
+      setFilteredData(vacanciesData)
+    }
+  }, [activeType, activeLocation])
 
   return (
     <>
@@ -165,10 +212,10 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
                     </svg>
                   )}
                 </div>
-                {activeLocation && (
+                {activeLocation !== 'all' && (
                   <div
                     onClick={() => {
-                      setActiveLocation('')
+                      setActiveLocation('all')
                       setFilterActive(false)
                     }}
                     className={styles.resetFilterIcon}
@@ -337,11 +384,11 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
                     </svg>
                   )}
                 </div>
-                {activeType && (
+                {activeType !== 'all' && (
                   <div
                     onClick={() => {
-                      setActiveType('')
-                      setFilterActive(false)
+                      setActiveType('all')
+                      setFilterTwoActive(false)
                     }}
                     className={styles.resetFilterIcon}
                   >
@@ -403,47 +450,24 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
         )}
       </div>
       <ul className={styles.vacanciesList}>
-        {activeLocation && activeType
-          ? vacanciesData
-              .filter(
-                (vacancy) =>
-                  vacancy.location.toLowerCase() === activeLocation &&
-                  vacancy.type.toLowerCase() === activeType
-              )
-              .map((vacancy, idx) => (
-                <VacancyDropdown
-                  showedMore={showedMore}
-                  setShowedMore={setShowedMore}
-                  idx={idx}
-                  handleClick={() => {
-                    if (!showedMore) {
-                      canScroll ? setCanScroll(false) : setCanScroll(true)
-                    }
-                  }}
-                  position={vacancy.position}
-                  location={vacancy.location}
-                  text={vacancy.text}
-                  requirments={vacancy.requirments}
-                  type={vacancy.type}
-                />
-              ))
-          : vacanciesData.map((vacancy, idx) => (
-              <VacancyDropdown
-                showedMore={showedMore}
-                setShowedMore={setShowedMore}
-                idx={idx}
-                handleClick={() => {
-                  if (!showedMore) {
-                    canScroll ? setCanScroll(false) : setCanScroll(true)
-                  }
-                }}
-                position={vacancy.position}
-                location={vacancy.location}
-                text={vacancy.text}
-                requirments={vacancy.requirments}
-                type={vacancy.type}
-              />
-            ))}
+        {filteredData &&
+          filteredData.map((vacancy, idx) => (
+            <VacancyDropdown
+              showedMore={showedMore}
+              setShowedMore={setShowedMore}
+              idx={idx}
+              handleClick={() => {
+                if (!showedMore) {
+                  canScroll ? setCanScroll(false) : setCanScroll(true)
+                }
+              }}
+              position={vacancy.position}
+              location={vacancy.location}
+              text={vacancy.text}
+              requirments={vacancy.requirments}
+              type={vacancy.type}
+            />
+          ))}
       </ul>
       {!showedMore && (
         <Button

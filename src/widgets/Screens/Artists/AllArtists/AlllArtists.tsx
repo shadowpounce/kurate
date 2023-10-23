@@ -2,22 +2,26 @@ import clsx from 'clsx'
 import styles from './AllArtists.module.scss'
 import { artistsData } from '../../../../data'
 import { Button } from '../../../../shared/Button/Button'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArtistListItem } from '../../../../entities/ArtistListItem/ArtistListItem'
 
 export const AlllArtists = () => {
   const [showedMore, setShowedMore] = useState<boolean>(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (ref.current && showedMore) {
+      ref.current.classList.add(`${styles.collapsed}`)
+    }
+  }, [showedMore])
 
   return (
     <section
+      ref={ref}
       data-start="top 50%"
       id="all-artists"
       data-grid="false"
-      className={clsx(
-        'section',
-        styles.allArtists,
-        showedMore && styles.collapsed
-      )}
+      className={clsx('section', styles.allArtists)}
     >
       <div className="container">
         <div className={clsx(styles.wrapper)}>
