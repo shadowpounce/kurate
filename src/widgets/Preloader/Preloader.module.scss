@@ -11,6 +11,12 @@
     @apply py-[9.231vw] px-[5.128vw];
   }
 
+  &.loadedStorage {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -100 !important;
+  }
+
   &.closing {
     translate: 0 100%;
   }

@@ -42,7 +42,11 @@
   }
 
   .textWrapper {
-    @apply flex items-center justify-between w-full h-full;
+    @apply flex items-center justify-start gap-[20vw] w-full h-full;
+
+    @media (max-width: $tablet) {
+      @apply justify-between gap-0;
+    }
 
     > div {
       @apply relative;

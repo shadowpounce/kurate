@@ -38,11 +38,21 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
 
   const toggleFilter = (filter: string) => {
     if (filter === 'location') {
-      filterActive ? setFilterActive(false) : setFilterActive(true)
+      if (filterActive) {
+        setFilterActive(false)
+      } else {
+        setFilterActive(true)
+        setFilterTwoActive(false)
+      }
     }
 
     if (filter === 'type') {
-      filterTwoActive ? setFilterTwoActive(false) : setFilterTwoActive(true)
+      if (filterTwoActive) {
+        setFilterTwoActive(false)
+      } else {
+        setFilterTwoActive(true)
+        setFilterActive(false)
+      }
     }
   }
 
@@ -57,6 +67,21 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
 
     setActiveType(genre)
   }
+
+  useEffect(() => {
+    document.body.addEventListener('click', (ev) => toggle(ev))
+
+    const toggle = (ev: Event) => {
+      const target = ev.target as Element
+
+      if (!target.closest(`.${styles.dropdown}`)) {
+        setFilterActive(false)
+        setFilterTwoActive(false)
+      }
+    }
+
+    return () => document.body.removeEventListener('click', (ev) => toggle(ev))
+  }, [])
 
   useEffect(() => {
     if (activeType !== 'all' && activeLocation !== 'all') {

@@ -862,7 +862,7 @@ function updateTouchRender() {
 }
 
 if (window.innerWidth > 768) {
-  setTimeout(() => initWaterLogo(), 1000)
+  setTimeout(() => initWaterLogo(), 0)
 }
 
 // window.destroyWaterLogo = destroyWaterLogo

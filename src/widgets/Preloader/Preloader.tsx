@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styles from './Preloader.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 import clsx from 'clsx'
@@ -14,6 +14,10 @@ export const Preloader = () => {
   const [closing, setClosing] = useState<boolean>(false)
 
   const [logoAnimEnd, setLogoAnimEnd] = useState<boolean>(false)
+
+  const [loadedFromStorage, setLoadedFromStorage] = useState<boolean>(false)
+
+  const root = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setTimeout(() => setLogoAnimEnd(true), 4000)
@@ -35,17 +39,35 @@ export const Preloader = () => {
 
   useEffect(() => {
     if (closing) {
-      setTimeout(() => setPageLoaded(true), 1700)
+      setTimeout(() => {
+        setPageLoaded(true)
+        localStorage.setItem('site-loaded', 'true')
+      }, 1700)
     }
   }, [closing])
 
+  useLayoutEffect(() => {
+    if (
+      localStorage.getItem('site-loaded') &&
+      localStorage.getItem('site-loaded') === 'true'
+    ) {
+      console.log(localStorage.getItem('site-loaded'))
+      if (root.current) {
+        setLoadedFromStorage(true)
+        setPageLoaded(true)
+      }
+    }
+  }, [])
+
   return (
     <div
+      ref={root}
       id="preloader"
       className={clsx(
         styles.preloader,
         'reveal-container animated',
-        closing && styles.closing
+        closing && styles.closing,
+        loadedFromStorage && styles.loadedStorage
       )}
     >
       <div className={styles.content}>

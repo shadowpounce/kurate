@@ -6,6 +6,7 @@ import {
   ReactNode,
   SetStateAction,
   useEffect,
+  useLayoutEffect,
   useState,
 } from 'react'
 import Header from '../../widgets/Header/Header'
@@ -70,7 +71,7 @@ export const Layout: FC<IProps> = ({
     })
   }, [currentPage])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window.innerWidth > 768) {
       const waterLogo =
         document.querySelector<HTMLCanvasElement>('#root > canvas')

@@ -123,6 +123,26 @@
             }
           }
 
+          li {
+            a {
+              @apply relative w-fit;
+
+              &:hover {
+                &::after {
+                  @apply w-full;
+                }
+              }
+
+              &::after {
+                content: '';
+
+                transition: width 0.4s ease;
+
+                @apply absolute block w-0 bottom-[-0.5vh] min-h-[0.1vh] h-[0.1vh] bg-white;
+              }
+            }
+          }
+
           span {
             @apply text-[0.661vw] uppercase font-medium opacity-[0.55];
 

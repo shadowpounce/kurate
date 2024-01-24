@@ -13,6 +13,7 @@ export const Hero = () => {
 
   useEffect(() => {
     if (pageLoaded && ref.current && currentPage === 'home') {
+      // alert('yes')
       const canvas = document.querySelector<HTMLCanvasElement>('#root > canvas')
 
       gsap.to(canvas, {

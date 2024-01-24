@@ -33,7 +33,7 @@ export const Artists = () => {
               </h1>
               <span className="section-span">
                 <div className="reveal">(Meet</div>
-                <div className="reveal">our team)</div>
+                <div className="reveal">our Artists)</div>
               </span>
             </div>
             {window.innerWidth > 768 && (
@@ -53,7 +53,9 @@ export const Artists = () => {
                   <div className="reveal">musicas a dynamic record label</div>
                 </p>
                 <div className="reveal opacity-0 translate-y-full duration-[1s] delay-[0.5s]">
-                  <Button>Learn more</Button>
+                  <a target="_blank" href="/artists">
+                    <Button>Learn more</Button>
+                  </a>
                 </div>
               </div>
             )}
@@ -79,7 +81,9 @@ export const Artists = () => {
                 </div>
               </p>
               <div className="reveal opacity-0 translate-y-full duration-[1s] delay-[0.5s]">
-                <Button>Learn more</Button>
+                <a target="_blank" href="/artists">
+                  <Button>Learn more</Button>
+                </a>
               </div>
             </div>
           </div>

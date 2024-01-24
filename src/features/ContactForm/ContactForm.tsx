@@ -159,6 +159,12 @@ export const ContactForm: FC<IProps> = ({ sectionActiveId }) => {
       }
     }
 
+    if (stepId === 2 && !email.includes('@')) {
+      alert('Wrong email address.')
+
+      return
+    }
+
     if (stepId !== FORM_STEPS.length) {
       setStepId(stepId + 1)
       setActiveValue('')

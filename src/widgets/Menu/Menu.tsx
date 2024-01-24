@@ -25,6 +25,16 @@ export const Menu = () => {
   const dropdownMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    document.body.addEventListener('click', (ev) => {
+      const target = ev.target as Element
+
+      if (!target.closest(`.${styles.menu}`)) {
+        setMenuActive(false)
+      }
+    })
+  }, [])
+
+  useEffect(() => {
     if (activeScreen === 4) {
       setMenuActive(false)
       setPlayerActive(true)
@@ -301,14 +311,7 @@ export const Menu = () => {
                 <div className={styles.burger}>
                   <img src="/images/icons/burger.svg" alt="" />
                 </div>
-                <span>
-                  {menuActive
-                    ? 'Menu'
-                    : `${
-                        currentPage.slice(0, 1).toUpperCase() +
-                        currentPage.slice(1)
-                      }`}
-                </span>
+                <span>{menuActive ? 'Menu' : `Menu`}</span>
               </li>
               {currentPage &&
                 navLinks[currentPage.toLowerCase()].map((link: any) => (
