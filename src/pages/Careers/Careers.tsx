@@ -9,6 +9,12 @@ import { CareersScreens } from '../../widgets/Screens/Careers'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CareersContext } from '../../app/providers/CareersContext'
 import { WithScrollSmoother } from '../../app/providers/WithScrollSmoother'
+import { useQuery } from '@tanstack/react-query'
+import { vacancyService } from '../../services/Vacancy/Vacancy.service'
+import {
+  IVacancy,
+  IVacancyResponse,
+} from '../../interfaces/Components/Vacancy/IVacancy.interface'
 
 export const Careers = () => {
   const {
@@ -20,12 +26,29 @@ export const Careers = () => {
     setCurrentPage,
   } = useContext(MainContext)
 
+  const [vacancies, setVacancies] = useState<IVacancy[]>()
+
   useEffect(() => {
     setCurrentPage('careers')
   }, [])
 
+  const { data: vacanciesData } = useQuery<IVacancyResponse>({
+    queryKey: ['vacancies'],
+    queryFn: () => vacancyService().getAll(),
+  })
+
+  useEffect(() => {
+    if (vacanciesData) {
+      setVacancies(vacanciesData.data)
+    }
+  }, [vacanciesData])
+
   return (
-    <CareersContext.Provider value={{}}>
+    <CareersContext.Provider
+      value={{
+        vacancies,
+      }}
+    >
       <WithScrollSmoother>
         {CareersScreens.map((screen) => screen)}
       </WithScrollSmoother>

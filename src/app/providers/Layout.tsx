@@ -18,6 +18,12 @@ import { Preloader } from '../../widgets/Preloader/Preloader'
 import { Menu } from '../../widgets/Menu/Menu'
 import { useLocation } from 'react-router-dom'
 import { ThreeDCards } from '../../features/ThreeDCards/ThreeDCards'
+import {
+  ITrack,
+  ITrackResponse,
+} from '../../interfaces/Components/Track/Track.interface'
+import { useQuery } from '@tanstack/react-query'
+import { trackService } from '../../services/Track/Track.service'
 
 MouseFollower.registerGSAP(gsap)
 
@@ -58,6 +64,23 @@ export const Layout: FC<IProps> = ({
   //     setTimeout(() => setPageLoaded(true), 500)
   //   }
   // }, [withPreloader])
+
+  const [tracks, setTracks] = useState<ITrack[]>()
+
+  const { data: tracksData } = useQuery<ITrackResponse>({
+    queryKey: ['tracks'],
+    queryFn: () => trackService().getAll(),
+  })
+
+  useEffect(() => {
+    if (tracksData) {
+      const data = tracksData.data
+      data.forEach((track: ITrack, idx) => {
+        track.id = idx
+      })
+      setTracks(data)
+    }
+  }, [tracksData])
 
   if (location.hash && hash === '') {
     setHash(location.hash)
@@ -120,6 +143,8 @@ export const Layout: FC<IProps> = ({
         setCurrentPage,
         hash,
         setHash,
+        tracks,
+        setTracks,
       }}
     >
       {!pageLoaded && <Preloader />}

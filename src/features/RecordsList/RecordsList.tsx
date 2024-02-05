@@ -5,10 +5,14 @@ import { DrawableLine } from '../../shared/DrawableLine/DrawableLine'
 import styles from './RecordsList.module.scss'
 import { MainContext } from '../../app/providers/MainContext'
 import clsx from 'clsx'
-import { genres, recordsData } from '../../data'
+import { genres } from '../../data'
 import { Record } from '../../entities/Record/Record'
 import { Button } from '../../shared/Button/Button'
 import { IRecord } from '../../interfaces/IRecord.interface'
+import { ITrack } from '../../interfaces/Components/Track/Track.interface'
+import { IGenre } from '../../interfaces/Components/Genre/Genre.interface'
+import { IArtist } from '../../interfaces/Components/Artist/Artits.interface'
+import { getMediaPath } from '../../utils/getMediaPath'
 
 export const RecordsList = () => {
   const [filterActive, setFilterActive] = useState<boolean>(false)
@@ -18,7 +22,7 @@ export const RecordsList = () => {
 
   const [showedMore, setShowedMore] = useState<boolean>(false)
 
-  const { activeScreen } = useContext(MainContext)
+  const { activeScreen, tracks } = useContext(MainContext)
 
   const toggleFilter = () => {
     filterActive ? setFilterActive(false) : setFilterActive(true)
@@ -260,34 +264,48 @@ export const RecordsList = () => {
           data-scrollable="true"
           className={clsx(styles.list, showedMore && styles.active)}
         >
-          {activeGenre === ''
-            ? recordsData.map((record: IRecord) => (
+          {activeGenre === '' && tracks
+            ? tracks.map((track: ITrack) => (
                 <Record
-                  audio={record.audio}
-                  id={record.id}
-                  title={record.title}
-                  cover={record.cover}
-                  artists={record.artists}
-                  genre={record.genre}
+                  audio={getMediaPath(track.attributes.audio.data.attributes)}
+                  id={track.id}
+                  title={track.attributes.title}
+                  cover={getMediaPath(track.attributes.cover.data.attributes)}
+                  artists={track.attributes.artists.data.map(
+                    (artist: IArtist) => artist.attributes.nickname
+                  )}
+                  genre={track.attributes.genres.data.map(
+                    (genre: IGenre) => genre.attributes.title
+                  )}
                 />
               ))
-            : recordsData
-                .filter((record) => {
-                  if (Array.isArray(record.genre)) {
-                    return record.genre.find(
-                      (item) =>
-                        item.toLowerCase() === activeGenre?.toLowerCase()
+            : tracks &&
+              tracks
+                .filter((track: ITrack) => {
+                  if (
+                    Array.isArray(
+                      track.attributes.genres.data.map((genre: IGenre) => genre)
+                    )
+                  ) {
+                    return track.attributes.genres.data.find(
+                      (genre: IGenre) =>
+                        genre.attributes.title.toLowerCase() ===
+                        activeGenre?.toLowerCase()
                     )
                   }
                 })
-                .map((record) => (
+                .map((track: ITrack) => (
                   <Record
-                    audio={record.audio}
-                    id={record.id}
-                    title={record.title}
-                    cover={record.cover}
-                    artists={record.artists}
-                    genre={record.genre}
+                    audio={getMediaPath(track.attributes.audio.data.attributes)}
+                    id={track.id}
+                    title={track.attributes.title}
+                    cover={getMediaPath(track.attributes.cover.data.attributes)}
+                    artists={track.attributes.artists.data.map(
+                      (artist: IArtist) => artist.attributes.nickname
+                    )}
+                    genre={track.attributes.genres.data.map(
+                      (genre: IGenre) => genre.attributes.title
+                    )}
                   />
                 ))}
         </div>

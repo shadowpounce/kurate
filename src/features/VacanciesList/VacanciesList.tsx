@@ -6,14 +6,13 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { vacanciesData } from '../../data'
+// import { vacanciesData } from '../../data'
 import { VacancyDropdown } from '../../entities/VacancyDropdown/VacancyDropdown'
 import { Button } from '../../shared/Button/Button'
 import styles from './VacanciesList.module.scss'
 import clsx from 'clsx'
-
-const types = ['all', 'remote', 'hybrid', 'full-time']
-const locations = ['all', 'london', 'sheffield']
+import { CareersContext } from '../../app/providers/CareersContext'
+import { IVacancy } from '../../interfaces/Components/Vacancy/IVacancy.interface'
 
 interface IProps {
   showedMore: boolean
@@ -21,6 +20,8 @@ interface IProps {
 }
 
 export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
+  const { vacancies } = useContext(CareersContext)
+
   const [canScroll, setCanScroll] = useState<boolean>(false)
 
   const [filterActive, setFilterActive] = useState<boolean>(false)
@@ -34,7 +35,35 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
   const [filterString, setFilterString] = useState<string>('')
   const [filterTwoString, setFilterTwoString] = useState<string>('')
 
-  const [filteredData, setFilteredData] = useState<any[]>(vacanciesData)
+  const [filteredData, setFilteredData] = useState<IVacancy[]>()
+
+  // filter data
+  const [locations, setLocations] = useState<string[]>([])
+  const [types, setTypes] = useState<string[]>([])
+
+  useEffect(() => {
+    if (vacancies) {
+      setFilteredData(vacancies)
+
+      vacancies.map((vacancy: IVacancy) => {
+        if (!locations.includes(vacancy.attributes.location.toLowerCase())) {
+          const data = locations
+
+          data.push(vacancy.attributes.location.toLowerCase())
+
+          setLocations(data)
+        }
+
+        if (!types.includes(vacancy.attributes.type.toLowerCase())) {
+          const data = types
+
+          data.push(vacancy.attributes.type.toLowerCase())
+
+          setTypes(data)
+        }
+      })
+    }
+  }, [vacancies])
 
   const toggleFilter = (filter: string) => {
     if (filter === 'location') {
@@ -84,31 +113,33 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
   }, [])
 
   useEffect(() => {
-    if (activeType !== 'all' && activeLocation !== 'all') {
+    if (activeType !== 'all' && activeLocation !== 'all' && vacancies) {
       setFilteredData(
-        vacanciesData.filter(
-          (vacancy) =>
-            vacancy.location.toLowerCase() === activeLocation &&
-            vacancy.type.toLowerCase() === activeType
+        vacancies.filter(
+          (vacancy: IVacancy) =>
+            vacancy.attributes.location.toLowerCase() === activeLocation &&
+            vacancy.attributes.type.toLowerCase() === activeType
         )
       )
 
       return
     }
 
-    if (activeType !== 'all' || activeLocation !== 'all') {
+    if (activeType !== 'all' || (activeLocation !== 'all' && vacancies)) {
       if (activeType !== 'all') {
         setFilteredData(
-          vacanciesData.filter(
-            (vacancy) => vacancy.type.toLowerCase() === activeType
+          vacancies.filter(
+            (vacancy: IVacancy) =>
+              vacancy.attributes.type.toLowerCase() === activeType
           )
         )
       }
 
       if (activeLocation !== 'all') {
         setFilteredData(
-          vacanciesData.filter(
-            (vacancy) => vacancy.location.toLowerCase() === activeLocation
+          vacancies.filter(
+            (vacancy: IVacancy) =>
+              vacancy.attributes.location.toLowerCase() === activeLocation
           )
         )
       }
@@ -116,10 +147,10 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
       return
     }
 
-    if (activeLocation === 'all' && activeType === 'all') {
-      setFilteredData(vacanciesData)
+    if (activeLocation === 'all' && activeType === 'all' && vacancies) {
+      setFilteredData(vacancies)
     }
-  }, [activeType, activeLocation])
+  }, [activeType, activeLocation, vacancies])
 
   return (
     <>
@@ -283,17 +314,17 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
                 </div>
                 <div className={styles.bodyList}>
                   <ul data-scrollable="true">
-                    {filterString
+                    <li onClick={() => selectLocation('all')}>{'all'}</li>
+                    {locations && filterString
                       ? locations
-                          .filter((item) =>
-                            item.toLowerCase().includes(filterString)
-                          )
+                          .filter((location) => location.includes(filterString))
                           .map((location) => (
                             <li onClick={() => selectLocation(location)}>
                               {location}
                             </li>
                           ))
-                      : locations.map((location) => (
+                      : locations &&
+                        locations.map((location) => (
                           <li onClick={() => selectLocation(location)}>
                             {location}
                           </li>
@@ -455,7 +486,8 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
                 </div>
                 <div className={styles.bodyList}>
                   <ul data-scrollable="true">
-                    {filterTwoString
+                    <li onClick={() => selectType('alll')}>{'alll'}</li>
+                    {filterTwoString && types
                       ? types
                           .filter((item) =>
                             item.toLowerCase().includes(filterTwoString)
@@ -476,7 +508,7 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
       </div>
       <ul className={styles.vacanciesList}>
         {filteredData &&
-          filteredData.map((vacancy, idx) => (
+          filteredData.map((vacancy: IVacancy, idx: number) => (
             <VacancyDropdown
               showedMore={showedMore}
               setShowedMore={setShowedMore}
@@ -486,11 +518,11 @@ export const VacanciesList: FC<IProps> = ({ showedMore, setShowedMore }) => {
                   canScroll ? setCanScroll(false) : setCanScroll(true)
                 }
               }}
-              position={vacancy.position}
-              location={vacancy.location}
-              text={vacancy.text}
-              requirments={vacancy.requirments}
-              type={vacancy.type}
+              position={vacancy.attributes.title}
+              location={vacancy.attributes.location}
+              text={vacancy.attributes.content}
+              // requirments={vacancy.requirments}
+              type={vacancy.attributes.type}
             />
           ))}
       </ul>

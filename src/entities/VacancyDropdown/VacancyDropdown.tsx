@@ -15,7 +15,7 @@ interface IProps {
   location: string
   type: string
   text: string
-  requirments: string[]
+  // requirments: string[]
   handleClick?: () => void
   idx: number
   showedMore: boolean
@@ -27,7 +27,7 @@ export const VacancyDropdown: FC<IProps> = ({
   location,
   type,
   text,
-  requirments,
+  // requirments,
   handleClick,
   idx,
   showedMore,
@@ -156,11 +156,11 @@ export const VacancyDropdown: FC<IProps> = ({
             </div>
             <div className={styles.content}>
               <p className={styles.text}>{text}</p>
-              <ul>
+              {/* <ul>
                 {requirments.map((requirment) => (
                   <li>{requirment}</li>
                 ))}
-              </ul>
+              </ul> */}
               <Button>Apply now</Button>
             </div>
           </div>

@@ -9,6 +9,7 @@ import createGeometry from 'three-bmfont-text'
 
 import { Effect, EffectComposer } from 'postprocessing'
 import { useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 // console.log(THREE)
 
@@ -21,25 +22,37 @@ window.EffectComposer = EffectComposer
 const App = () => {
   const [pageLoaded, setPageLoaded] = useState<boolean>(false)
 
+  const [queryClient] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+        },
+      },
+    })
+  )
+
   return (
-    <WithRoutes>
-      {pages.map((page) => (
-        <Route
-          key={page.path}
-          path={page.path}
-          element={
-            <Layout
-              setPageLoaded={setPageLoaded}
-              pageLoaded={pageLoaded}
-              withThreeDCards={page.withThreeDCards}
-              withPreloader={page.withPreloader}
-            >
-              {page.element}
-            </Layout>
-          }
-        ></Route>
-      ))}
-    </WithRoutes>
+    <QueryClientProvider client={queryClient}>
+      <WithRoutes>
+        {pages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={
+              <Layout
+                setPageLoaded={setPageLoaded}
+                pageLoaded={pageLoaded}
+                withThreeDCards={page.withThreeDCards}
+                withPreloader={page.withPreloader}
+              >
+                {page.element}
+              </Layout>
+            }
+          ></Route>
+        ))}
+      </WithRoutes>
+    </QueryClientProvider>
   )
 }
 

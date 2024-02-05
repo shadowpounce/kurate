@@ -12,6 +12,8 @@ export const Record: FC<IRecord> = ({ cover, title, artists, genre, id }) => {
 
   const ref = useRef<HTMLDivElement>(null)
 
+  useEffect(() => console.log(artists))
+
   const toggleMobile = () => {
     if (ref.current) {
       const bodyHeight = ref.current.querySelector<HTMLDivElement>(
