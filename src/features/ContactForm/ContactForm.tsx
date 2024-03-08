@@ -7,6 +7,7 @@ import { Waves } from '../../shared/Waves/Waves'
 import clsx from 'clsx'
 import useSplit from '../../hooks/useSplit'
 import { DrawableLine } from '../../shared/DrawableLine/DrawableLine'
+import { useGoogleTable } from '../../hooks/useGoogleTable'
 
 const FORM_STEPS = [
   {
@@ -145,9 +146,16 @@ export const ContactForm: FC<IProps> = ({ sectionActiveId }) => {
     }
   }, [name, email, link, currentStep])
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (confirmStep) {
-      setFormSent(true)
+      const data = await useGoogleTable(name, email, link)
+
+      if (data.status === 201) {
+        setFormSent(true)
+      } else {
+        alert('Something went wrong')
+      }
+
       return
     }
 
